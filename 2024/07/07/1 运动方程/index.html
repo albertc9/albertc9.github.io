@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Albert Cheung">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2024/07/07/1 运动方程/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="广义坐标通常，唯一地确定系统位置所需独立变量的数目称为系统的自由度（这里讨论的是完整系统，非完整系统自由度不能这样定义）。 对于拥有$s$个自由度的系统，可以找到刻画其位置的任意s个变量$q_1$, $q_2$, $q_3$, …, $q_n$，称为对该系统的广义坐标，其导数$\dot q$称为广义速度。数学上，在某时刻给定所有广义坐标$q$和速度$\dot q$就唯一地确定了该时刻的加速度$\d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1 运动方程">
+<meta property="og:url" content="http://example.com/2024/07/07/1%20%E8%BF%90%E5%8A%A8%E6%96%B9%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="广义坐标通常，唯一地确定系统位置所需独立变量的数目称为系统的自由度（这里讨论的是完整系统，非完整系统自由度不能这样定义）。 对于拥有$s$个自由度的系统，可以找到刻画其位置的任意s个变量$q_1$, $q_2$, $q_3$, …, $q_n$，称为对该系统的广义坐标，其导数$\dot q$称为广义速度。数学上，在某时刻给定所有广义坐标$q$和速度$\dot q$就唯一地确定了该时刻的加速度$\d">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-07T14:24:19.000Z">
+<meta property="article:modified_time" content="2024-07-07T15:25:26.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Notes">
+<meta name="twitter:card" content="summary">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/physics-svgrepo-com.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/physics-svgrepo-com.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/physics-svgrepo-com.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            1 运动方程 -
+        
+        PyRLetter
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    
+        
+<script src="/js/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":false,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":false,"site_uv":false,"post_pv":false},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"名不显时心不朽，再挑灯火看文章","subtitle":{"text":["雨天，我走进水坑里，不小心踩碎了天空。","静止总有一丝响动，那是灵魂沉沉浮浮。","就这样将自己搁浅在夜的礁上，昨天已成过去，今天尚未开始。","把地球倒置，我用撒哈拉记时。","血液的作用之一，是为信仰付出代价。","将您扼杀的就是您以为面前还有无尽的时间。","人之所以言之凿凿，是因为知道的太少。","不要做永远都合群的人。做异见者，做一会儿孤松，独自度过漫长冬日。","水流是鱼的风。","无限风光在险峰。","在坚冰还盖着北海的时候，我看到了怒放的梅花。","于暴雨中行走，伞是倒划天空的船。"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":"https://www.instagram.com/albert_cheung9/","zhihu":null,"twitter":"https://x.com/albert_chg9/","email":"albert.chg9@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.4","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"https://albertc9.github.io","icon":"fa-regular fa-house"},"Links":{"icon":"fa-regular fa-link","submenus":{"Google Scholar":"https://scholar.google.com","Web of Science":"https://www.webofscience.com","arXiv":"https://arxiv.org"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":"Email：albert.chg9@gmail.com    WeChat Official account：PyRLetter","show_on_mobile":true,"links":{"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"MMM D, YYYY","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/7/7 04:10:28"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+    <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        PyRLetter
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [40,0],
+                translateZ: 0,
+                opacity: [0,1],
+                filter: ['blur(5px)', 'blur(0px)'], // Starting from blurred to unblurred
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i,
+            }).add({
+                targets: '.ml13 .letter',
+                translateY: [0,-40],
+                opacity: [1,0],
+                filter: ['blur(0px)', 'blur(5px)'], // Ending from unblurred to blurred
+                easing: "easeInExpo",
+                duration: 1200,
+                delay: (el, i) => 100 + 30 * i,
+                complete: function() {
+                    hidePreloader(); // Call hidePreloader after the animation completes
+                }
+            });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                PyRLetter
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   target="_blank" rel="noopener" href="https://albertc9.github.io"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    LINKS
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://scholar.google.com">
+                                                    GOOGLE SCHOLAR
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.webofscience.com">
+                                                    WEB OF SCIENCE
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://arxiv.org">
+                                                    ARXIV
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           target="_blank" rel="noopener" href="https://albertc9.github.io"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Links"
+                        >
+                            <span>
+                                LINKS
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Links">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://scholar.google.com">GOOGLE SCHOLAR</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.webofscience.com">WEB OF SCIENCE</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://arxiv.org">ARXIV</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://github.com/PhdCheung/PhdCheung.github.io/blob/main/image/MechanicaTheoretica/thumbnail.png?raw=true" alt="1 运动方程" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">1 运动方程</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/avatar.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Albert Cheung</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-07-07 22:24:19</span>
+        <span class="mobile">2024-07-07 22:24:19</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-07-07 23:25:26</span>
+            <span class="mobile">2024-07-07 23:25:26</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Mechanica-Theoretica/">Mechanica Theoretica</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Notes/">Notes</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h3 id="广义坐标"><a href="#广义坐标" class="headerlink" title="广义坐标"></a>广义坐标</h3><p>通常，唯一地确定系统位置所需独立变量的数目称为系统的<strong>自由度</strong>（这里讨论的是完整系统，非完整系统自由度不能这样定义）。</p>
+<p>对于拥有$s$个自由度的系统，可以找到刻画其位置的任意s个变量$q_1$, $q_2$, $q_3$, …, $q_n$，称为对该系统的<strong>广义坐标</strong>，其导数$\dot q$称为<strong>广义速度</strong>。数学上，在某时刻给定所有广义坐标$q$和速度$\dot q$就唯一地确定了该时刻的加速度$\ddot q$。</p>
+<p>加速度与坐标、速度的关系式称为运动方程。对于函数式$q(t)$来说，这个式子就是二阶微分方程；原则上，将其积分就能够得到函数$q(t)$，进而确定系统的运动轨迹。</p>
+<h3 id="最小作用量原理"><a href="#最小作用量原理" class="headerlink" title="最小作用量原理"></a>最小作用量原理</h3><p>力学系统运动规律的最一般表述可以由<strong>最小作用量原理</strong>给出。根据这个原理，每个力学系统都可以用一个确定的函数</p>
+<p>$$<br>\mathscr{L}(q_1,q_2, …,q_s,\dot q_1, \dot q_2, …, \dot q_s, t)<br>$$</p>
+<p>或者简记为 </p>
+<p>$$<br>\mathscr{L}(q, \dot q,t)<br>$$</p>
+<p>所表征。并且，系统的运动还要满足下面的最小作用量条件。</p>
+<p>假设在时刻$t&#x3D;t_1$和时刻$t&#x3D;t_2$，系统的位置由两组坐标$q^{(1)}$和$q^{(2)}$所确定，那么系统在这两个位置之间的运动使积分</p>
+<p>$$<br>\mathscr{S}&#x3D;\int_{t_1}^{t_2}\mathscr{L}\mathrm{d}t<br>$$</p>
+<p>取最小值。其中，$\mathscr{L}$称为给定系统的<strong>拉格朗日函数</strong>，$\mathscr{S}$称为给定系统的<strong>作用量</strong>。</p>
+<p>只需要求解积分(1.3)的最小值问题就可以到处运动的微分方程。以下是它的推导过程：</p>
+<p>假设$q&#x3D;q(t)$是唯一满足条件取最小作用量的函数，那么有</p>
+<p>$$<br>\mathscr{L}(q,\dot q, t)&lt;\mathscr{L}(q+\delta q,\dot q+\delta \dot q, t)<br>$$</p>
+<p>恒成立,其中$\delta q$称为$q$的<strong>变分</strong>。同时，根据边界条件，要求$\delta q(t_1)&#x3D;\delta q(t_2)&#x3D;0$。</p>
+<p>函数$\mathscr{L}$的增量可以表示为 </p>
+<p>$$<br>\int_{t_1}^{t_2}\mathscr{L}\left(q+\delta q,\dot{q}+\delta\dot{q},t\right)\mathrm{d}t-\int_{t_1}^{t_2}\mathscr{L}\left(q,\dot{q},t\right)\mathrm{d}t<br>$$</p>
+<p>于是，最小作用量原理可以写作 </p>
+<p>$$<br>\delta \mathscr{S}&#x3D;\delta\int_{t_1}^{t_2}\mathscr{L} \left(q,\dot{q},t\right)\mathrm{d}t&#x3D;0<br>$$</p>
+<p>或者变分后的形式 </p>
+<p>$$<br>\int_{t_1}^{t_2}\left(\frac{\partial \mathscr{L}}{\partial q}\delta q+\frac{\partial \mathscr{L}}{\partial\dot{q}}\delta\dot{q}\right)\mathrm{d}t&#x3D;0<br>$$</p>
+<p>得到 </p>
+<p>$$<br>\delta \mathscr{S}&#x3D;\int_{t_1}^{t_2}\mathrm{d}\left(\frac{\partial \mathscr{L}}{\partial\dot{q}}\delta q\right)+\int_{t_1}^{t_2}\left(\frac{\partial \mathscr{L}}{\partial q}-\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial \mathscr{L}}{\partial\dot{q}}\right)\delta q\mathrm{d}t&#x3D;0<br>$$</p>
+<p>根据初始条件，第一项恒为0；第二项必须处处为0:</p>
+<p>$$<br>\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial \mathscr{L}}{\partial\dot{q}}-\frac{\partial \mathscr{L}}{\partial q}&#x3D;0<br>$$</p>
+<p>显然，对于所有自由度都必须满足，于是得到下列$s$个方程：</p>
+<p>$$<br>\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial \mathscr{L}}{\partial\dot{q}_i}-\frac{\partial \mathscr{L}}{\partial q_i}&#x3D;0\quad(i&#x3D;1,2,\cdots,s).<br>$$</p>
+<p>这就是目标运动微分方程，在力学中称为<strong>拉格朗日方程</strong>。事实上，后续能够定义其中的$\frac{\partial \mathscr{L}}{\partial\dot{q}_i}$为广义动量，而$\frac{\partial \mathscr{L}}{\partial q_i}$为广义力。</p>
+<p>容易看出，该式是一个对$q(t)$的二阶微分方程。因此，具有$2s$个积分常数。必须确定初态和末态的所有状态参量，才能得到唯一的运动方程（例如坐标和速度）。</p>
+<p>拉格朗日函数具有<strong>可加性</strong>。在两个系统$A$和$B$的距离足够远，以至于能认为这是两个孤立系统时，全系统的拉格朗日函数满足 </p>
+<p>$$<br>\lim\mathscr{L}&#x3D;\mathscr{L}_A+\mathscr{L}_B<br>$$</p>
+<p>由式(1.10)显然可以看出，拉格朗日函数本身加或减一个常数不影响拉格朗日方程，这个常数在变分时会被消除；甚至将他们分别乘以一个常数也不改变方程本身的正确性。但拉格朗日函数的可加性显然阻止了这一论断。后面将会在物理度量单位的自然任意性中归结这一论断。事实上，这种性质说明拉格朗日方程对拉格朗日函数的绝对值不敏感，只对其变化率敏感。</p>
+<p>事实上，考虑两个拉格朗日函数，他们相差某个坐标和时间函数$f(q,t)$对时间的全导数： </p>
+<p>$$<br>\mathscr{L}^{\prime}(q,\dot{q},t)&#x3D;\mathscr{L}(q,\dot{q},t)+\frac{\mathrm{d}}{\mathrm{d}t}f(q,t)<br>$$</p>
+<p>可以得到 </p>
+<p>$$<br>\begin{aligned}\mathscr{S}^{\prime}&amp;&#x3D;\int_{t_{1}}^{\prime_{2}}\mathscr{L}^{\prime}(q,\dot{q},t)\mathrm{d}t&#x3D;\int_{t_{1}}^{\prime_{2}}\mathscr{L}(q,\dot{q},t)\mathrm{d}t+\int_{t_{1}}^{t_{2}}\frac{\mathrm{d}}{\mathrm{d}t}f(q,t)\mathrm{d}t\&amp;&#x3D;\mathscr{S}+f(q^{(2)},t_{2})-f(q^{(1)},t_{1}),\end{aligned}<br>$$</p>
+<p>可以发现，这两个拉格朗日函数的作用量只差一个坐标和时间的函数，其将在变分时完全消失。因此，拉格朗日函数可以附加任意一个关于坐标和和时间的函数的全导数。</p>
+<h3 id="伽利略相对性原理"><a href="#伽利略相对性原理" class="headerlink" title="伽利略相对性原理"></a>伽利略相对性原理</h3><p>研究力学现象必须选定参考系。相对于任意参考系，时间与空间都可能是不均匀的，而且是各向异性的。但总有一种参考系，其中时间均匀流逝、空间均匀且各向同性，这样的参考系叫做<strong>惯性参考系</strong>。对于自由质点，可以很容易地得到惯性参考系中的一些定律，例如由于空间各向同性，拉格朗日函数满足 </p>
+<p>$$<br>\mathscr{L}&#x3D;\mathscr{L}(v^2)<br>$$</p>
+<p>另外，由于质点是自由的，有</p>
+<p>$$<br>\frac{\partial \mathscr{L}}{\partial r}<br>$$</p>
+<p>得到 </p>
+<p>$$<br>\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial \mathscr{L}}{\partial v}&#x3D;0<br>$$</p>
+<p>即</p>
+<p>$$<br>v&#x3D;const.<br>$$</p>
+<p>这就是<strong>惯性定律</strong>。</p>
+<p>如果在我们已有的这个惯性参考系以外，再引进另一个惯性参考系，它相对第一个惯性参考系作匀速直线运动，则相对这两个参考系的自由运动规律完全相同:自由运动仍是匀速直线运动。</p>
+<p>实验证明，不仅自由运动规律相对这两个参考系完全相同，所有力学关系式相对这两个参考系都是等价的。因此存在不只是一个，而是无穷多个惯性参考系，它们相互作匀速直线运动。在这些参考系中时间和空间都是相同的，力学规律也是相同的。 这个结论称为<strong>伽利略相对性原理</strong>，这是力学中最重要的原理之一。</p>
+<h3 id="自由质点的拉格朗日函数"><a href="#自由质点的拉格朗日函数" class="headerlink" title="自由质点的拉格朗日函数"></a>自由质点的拉格朗日函数</h3><p>取两个以无限小速度差作运输运动的惯性参考系$K$和$K’$，其中有$\boldsymbol{v’&#x3D;v+\varepsilon}$。于是有 </p>
+<p>$$<br>\mathscr{L}’&#x3D;\mathscr{L}(v’)&#x3D;\mathscr{L}(v^2+2\boldsymbol{v\cdot\varepsilon}+\varepsilon^2)<br>$$</p>
+<p>展开后得到 </p>
+<p>$$<br>\mathscr{L}(v^{\prime2})&#x3D;\mathscr{L}(v^2)+2\frac{\partial \mathscr{L}}{\partial v^2}\boldsymbol{v}\cdot\boldsymbol{\varepsilon}<br>$$</p>
+<p>显然，第二项必须与速度成线性相关，$\mathscr{L}(v^{\prime2})$才能是时间的全导数。因此 </p>
+<p>$$<br>\mathscr{L}(v^{\prime2})&#x3D;const.<br>$$</p>
+<p>即 </p>
+<p>$$<br>\mathscr{L}&#x3D;\frac{1}{2}mv^2<br>$$</p>
+<p>其中$\frac 12 m$是一个初值相关的常数。我们将在后面发现，它其实就是质点的质量。</p>
+<p>事实上，无论两参考系的速度差是否无穷小，拉格朗日函数都满足和速度平方成正比的式(1.21)。这是因为 </p>
+<p>$$<br>\mathscr{L}^{\prime}&#x3D;\frac{m}{2}v^{\prime2}&#x3D;\frac{m}{2}(\boldsymbol{v}+\boldsymbol{V})^{2}&#x3D;\frac{m}{2}v^{2}+2\frac{m}{2}\boldsymbol{v}\cdot\boldsymbol{V}+\frac{m}{2}V^{2}<br>$$</p>
+<p>即 </p>
+<p>$$<br>\mathscr{L}’&#x3D;\mathscr{L}+\frac{\mathrm{d}}{\mathrm{d}t}\left(2\frac{m}{2}\boldsymbol{r\cdot V}+\frac{m}{2}V^{2}t\right)<br>$$</p>
+<p>第二项其实就是前面所提到的关于位置和时间的函数的对时间的全导数。</p>
+<p>根据前面的可加性，如果质点系中的质点间没有相互作用，那么有 </p>
+<p>$$<br>\mathscr{L}&#x3D;\sum_{a}\frac{m_{a}v_{a}^{2}}{2}.<br>$$</p>
+<p>必须指出，只有考虑了可加性，给出的质量才有明确的定义。否则和之前提到的相同，将拉格朗日函数乘以某个特定的常数，不改变方程本身的正确性。</p>
+<p>另外，质量具有保正性。显然，如果质量为负数，拉格朗日方程的作用量能够拥有任意大的负值，不存在一种作用量最小的路径： </p>
+<p>$$<br>\mathscr{S}&#x3D;\int_1^2\frac{m}{2}v^2\mathrm{d}t,<br>$$</p>
+<p>只需要让质点快速离开再接近。</p>
+<p>由于弧长有 </p>
+<p>$$<br>\left(\frac{\mathrm d l}{\mathrm dt}\right)^2&#x3D;\frac{(\mathrm d l)^2}{(\mathrm dt)^2}<br>$$</p>
+<p>因此，实际上只需要得到$(\mathrm dl)^2$的表达式即可。对于不同坐标系有:</p>
+<ol>
+<li><p>笛卡尔坐标系<br>$$<br>\mathscr{L}&#x3D;\frac m2(\dot{x}^2+\dot{y}^2+\dot{z}^2)<br>$$</p>
+</li>
+<li><p>柱坐标系<br>$$<br>\mathscr{L}&#x3D;\frac m2(\dot{r}^2+r^2\dot{\varphi}^2+\dot{z}^2)<br>$$</p>
+</li>
+<li><p>球坐标系<br>$$<br>\mathscr{L}&#x3D;\frac m2(\dot{r}^2+r^2\dot{\theta}^2+r^2\sin^2\theta\dot{\varphi}^2)<br>$$</p>
+</li>
+</ol>
+<h3 id="质点系的拉格朗日函数"><a href="#质点系的拉格朗日函数" class="headerlink" title="质点系的拉格朗日函数"></a>质点系的拉格朗日函数</h3><p>下面研究的一种质点系，其质点之间有相互作用，但质点系与外系统无任何相互作用，这样的质点系称为<strong>封闭质点系</strong>。假设质点间的相互作用可用某一$U$函数描述，它显然是显含位置的函数。对于拉格朗日函数，有 </p>
+<p>$$<br>\mathscr{L}&#x3D;\sum_a\frac{m_av_a^2}2-U(\boldsymbol{r_1,r_2,}\cdots)<br>$$</p>
+<p>其中，定义 </p>
+<p>$$<br>\sum_a\frac{m_av_a^2}2<br>$$</p>
+<p>为质点系的动能，定义 </p>
+<p>$$<br>U(\boldsymbol{r_1,r_2,}\cdots)<br>$$</p>
+<p>为质点系的势能。在经典力学中，势能只取决于质点系的相互位置关系，相互作用是瞬间扩散的；换言之，当某一质点发生位置改变时，它的影响瞬间弥散整个质点系统。如果相互作用不是瞬间扩散的，而时间的绝对性意味着通常的速度相加法则适用于所有现象，于是在不同的参考系中扩散速度可能不相同，这就违背了伽利略相对性原理。</p>
+<p>我们发现，拉格朗日函数(1.30)表明，时间不只是均匀的，还是各向同性的。在这个意义上，所有经典力学范畴内的运动都是可逆的。 </p>
+<p>对于拉格朗日函数(1.30)，可以建立运动方程 </p>
+<p>$$<br>\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial \mathscr{L}}{\partial\boldsymbol{v}_a}&#x3D;\frac{\partial \mathscr{L}}{\partial\boldsymbol{r}_a}.<br>$$</p>
+<p>我们已经事先分离了两部分，于是能够得到 </p>
+<p>$$<br>m_a\frac{\mathrm{d}\boldsymbol{v}_a}{\mathrm{d}t}&#x3D;-\frac{\partial U}{\partial\boldsymbol{r}_a}.<br>$$</p>
+<p>具有这种形式的方程称为牛顿方程。事实上，它就是牛顿第二定律的原初表述。另外，定义 </p>
+<p>$$<br>\boldsymbol{F}_a&#x3D;-\frac{\partial U}{\partial \boldsymbol{r}_a}<br>$$</p>
+<p>为质点所受到的力。</p>
+<p>对于具有$s$个自由度的广义坐标，情况有所不同。此时为了得到拉格朗日函数必须进行坐标变换 </p>
+<p>$$<br>x_a&#x3D;f_a(q_1,q_2,\cdots,q_s),\dot{x}_a&#x3D;\sum_k\frac{\partial f_a}{\partial q_k}\dot{q}_k,\quad\mathrm{etc.}<br>$$</p>
+<p>代入拉格朗日函数后可以得到 </p>
+<p>$$<br>\mathscr{L}&#x3D;\frac{1}{2}\sum_{i,k}a_{ik}(q) \dot {q}_i \dot {q}_k -U(q)<br>$$</p>
+<p>其中$a_{ik}$是广义坐标的函数，而此时得到的动能不只依赖于速度（是速度的二次函数），它还可以依赖于广义坐标。</p>
+<p>对于非封闭质点系，情况也是类似的。在研究非封闭质点系$A$时，总能划归另一质点系$B$，将质点系$A+B$合并为封闭质点系进行研究。</p>
+<p>在广义坐标表征下，有 </p>
+<p>$$<br>\mathscr{L}&#x3D;T_A(q_A,\dot{q}_A)+T_B(q_B,\dot{q}_B)-U(q_A,q_B)<br>$$</p>
+<p>由于质点系$B$具有已知的关系$q_B&#x3D;q_B(t)$，因此可以代入，得到</p>
+<p>$$<br>\mathscr{L}&#x3D;T_A(q_A,\dot{q}_A)+T_B(q_B(t),\dot{q}_B(t))-U(q_A,q_B(t))<br>$$</p>
+<p>由于$T_B(q_B(t),\dot{q}_B(t))$是时间的全导数，因此能够忽略。于是 </p>
+<p>$$<br>\mathscr{L}&#x3D;T_A(q_A,\dot{q}_A)-U(q_A,q_B(t))<br>$$</p>
+<p>甚至写成 </p>
+<p>$$<br>\mathscr{L}&#x3D;T(q,\dot{q})-U(q,t),\quad\text{质点系}A<br>$$</p>
+<p>容易看出，即使是非封闭性的质点系，它的拉格朗日函数也具有相似的特征或形式，只不过其中势能项可能显含时间。</p>
+<p>因此，在外场中运动的质点，其拉格朗日函数写成 </p>
+<p>$$<br>\mathscr{L}&#x3D;\frac{mv^2}2-U(\boldsymbol{r},t)<br>$$</p>
+<p>其运动方程写成 </p>
+<p>$$<br>m\boldsymbol{v}&#x3D;-\frac{\partial U}{\partial\boldsymbol{r}}.<br>$$</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> 1 运动方程</li>
+        <li><strong>Author:</strong> Albert Cheung</li>
+        <li><strong>Created at
+                :</strong> 2024-07-07 22:24:19</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2024-07-07 23:25:26
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://www.albertc9.github.io/2024/07/07/1 运动方程/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Notes/">#Notes</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/07/08/Thermodynamics%201/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">1 导论</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-swup-reload-script
+            src="//cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+    <script data-swup-reload-script>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: 'Ov23liJ6K6tA9qpEumcm',
+                    clientSecret: 'c2719792a3b72ba07381d331e65fb2e9154bdca4',
+                    repo: 'Gitalk',
+                    owner: 'albertc9',
+                    admin: ['albertc9'],
+                    id: __gitalk__pathname,
+                    language: 'en',
+                    proxy: 'https://github.com/login/oauth/access_token'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">1 运动方程</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%BF%E4%B9%89%E5%9D%90%E6%A0%87"><span class="nav-text">广义坐标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E4%BD%9C%E7%94%A8%E9%87%8F%E5%8E%9F%E7%90%86"><span class="nav-text">最小作用量原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%BD%E5%88%A9%E7%95%A5%E7%9B%B8%E5%AF%B9%E6%80%A7%E5%8E%9F%E7%90%86"><span class="nav-text">伽利略相对性原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E7%94%B1%E8%B4%A8%E7%82%B9%E7%9A%84%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%87%BD%E6%95%B0"><span class="nav-text">自由质点的拉格朗日函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%A8%E7%82%B9%E7%B3%BB%E7%9A%84%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%87%BD%E6%95%B0"><span class="nav-text">质点系的拉格朗日函数</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 15s;"></i>&nbsp;&nbsp;<a href="/">Albert Cheung</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        4 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.4</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

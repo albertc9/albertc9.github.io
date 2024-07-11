@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Albert Cheung">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2024/07/08/thermodynamics 1/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="热学的研究对象及其特点热力学的局限性 它只适用于粒子数很多的宏观系统 它主要研究物质在平衡态下的性质 它把物质视为连续体，不考虑物质的微观结构  热力学系统的平衡态系统与介质热学所研究的对象称为热力学系统（thermodynamic system），而与系统存在密切联系的系统以外的部分称为外界或介质（medium）。 平衡态与非平衡态在不受外界条件影响下，经过足够长时间后系统必将达到一个宏观上看来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1 导论">
+<meta property="og:url" content="http://example.com/2024/07/08/Thermodynamics%201/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="热学的研究对象及其特点热力学的局限性 它只适用于粒子数很多的宏观系统 它主要研究物质在平衡态下的性质 它把物质视为连续体，不考虑物质的微观结构  热力学系统的平衡态系统与介质热学所研究的对象称为热力学系统（thermodynamic system），而与系统存在密切联系的系统以外的部分称为外界或介质（medium）。 平衡态与非平衡态在不受外界条件影响下，经过足够长时间后系统必将达到一个宏观上看来">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-08T00:25:29.000Z">
+<meta property="article:modified_time" content="2024-07-08T01:01:19.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Notes">
+<meta name="twitter:card" content="summary">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/physics-svgrepo-com.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/physics-svgrepo-com.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/physics-svgrepo-com.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            1 导论 -
+        
+        PyRLetter
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    
+        
+<script src="/js/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":false,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":false,"site_uv":false,"post_pv":false},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"名不显时心不朽，再挑灯火看文章","subtitle":{"text":["雨天，我走进水坑里，不小心踩碎了天空。","静止总有一丝响动，那是灵魂沉沉浮浮。","就这样将自己搁浅在夜的礁上，昨天已成过去，今天尚未开始。","把地球倒置，我用撒哈拉记时。","血液的作用之一，是为信仰付出代价。","将您扼杀的就是您以为面前还有无尽的时间。","人之所以言之凿凿，是因为知道的太少。","不要做永远都合群的人。做异见者，做一会儿孤松，独自度过漫长冬日。","水流是鱼的风。","无限风光在险峰。","在坚冰还盖着北海的时候，我看到了怒放的梅花。","于暴雨中行走，伞是倒划天空的船。"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":"https://www.instagram.com/albert_cheung9/","zhihu":null,"twitter":"https://x.com/albert_chg9/","email":"albert.chg9@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.4","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"https://albertc9.github.io","icon":"fa-regular fa-house"},"Links":{"icon":"fa-regular fa-link","submenus":{"Google Scholar":"https://scholar.google.com","Web of Science":"https://www.webofscience.com","arXiv":"https://arxiv.org"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":"Email：albert.chg9@gmail.com    WeChat Official account：PyRLetter","show_on_mobile":true,"links":{"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"MMM D, YYYY","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/7/7 04:10:28"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+    <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        PyRLetter
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [40,0],
+                translateZ: 0,
+                opacity: [0,1],
+                filter: ['blur(5px)', 'blur(0px)'], // Starting from blurred to unblurred
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i,
+            }).add({
+                targets: '.ml13 .letter',
+                translateY: [0,-40],
+                opacity: [1,0],
+                filter: ['blur(0px)', 'blur(5px)'], // Ending from unblurred to blurred
+                easing: "easeInExpo",
+                duration: 1200,
+                delay: (el, i) => 100 + 30 * i,
+                complete: function() {
+                    hidePreloader(); // Call hidePreloader after the animation completes
+                }
+            });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                PyRLetter
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   target="_blank" rel="noopener" href="https://albertc9.github.io"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    LINKS
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://scholar.google.com">
+                                                    GOOGLE SCHOLAR
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.webofscience.com">
+                                                    WEB OF SCIENCE
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://arxiv.org">
+                                                    ARXIV
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           target="_blank" rel="noopener" href="https://albertc9.github.io"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Links"
+                        >
+                            <span>
+                                LINKS
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Links">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://scholar.google.com">GOOGLE SCHOLAR</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.webofscience.com">WEB OF SCIENCE</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://arxiv.org">ARXIV</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">1 导论</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/avatar.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Albert Cheung</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-07-08 08:25:29</span>
+        <span class="mobile">2024-07-08 08:25:29</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-07-08 09:01:19</span>
+            <span class="mobile">2024-07-08 09:01:19</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Notes/">Notes</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h3 id="热学的研究对象及其特点"><a href="#热学的研究对象及其特点" class="headerlink" title="热学的研究对象及其特点"></a>热学的研究对象及其特点</h3><h4 id="热力学的局限性"><a href="#热力学的局限性" class="headerlink" title="热力学的局限性"></a>热力学的局限性</h4><ol>
+<li>它只适用于粒子数很多的宏观系统</li>
+<li>它主要研究物质在平衡态下的性质</li>
+<li>它把物质视为连续体，不考虑物质的微观结构</li>
+</ol>
+<h3 id="热力学系统的平衡态"><a href="#热力学系统的平衡态" class="headerlink" title="热力学系统的平衡态"></a>热力学系统的平衡态</h3><h4 id="系统与介质"><a href="#系统与介质" class="headerlink" title="系统与介质"></a>系统与介质</h4><p>热学所研究的对象称为<strong>热力学系统（thermodynamic system）</strong>，而与系统存在密切联系的系统以外的部分称为<strong>外界</strong>或<strong>介质（medium）</strong>。</p>
+<h4 id="平衡态与非平衡态"><a href="#平衡态与非平衡态" class="headerlink" title="平衡态与非平衡态"></a>平衡态与非平衡态</h4><p>在不受外界条件影响下，经过足够长时间后系统必将达到一个宏观上看来不随时间变化的状态，这种状态称为<strong>平衡态（equilibrium state）</strong>。</p>
+<p>在有热流或粒子流情况下，各处宏观状态均不随时间变化的状态称为<strong>稳恒态（stable state）</strong>，也称为稳态或定态。</p>
+<p>判断平衡态与<strong>非平衡态（non-equilibrium state）</strong>的方法是检查系统是否存在热流或粒子流。</p>
+<h4 id="热力学平衡"><a href="#热力学平衡" class="headerlink" title="热力学平衡"></a>热力学平衡</h4><p>在外界条件不变的情况下同时满足力学平衡条件、热学平衡条件和化学平衡条件的系统不会存在热流和粒子流，这样的系统处于平衡态。其中</p>
+<ol>
+<li>力学平衡条件：系统内部各组分之间、系统与外界之间达到力学平衡。在通常（例如在没有外场的情况下），力学平衡反映为压强处处相等。</li>
+<li>热学平衡条件：系统内部温度处处相等。</li>
+<li>化学平衡条件：在无外场作用下系统各部分的化学组分处处相同。</li>
+</ol>
+<p>系统处于平衡态的充分条件是系统中不存在热流和粒子流。处于平衡态的系统，可以用时间独立的宏观坐标（热力学坐标）描述它的热力学状态。</p>
+<h4 id="非平衡态的宏观描述"><a href="#非平衡态的宏观描述" class="headerlink" title="非平衡态的宏观描述"></a>非平衡态的宏观描述</h4><p>对于接近平衡态的非平衡系统，即<strong>近平衡态（near equilibrium state）</strong>，其有两种情况。情况一，可将其分为多个<strong>子系（subsystem）</strong>，这些子系宏观足够小、微观足够大。我们称这样的系统处于<strong>局部平衡（local equilibrium）</strong>，这一局域平衡与后者不同。这些子系热力学参量的集合就描述了系统在$t$时刻的非平衡态。情况二，整个系统未达到平衡态，但其中某些自由度却已各自处于热平衡，则对于每一个已处于平衡的自由度来说，已处于**局域平衡(local equilibrium)**。</p>
+<h3 id="温度"><a href="#温度" class="headerlink" title="温度"></a>温度</h3><h4 id="温度的概念"><a href="#温度的概念" class="headerlink" title="温度的概念"></a>温度的概念</h4><p>微观上，<strong>温度(temperature)</strong> 是处于热平衡系统的微观粒子热运动强弱程度的量度。宏观上，温度是决定两个或多个系统间存在热平衡的状态常量。</p>
+<h4 id="热力学第零定律"><a href="#热力学第零定律" class="headerlink" title="热力学第零定律"></a>热力学第零定律</h4><p>福勒(R. H. Fowler)于1939年提出<strong>热力学第零定律(the zero law of thermodynamics)</strong>:<strong>在不受外界条件的影响下，只要A和B同时与C处于热平衡，即使A和B没有热接触，它们仍然处于热平衡状态，这种规律被称为热平衡定律，也称为热力学第零定律。</strong></p>
+<p>需要说明，热力学第零定律只能说明物体之间是否处于热平衡，而不能比较尚未达到热平衡的物体之间温度的高低。</p>
+<p>热力学第零定律不仅给出了温度的概念，而且指出了判断温度是否相同的方法。热力学第零定律的实质，是指出温度这个态函数存在的合法性。一切互为热平衡的物体都具有相同的温度，这是温度计测温的依据。</p>
+<h4 id="温标及建立经验温标的方法"><a href="#温标及建立经验温标的方法" class="headerlink" title="温标及建立经验温标的方法"></a>温标及建立经验温标的方法</h4><p>温度的数值表示法就是**温标(temperature scale)**。</p>
+<p>一般来说，任何物质的任何属性，只要它随冷热程度发生单调的、显著的改变，都可被用来计量温度。这类温标称为**经验温标(experimental temperature scale)**。</p>
+<p>建立一种经验温标需要三个要素：</p>
+<ol>
+<li>选择某种测量物质，确定它的测温属性</li>
+<li>选定固定点</li>
+<li>进行分度</li>
+</ol>
+<h4 id="理想气体温标"><a href="#理想气体温标" class="headerlink" title="理想气体温标"></a>理想气体温标</h4><p>理想气体分度公式（定体）：</p>
+<p>$$T(p)&#x3D;273.16K\cdot \lim_{p_{tr}\rightarrow0}\frac pp_{tr}$$</p>
+<p>其中$P_{tr}$是该气体温度计在水的三相点时的压强。</p>
+<p>定压：</p>
+<p>$$T(p)&#x3D;273.16K\cdot \lim_{p\rightarrow0}\frac{V}{V_{tr}}$$</p>
+<p><strong>三相点(triple point)</strong> 是指同一化学纯物质的气、液、固三相能同时平衡共存的唯一状态，国际上规定水的三相点温度是$T&#x3D;273.16K$。</p>
+<p>由定容气体温度计所定出的低压极限下的温标称为理想气体温标。在理想气体温标的适用范围内，理想气体温标和热力学温标完全一致。</p>
+<h4 id="摄氏温标与华氏温标的转换"><a href="#摄氏温标与华氏温标的转换" class="headerlink" title="摄氏温标与华氏温标的转换"></a>摄氏温标与华氏温标的转换</h4><p><strong>摄氏温标(Celsius thermometric scale)</strong> 与 <strong>华氏温标(Fahrenheit thermometric scale)</strong> 的换算如下：</p>
+<p>$$t_F&#x3D;[\frac95\frac{t}{\degree C}+32]\degree F$$</p>
+<h4 id="热力学温标"><a href="#热力学温标" class="headerlink" title="热力学温标"></a>热力学温标</h4><p><strong>绝对温标</strong> 或 <strong>热力学温标(absolute temperature scale or thermodynamic temperature scale)</strong> 是国际上规定的基本温标。它的单位是**开尔文, K (Kelvin)**。</p>
+<h4 id="国际使用温标"><a href="#国际使用温标" class="headerlink" title="国际使用温标"></a>国际使用温标</h4><p><strong>国际实用温标(international practical temperature scale, IPTS)</strong> 是各国之间协议性的温标。国际温标（1990）可分别以热力学温度$T_{90}$及摄氏温度$T_{90}$表示：</p>
+<p>$$t_{90}&#x3D;(T_{90}-273.15K)\degree C&#x2F;K$$</p>
+<h3 id="物态方程"><a href="#物态方程" class="headerlink" title="物态方程"></a>物态方程</h3><h4 id="物态方程-1"><a href="#物态方程-1" class="headerlink" title="物态方程"></a>物态方程</h4><p>处于平衡态的某种物质的热力学参量（如压强、体积、温度）之间所满足的函数关系称为该物质的**物态方程(equation of state)**。</p>
+<p>物态方程中都显含温度$T$。</p>
+<h4 id="体膨胀系数、压缩系数、压强系数"><a href="#体膨胀系数、压缩系数、压强系数" class="headerlink" title="体膨胀系数、压缩系数、压强系数"></a>体膨胀系数、压缩系数、压强系数</h4><p>**等温压缩系数(isothermal compressibility coefficient)**：</p>
+<p>$$\kappa_T&#x3D;-\frac 1V(\frac{\partial V}{\partial p})_T$$</p>
+<p>它表示在温度不不变的条件下对系统压缩时，单位压强的变化所引起的系统相对体积的变化率，其倒数为**体积模量(bulk modulus)**。它是单位体积下，体积对压强变化的响应率；由于它描述的是压缩过程，因此具有在定义上带有负号。</p>
+<p><strong>等压体膨胀系数(isobaric mean volume expansion coefficient)</strong></p>
+<p>$$\beta_p&#x3D;\frac 1V(\frac{\partial V}{\partial T})_p$$</p>
+<p>它是单位体积下，体积对压强变化的响应率。或者说，是单位温度引起的相对体积变化率。</p>
+<p><strong>（相对）压强系数(pressure coefficient)</strong></p>
+<p>$$\alpha_V&#x3D;\frac 1p(\frac{\partial p}{\partial T})_V$$</p>
+<p>它表示在体积不变的情况下，单位温度所引起的压强相对变化。</p>
+<p>物体在体积增大的同时必然伴随其线度的改变，这一性质是由<strong>线膨胀系数</strong>$\alpha$来表示的：</p>
+<p>$$\alpha&#x3D;\frac 1l(\frac{\partial l}{\partial T})_p$$</p>
+<p>在一级近似下，体膨胀系数有</p>
+<p>$$\beta_p&#x3D;3\alpha$$</p>
+<h4 id="理想气体物态方程"><a href="#理想气体物态方程" class="headerlink" title="理想气体物态方程"></a>理想气体物态方程</h4><p>分别在1662年和1679年，英国科学家玻意耳和法国科学家马略特分别独立提出了**玻意耳-马略特定律(Boyle-Mariotte law)**：</p>
+<p>$$pV&#x3D;C$$</p>
+<p>**盖吕萨克定律(Gay-Lussac)**：</p>
+<p>$$\frac {V_2}{V_1}&#x3D;\frac {T_2}{T_1}$$</p>
+<p>**查理定律(Charles law)**：</p>
+<p>$$\frac{p_2}{p_1}&#x3D;\frac{T_2}{T_1}$$</p>
+<p>联立以上三个气体实验定律，得到**理想气体物态方程(idea gas equation (of state))**：</p>
+<p>$$\frac{pV}{T}&#x3D;C$$</p>
+<p>进一步可得</p>
+<p>$$pV&#x3D;\nu RT$$</p>
+<p>其中的$R$是<strong>摩尔气体常量(molar gas constant)</strong></p>
+<p>$$R&#x3D;8.31J\cdot mol^{-1}\cdot K^{-1}$$</p>
+<p>能严格满足理想气体物态方程的气体是理想气体。实际情况下，方程严格成立的条件是$p\rightarrow0$。</p>
+<h4 id="混合理想气体物态方程"><a href="#混合理想气体物态方程" class="headerlink" title="混合理想气体物态方程"></a>混合理想气体物态方程</h4><p>$$pV&#x3D;(\Sigma \nu_i)RT$$</p>
+<p>$$p&#x3D;\Sigma\nu_i\frac{RT}{V}&#x3D;\Sigma p_i$$</p>
+<p>Eq.(1.14)称为**混合理想气体物态方程(mixed ideal gas equation (of state))<strong>，Eq.(1.15)是英国科学家道尔顿在1802年在实验中发现的</strong>道尔顿分压定律(Dalton’s law of partial pressure)**。</p>
+<p>道尔顿分压定律严格成立的条件同样也是$p\rightarrow0$。</p>
+<h3 id="物质的微观模型"><a href="#物质的微观模型" class="headerlink" title="物质的微观模型"></a>物质的微观模型</h3><h4 id="阿伏伽德罗常数"><a href="#阿伏伽德罗常数" class="headerlink" title="阿伏伽德罗常数"></a>阿伏伽德罗常数</h4><p><strong>阿伏伽德罗常数(Avogadro constant)</strong> 如下：</p>
+<p>$$N_A&#x3D;6.02\times10^{-23}mol^{-1}$$</p>
+<h4 id="电解法测定阿伏伽德罗常量对电荷量的定义"><a href="#电解法测定阿伏伽德罗常量对电荷量的定义" class="headerlink" title="电解法测定阿伏伽德罗常量对电荷量的定义"></a>电解法测定阿伏伽德罗常量对电荷量的定义</h4><p>习惯上把实验精确精确测出的每析出1g氢气所需的电荷量称为一个<strong>法拉第(Faraday, 1791-1867)常量</strong>$F$。</p>
+<p>$$F&#x3D;N_Ae&#x3D;9.65\times10^4 C\cdot mol^{-1}$$</p>
+<h4 id="分子热运动，涨落"><a href="#分子热运动，涨落" class="headerlink" title="分子热运动，涨落"></a>分子热运动，涨落</h4><p>统计平均值的偏差称为**涨落(fluctuation)**。或者，统计平均值的均方偏差称为相对涨落或简称涨落：</p>
+<p>$$\frac{[\overline{\Delta N^2}]^{1&#x2F;2}}{N}\propto\frac{1}{\sqrt{N}}$$</p>
+<h4 id="分子间的吸引力与排斥力"><a href="#分子间的吸引力与排斥力" class="headerlink" title="分子间的吸引力与排斥力"></a>分子间的吸引力与排斥力</h4><p>只有当分子质心相互接近到某一距离内，分子间的相互吸引力才较显著，我们把这一距离称为分子<strong>吸引力作用半径</strong>。</p>
+<p>两分子刚好“接触”时两质心的距离叫做<strong>排斥力作用半径</strong>。</p>
+<h3 id="理想气体微观描述的初级理论"><a href="#理想气体微观描述的初级理论" class="headerlink" title="理想气体微观描述的初级理论"></a>理想气体微观描述的初级理论</h3><h4 id="理想气体的微观模型"><a href="#理想气体的微观模型" class="headerlink" title="理想气体的微观模型"></a>理想气体的微观模型</h4><p>实验上证实，对理想气体可作如下假定：</p>
+<ol>
+<li>分子本身的几何线度比起分子之间的距离小的多而可忽略不计。<ol>
+<li><p><strong>洛施密特常量(Loschmidt constant)</strong></p>
+<p> 标准状态下$1m^3$的理想气体中的分子数以$n_0$表示，满足</p>
+<p> $$n_0&#x3D;\frac{6.02\times10^{23}}{22.4\times10^{-3}}&#x3D;2.7\times10^{25}m^{-3}$$</p>
+</li>
+<li><p>标准情况下分子间的平均距离</p>
+<p> 每个分子平均分到的自由体积为$\frac {1}{n_0}$,有</p>
+<p> $$\overline{L}&#x3D;(\frac {1}{n_0})^{\frac 13}&#x3D;3.3\times10^{-9}m$$</p>
+</li>
+<li><p>氮分子半径</p>
+<p> $$r&#x3D;(\frac{3}{4\pi n})^{\frac{1}{3}}&#x3D;(\frac{3M}{4\pi \rho N_A})^{\frac 13}&#x3D;2.4\times10^{-10}m$$</p>
+</li>
+</ol>
+</li>
+<li>除碰撞的一瞬间外，分子间相互作用力可忽略不计，分子在两种碰撞之间作自由的匀速直线运动。</li>
+<li>处于平衡态的理想气体，分子之间以及分子与器壁之间的碰撞是完全弹性碰撞。因此，理想气体微观模型的动量和动能都守恒。</li>
+<li>处于平衡态的气体均具有分子混沌性。在任何一个宏观瞬间，朝着某个方向运动的平均粒子数和朝其反方向运动的粒子数相等。除了碰撞之外，气体粒子的运动互不影响。</li>
+</ol>
+<h4 id="分子泻流数"><a href="#分子泻流数" class="headerlink" title="分子泻流数"></a>分子泻流数</h4><p>分子泻流数（或碰壁数）如下</p>
+<p>$$\Gamma\approx\frac 16n\bar{v}$$</p>
+<p>它基于麦克斯韦分布的精确推导为</p>
+<p>$$\Gamma&#x3D;\frac 14n\bar{v}$$</p>
+<h4 id="理想气体压强"><a href="#理想气体压强" class="headerlink" title="理想气体压强"></a>理想气体压强</h4><p>公式<br>理想气体压强公式为</p>
+<p>$$p&#x3D;\frac 13 nm\overline{v^2}&#x3D;\frac 23n\overline{\varepsilon_t}$$</p>
+<p>其中</p>
+<p>$$\overline{\varepsilon_t}&#x3D;\frac 12 m\overline{v^2}&#x3D;\frac{3}{2}kT$$</p>
+<p>此处的推导中使用了近似条件：$\overline{v^2}&#x3D;\overline{v}^2$，实际上有$v_{rms}&#x3D;1.085\overline{v}$,即$\overline{v^2}&#x3D;1.177\overline{v}^2$。</p>
+<h4 id="理想气体物态方程的另一形式"><a href="#理想气体物态方程的另一形式" class="headerlink" title="理想气体物态方程的另一形式"></a>理想气体物态方程的另一形式</h4><p>理想气体物态方程可被改写为</p>
+<p>$$p&#x3D;nkT$$</p>
+<p>其中$k$是<strong>玻尔兹曼常量(Boltzmann constant)</strong>      </p>
+<p>$$k&#x3D;\frac{R}{N_A}&#x3D;1.38\times10^{-23}J\cdot K^{-1}$$</p>
+<h4 id="温度的微观意义"><a href="#温度的微观意义" class="headerlink" title="温度的微观意义"></a>温度的微观意义</h4><p>在简化模型基础上论证，可将分子热运动平均动能写为</p>
+<p>$$\overline{\varepsilon_t}&#x3D;\frac 32kT$$</p>
+<p>则表示了，在微观上，绝对温度就是衡量分子热运动剧烈程度的量度。或者说，温度是分子无规则运动平均动能的量度。</p>
+<p>气体分子的方均根速率为</p>
+<p>$$v_{rms}&#x3D;\sqrt{\overline{v^2}}&#x3D;\sqrt{\frac{3kT}{m}}&#x3D;\sqrt{\frac{3RT}{M}}$$</p>
+<h3 id="分子间作用力势能与真实气体物态方程"><a href="#分子间作用力势能与真实气体物态方程" class="headerlink" title="分子间作用力势能与真实气体物态方程"></a>分子间作用力势能与真实气体物态方程</h3><h4 id="分子相互作用势能"><a href="#分子相互作用势能" class="headerlink" title="分子相互作用势能"></a>分子相互作用势能</h4><p>分子相互作用势能为</p>
+<p>$$E_p(r)&#x3D;-\int_\infty^rF(r)dr$$</p>
+<h4 id="分子碰撞有效直径、固体分子热运动、固体热膨胀"><a href="#分子碰撞有效直径、固体分子热运动、固体热膨胀" class="headerlink" title="分子碰撞有效直径、固体分子热运动、固体热膨胀"></a>分子碰撞有效直径、固体分子热运动、固体热膨胀</h4><p>在两分子对心碰撞时，最短质心间距被称为分子碰撞有效直径，即使A和B没有热接触</p>
+<p>$$d&#x3D;\text{分子碰撞有效直径}$$</p>
+<p>$d$与温度有关，温度越高，$d$越小。</p>
+<p>通常提到的分子直径有两种：一种是分子的大小，这主要指它们组成固体时，最邻近分子间的平均距离；另一种就是分子碰撞有效直径。</p>
+<h4 id="固体热膨胀的微观解释"><a href="#固体热膨胀的微观解释" class="headerlink" title="固体热膨胀的微观解释"></a>固体热膨胀的微观解释</h4><p>由于量子效应，粒子会在平衡位置附近作振幅非常小的<strong>零点振动（zero-point vibration）</strong>。粒子来回振动于$r’$和$r’’$之间。从作用力势能曲线可以看出极值点左偏移，平衡位置有</p>
+<p>$$\overline{r}&#x3D;\frac{r’+r’’}{2}&gt; r_0$$</p>
+<p>它随温度的增高而增大。晶体的热膨胀现象就是这样由晶格振动的非简谐性而产生。</p>
+<h4 id="范德瓦尔斯方程"><a href="#范德瓦尔斯方程" class="headerlink" title="范德瓦尔斯方程"></a>范德瓦尔斯方程</h4><ol>
+<li><p><strong>分子体积修正</strong></p>
+<p> 设1mol气体占有$V_m$体积，分子能自由运动的空间为$V_m-b$，则有</p>
+<p> $$V_m-b&#x3D;\frac{RT}{p}$$</p>
+</li>
+</ol>
+<p>或</p>
+<p>$$p&#x3D;\frac{RT}{V_m-b}$$</p>
+<p>有时这个式子被称为**克劳修斯方程(Clapeyron-Clausius equation)**。当$p\rightarrow\infty$时，气体体积$V_m\rightarrow b$，说明$b$是气体无限压缩能达到的最小体积。</p>
+<ol start="2">
+<li><p><strong>动理压强和内压强</strong></p>
+<ol>
+<li><p>动理压强</p>
+<p>  理想气体压强是单位时间内气体分子碰撞在单位器壁上的平均总冲量，这种压强称为<strong>（气体）动理压强</strong>，以$p_{\text{动理}}$表示。则理想气体压强为</p>
+<p>  $$p_{\text{理}}&#x3D;p_{\text{动理}}$$</p>
+</li>
+<li><p>液体中的静压强</p>
+<p>  液体中的<strong>静压强(static pressure)</strong> 由液体中的分子与邻近的器壁分子之间的排斥力产生。液体所受压强越大，液体与邻近器壁分子的平均距离越小，排斥力越大，它施于器壁的压强也越大。</p>
+</li>
+<li><p>内压强</p>
+<p>  把分子吸引力说产生的压强大小称为**内压强(inner pressure)**，并与$\Delta p_i$表示。气体中的压强和表示为分子动理压强和吸引力产生压强之和</p>
+<p>  $$p&#x3D;p_{\text{真动}}+\Delta p_i$$</p>
+<p>  其中$p_{\text{真动}}$是真实气体中的动理压强。显然，真实气体内部的动理压强和理想气体内部的动力压强应该相等，于是可以得到理想气体压强公式</p>
+<p>  $$p_{\text{理}}&#x3D;p_{\text{理动}}&#x3D;p+\Delta p_i$$</p>
+</li>
+</ol>
+</li>
+<li><p><strong>分子吸引力修正</strong></p>
+<p> $\Delta p_i$被称为气体的内压强修正量，简称为内压强，则</p>
+<p> $$p_{\text{内}}&#x3D;p+\Delta p_i$$</p>
+<p> 其中$p_{\text{内}}$是气体内部的压强。</p>
+<p> 内压强修正量为</p>
+<p> $$\Delta p_i&#x3D;\frac{a}{V_m^2}$$</p>
+</li>
+<li><p><strong>范德瓦尔斯方程</strong></p>
+<p> 1mol气体的<strong>范德瓦尔斯方程(Van der Waals equation)</strong> 为</p>
+<p> $$(p+\frac{a}{V_m^2})(V_m-b)&#x3D;RT$$</p>
+<p> 若气体不是1mol，则有</p>
+<p> $$(p+\nu^2\frac{a}{V^2})(V-\nu b)&#x3D;\nu RT$$</p>
+<p> 其中的$b$是分子固有体积的4倍。</p>
+<p> 范德瓦尔斯方程最重要的特点是它的物理图像十分鲜明，它能同时描述气、液及气液转变的性质，也能说明临界点的特征，从而揭示相变与临界现象的特点。</p>
+</li>
+</ol>
+<h4 id="昂内斯方程"><a href="#昂内斯方程" class="headerlink" title="昂内斯方程"></a>昂内斯方程</h4><p>昂内斯（Onnes）在研究永久性气体（指氢、氦等沸点很低的气体）的液化时，于1901年提出了描述真实气体的另一物态方程——<strong>昂内斯方程（Kamerlingh-Onnes equation</strong>：</p>
+<p>$$pV&#x3D;A+\frac{B}{V}+\frac{C}{V^2}+…$$</p>
+<p>这是以体积展开的昂内斯方程 ，其中的系数A、B、C被称为<strong>位力系数（virial coefficient）</strong>，通常由实验确定。</p>
+<h4 id="几种典型的分子作用力曲线"><a href="#几种典型的分子作用力曲线" class="headerlink" title="几种典型的分子作用力曲线"></a>几种典型的分子作用力曲线</h4><ol>
+<li><strong>体积趋于0的钢球模型</strong></li>
+</ol>
+<p>$$<br>                E_p(r)\rightarrow\infty,  \text{当$r\rightarrow 0$}<br>\<br>                E_p(r)&#x3D;0,  \text{当$r&gt;0$}<br>$$<br>2. <strong>钢球模型</strong></p>
+<p>$$<br>                E_p(r)\rightarrow\infty,  \text{当$r\leq d$} \<br>                E_p(r)&#x3D;0,  \text{当$r&gt;d$}<br>$$<br>3. <strong>萨瑟兰(Sutherland)模型</strong></p>
+<p>   在钢球模型上考虑有吸引力后，其势能为</p>
+<p>$$<br>                E_p(r)\rightarrow\infty,  \text{当$r\leq d$} \<br>                E_p(r)&#x3D;-\Phi(\frac{r_0}{r})^t,  \text{当$r&gt;d$}<br>$$</p>
+<p>   其中$t$是常数，$\Phi&gt;0$，通常$t&#x3D;6$。$-\Phi_0$是$r&#x3D;r_0$时的势能，对应的物态方程是范德瓦尔斯方程。</p>
+<ol>
+<li><p><strong>米势（Mie potential）和伦纳德-琼斯模型（Lennard-Jones potential）</strong></p>
+<p>1907年米（Mie）指出，分子或原子间相互作用势可用式</p>
+</li>
+</ol>
+<p>$$<br>        E_p(r)&#x3D;-\frac{A}{r^m}+B\frac{B}{r^n}<br>$$</p>
+<p>   表示，其中$A&gt;0$, $B&gt;0$, $n&gt;m$。其中第一项为吸引势，第二项为排斥势，且排斥作用半径比吸引作用半径更小。</p>
+<p>   1924年伦纳德-琼斯(Lennard-Jones)又提出了以下半经验公式：</p>
+<p>$$<br>       E_p(r)&#x3D;\Phi_0[(\frac{r_0}{r})^s-2(\frac{r_0}{r})^t]<br>$$</p>
+<p>其中的$-\Phi_0$是在平衡位置$r&#x3D;r_0$时的势能，$s$、$t$是常数。可粗略地认为米势所对应的方程就是昂内斯方程。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> 1 导论</li>
+        <li><strong>Author:</strong> Albert Cheung</li>
+        <li><strong>Created at
+                :</strong> 2024-07-08 08:25:29</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2024-07-08 09:01:19
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://www.albertc9.github.io/2024/07/08/Thermodynamics 1/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Notes/">#Notes</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/07/08/hello-world/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Hello World</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/07/07/1%20%E8%BF%90%E5%8A%A8%E6%96%B9%E7%A8%8B/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">1 运动方程</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-swup-reload-script
+            src="//cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+    <script data-swup-reload-script>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: 'Ov23liJ6K6tA9qpEumcm',
+                    clientSecret: 'c2719792a3b72ba07381d331e65fb2e9154bdca4',
+                    repo: 'Gitalk',
+                    owner: 'albertc9',
+                    admin: ['albertc9'],
+                    id: __gitalk__pathname,
+                    language: 'en',
+                    proxy: 'https://github.com/login/oauth/access_token'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">1 导论</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%83%AD%E5%AD%A6%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%85%B6%E7%89%B9%E7%82%B9"><span class="nav-text">热学的研究对象及其特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%83%AD%E5%8A%9B%E5%AD%A6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B9%B3%E8%A1%A1%E6%80%81"><span class="nav-text">热力学系统的平衡态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%A9%E5%BA%A6"><span class="nav-text">温度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E6%80%81%E6%96%B9%E7%A8%8B"><span class="nav-text">物态方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E8%B4%A8%E7%9A%84%E5%BE%AE%E8%A7%82%E6%A8%A1%E5%9E%8B"><span class="nav-text">物质的微观模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E6%83%B3%E6%B0%94%E4%BD%93%E5%BE%AE%E8%A7%82%E6%8F%8F%E8%BF%B0%E7%9A%84%E5%88%9D%E7%BA%A7%E7%90%86%E8%AE%BA"><span class="nav-text">理想气体微观描述的初级理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%AD%90%E9%97%B4%E4%BD%9C%E7%94%A8%E5%8A%9B%E5%8A%BF%E8%83%BD%E4%B8%8E%E7%9C%9F%E5%AE%9E%E6%B0%94%E4%BD%93%E7%89%A9%E6%80%81%E6%96%B9%E7%A8%8B"><span class="nav-text">分子间作用力势能与真实气体物态方程</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 15s;"></i>&nbsp;&nbsp;<a href="/">Albert Cheung</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        4 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.4</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
