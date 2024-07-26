@@ -26,7 +26,7 @@
 <meta property="og:description" content="ForewordLike Debian, Fedora is another distribution of the Linux system. RASER is software based on the Linux system, so it can also be directly deployed on the Fedora system. Before deployment, pleas">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-25T13:41:07.000Z">
-<meta property="article:modified_time" content="2024-07-26T06:53:51.724Z">
+<meta property="article:modified_time" content="2024-07-26T07:05:56.952Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
@@ -634,8 +634,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-07-26 14:53:51</span>
-            <span class="mobile">2024-07-26 14:53:51</span>
+            <span class="desktop">2024-07-26 15:05:56</span>
+            <span class="mobile">2024-07-26 15:05:56</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -689,19 +689,23 @@ mjx-container[display="true"] + br {
 <p>Before deployment, please complete the network connection process for Fedora by yourself.</p>
 <p>The following operations should all be performed as the root user. If you do not wish to make global changes, please create a new user:</p>
 <ol>
-<li><p>Create a new user</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> useradd -m newusername</span><br></pre></td></tr></table></figure></div>
-<p>where <code>newusername</code> is the name of the new user you want to create. The <code>-m</code> parameter indicates that a home directory for the user will be created at the same time.</p>
-</li>
-<li><p>Set a password</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> passwd newusername</span><br></pre></td></tr></table></figure></div>
-<p>The system will prompt you to enter and confirm the password for the new user.</p>
-</li>
-<li><p>Switch to the new user and perform subsequent operations</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - newusername</span><br></pre></td></tr></table></figure></div>
-<p>After entering the password, you will be switched to the new user in the terminal. Since the new user is not granted root privileges, changes made in some areas will not affect the settings of all users.</p>
-</li>
+<li>Create a new user</li>
 </ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> useradd -m newusername</span><br></pre></td></tr></table></figure></div>
+
+<p>where <code>newusername</code> is the name of the new user you want to create. The <code>-m</code> parameter indicates that a home directory for the user will be created at the same time.</p>
+<ol>
+<li>Set a password</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> passwd newusername</span><br></pre></td></tr></table></figure></div>
+
+<p>The system will prompt you to enter and confirm the password for the new user.</p>
+<ol>
+<li>Switch to the new user and perform subsequent operations</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - newusername</span><br></pre></td></tr></table></figure></div>
+
+<p>After entering the password, you will be switched to the new user in the terminal. Since the new user is not granted root privileges, changes made in some areas will not affect the settings of all users.</p>
 <h2 id="配置所需软件或环境"><a href="#配置所需软件或环境" class="headerlink" title="配置所需软件或环境"></a>配置所需软件或环境</h2><h3 id="Python3-and-GCC"><a href="#Python3-and-GCC" class="headerlink" title="Python3 and GCC"></a>Python3 and GCC</h3><ol>
 <li>Update the system package list</li>
 </ol>
@@ -713,71 +717,137 @@ mjx-container[display="true"] + br {
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dnf install python3</span><br></pre></td></tr></table></figure></div>
 
 <ol start="3">
-<li>Check if python3 is successfully installed<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 --version</span><br></pre></td></tr></table></figure></div></li>
-<li>Sometimes, you may need to manually install the gcc package:<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dnf install gcc</span><br></pre></td></tr></table></figure></div></li>
-<li>Check if gcc is successfully installed:<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc --version</span><br></pre></td></tr></table></figure></div></li>
+<li>Check if python3 is successfully installed</li>
 </ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 --version</span><br></pre></td></tr></table></figure></div>
+
+<ol start="4">
+<li>Sometimes, you may need to manually install the gcc package:</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dnf install gcc</span><br></pre></td></tr></table></figure></div>
+
+<ol start="5">
+<li>Check if gcc is successfully installed:</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc --version</span><br></pre></td></tr></table></figure></div>
+
+
 <h3 id="Apptainer"><a href="#Apptainer" class="headerlink" title="Apptainer"></a>Apptainer</h3><ol>
-<li><p>Download and extract Apptainer:</p>
+<li>Download and extract Apptainer:</li>
+</ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/apptainer/apptainer/releases/download/v1.3.3/apptainer-1.3.3.tar.gz</span><br><span class="line">tar -xzf apptainer-1.3.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> apptainer-1.3.3</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>Configure and compile the code:</p>
+
+<ol start="2">
+<li>Configure and compile the code:</li>
+</ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./mconfig</span><br><span class="line">make -C builddir</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>Install Apptainer:</p>
+
+<ol start="3">
+<li>Install Apptainer:</li>
+</ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> make -C builddir install</span><br></pre></td></tr></table></figure></div>
+
 <p>or</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dnf install apptainer </span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>Check the installed version:</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apptainer --version</span><br></pre></td></tr></table></figure></div></li>
+
+<ol start="4">
+<li>Check the installed version:</li>
 </ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apptainer --version</span><br></pre></td></tr></table></figure></div>
+
 <h3 id="CVMFS"><a href="#CVMFS" class="headerlink" title="CVMFS"></a>CVMFS</h3><p>(For details, see <a class="link" target="_blank" rel="noopener" href="https://cvmfs.readthedocs.io/en/stable/cpt-quickstart.html">https://cvmfs.readthedocs.io/en/stable/cpt-quickstart.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>)</p>
 <ol>
-<li>Run:<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dnf install http://ecsft.cern.ch/dist/cvmfs/cvmfs-2.11.3/cvmfs{,-libs}-2.11.3-1.fc38.x86_64.rpm \</span><br><span class="line">                 https://ecsft.cern.ch/dist/cvmfs/cvmfs-config/cvmfs-config-default-latest.noarch.rpm</span><br></pre></td></tr></table></figure></div>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest_all.deb</span><br><span class="line"><span class="built_in">sudo</span> apt install -y ./cvmfs-release-latest_all.deb</span><br><span class="line"><span class="built_in">sudo</span> apt install -y cvmfs</span><br></pre></td></tr></table></figure></div></li>
-<li>Configure AutoFS:<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">'s%#+dir:/etc/auto.master.d%+dir:/etc/auto.master.d%'</span> /etc/auto.master</span><br><span class="line">systemctl restart autofs</span><br></pre></td></tr></table></figure></div></li>
-<li>Create <code>default.local</code>:<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> -p /etc/cvmfs</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">touch</span> /etc/cvmfs/default.local</span><br></pre></td></tr></table></figure></div></li>
-<li>Open the file for editing:<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/cvmfs/default.local</span><br></pre></td></tr></table></figure></div></li>
-<li>Write the following content:<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CVMFS_REPOSITORIES=cvmfs-config.cern.ch,sft.cern.ch,geant4.cern.ch</span><br><span class="line">CVMFS_CLIENT_PROFILE=single</span><br><span class="line">CVMFS_HTTP_PROXY=DIRECT</span><br></pre></td></tr></table></figure></div></li>
-<li>Verify the file system:<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cvmfs_config probe</span><br></pre></td></tr></table></figure></div>
-If the probe fails, you can restart autofs:<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart autofs</span><br></pre></td></tr></table></figure></div></li>
-<li>You can use the <code>dnf</code> command to check if CVMFS was successfully installed:<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf list installed cvmfs</span><br></pre></td></tr></table></figure></div>
-If successfully installed, you will see output similar to the following:<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Installed Packages</span><br><span class="line">cvmfs.x86_64                      version-release                      @repository</span><br></pre></td></tr></table></figure></div></li>
+<li>Run:</li>
 </ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dnf install http://ecsft.cern.ch/dist/cvmfs/cvmfs-2.11.3/cvmfs{,-libs}-2.11.3-1.fc38.x86_64.rpm \</span><br><span class="line">                 https://ecsft.cern.ch/dist/cvmfs/cvmfs-config/cvmfs-config-default-latest.noarch.rpm</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest_all.deb</span><br><span class="line"><span class="built_in">sudo</span> apt install -y ./cvmfs-release-latest_all.deb</span><br><span class="line"><span class="built_in">sudo</span> apt install -y cvmfs</span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>Configure AutoFS:</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">'s%#+dir:/etc/auto.master.d%+dir:/etc/auto.master.d%'</span> /etc/auto.master</span><br><span class="line">systemctl restart autofs</span><br></pre></td></tr></table></figure></div>
+
+<ol start="3">
+<li>Create <code>default.local</code>:</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> -p /etc/cvmfs</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">touch</span> /etc/cvmfs/default.local</span><br></pre></td></tr></table></figure></div>
+
+<ol start="4">
+<li>Open the file for editing:</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/cvmfs/default.local</span><br></pre></td></tr></table></figure></div>
+
+<ol start="5">
+<li>Write the following content:</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CVMFS_REPOSITORIES=cvmfs-config.cern.ch,sft.cern.ch,geant4.cern.ch</span><br><span class="line">CVMFS_CLIENT_PROFILE=single</span><br><span class="line">CVMFS_HTTP_PROXY=DIRECT</span><br></pre></td></tr></table></figure></div>
+
+<ol start="6">
+<li>Verify the file system:</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cvmfs_config probe</span><br></pre></td></tr></table></figure></div>
+
+<p>If the probe fails, you can restart autofs:</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart autofs</span><br></pre></td></tr></table></figure></div>
+
+<ol start="7">
+<li>You can use the <code>dnf</code> command to check if CVMFS was successfully installed:</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf list installed cvmfs</span><br></pre></td></tr></table></figure></div>
+
+<p>If successfully installed, you will see output similar to the following:</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Installed Packages</span><br><span class="line">cvmfs.x86_64                      version-release                      @repository</span><br></pre></td></tr></table></figure></div>
+
 <h3 id="ROOT"><a href="#ROOT" class="headerlink" title="ROOT"></a>ROOT</h3><ol>
 <li>Install the ROOT package:</li>
 </ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install root</span><br></pre></td></tr></table></figure></div>
 <p>However, more commonly, users need more than just the basic package. Click on one of the provided versions to view the full list of components at <a class="link" target="_blank" rel="noopener" href="https://src.fedoraproject.org/rpms/root/">https://src.fedoraproject.org/rpms/root/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>. For example, to install ROOT with Python and notebook support, run:</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install root python3-root root-notebook</span><br></pre></td></tr></table></figure></div>
+
 <ol>
-<li>Check the version<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root --version</span><br></pre></td></tr></table></figure></div></li>
+<li>Check the version</li>
 </ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root --version</span><br></pre></td></tr></table></figure></div>
+
+
 <h3 id="Geant4"><a href="#Geant4" class="headerlink" title="Geant4"></a>Geant4</h3><ol>
 <li>Download the source code archive from the official website:</li>
 </ol>
 <p>Go to <a class="link" target="_blank" rel="noopener" href="https://geant4.web.cern.ch/download/11.2.2.html">https://geant4.web.cern.ch/download/11.2.2.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> and select one of the “Source Code” options to download. It is recommended to download the tar.gz format on Fedora.</p>
 <ol start="2">
-<li><p>After downloading, manually extract the files, or use the command (<strong>Note: the version number may vary, please change the version number in the following steps to the one you downloaded</strong>)</p>
+<li>After downloading, manually extract the files, or use the command (<strong>Note: the version number may vary, please change the version number in the following steps to the one you downloaded</strong>)</li>
+</ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf geant4-v11.2.0.tar.gz -C /path/to</span><br></pre></td></tr></table></figure></div>
+
 <p>Here, <code>/path/to</code> is the directory where you choose to store the extracted files.</p>
-</li>
-<li><p>Navigate to the extracted Geant4 source code directory and create a new build directory at the same level:</p>
+<ol start="3">
+<li>Navigate to the extracted Geant4 source code directory and create a new build directory at the same level:</li>
+</ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to</span><br><span class="line"><span class="built_in">mkdir</span> geant4-v11.2.0-build</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>Use the command</p>
+
+<ol start="4">
+<li>Use the command</li>
+</ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span></span><br></pre></td></tr></table></figure></div>
+
 <p>to confirm the directory structure. You should see the following output:</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geant4-v11.2.0  geant4-v11.2.0-build</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>Configure and build the environment:</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/geant4-v11.2.0-build</span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=/path/to/geant4-v11.2.0-install /path/to/geant4-v11.2.0</span><br></pre></td></tr></table></figure></div>
-<p>Compile and install Geant4 using the following commands:</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make -j$(<span class="built_in">nproc</span>)</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></div></li>
-<li><p>Check the installed version</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/path/to/geant4-v11.2.0-install/bin/geant4-config --version</span><br></pre></td></tr></table></figure></div></li>
+
+<ol start="5">
+<li>Configure and build the environment:</li>
 </ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/geant4-v11.2.0-build</span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=/path/to/geant4-v11.2.0-install /path/to/geant4-v11.2.0</span><br></pre></td></tr></table></figure></div>
+
+<p>Compile and install Geant4 using the following commands:</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make -j$(<span class="built_in">nproc</span>)</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></div>
+
+<ol start="6">
+<li>Check the installed version</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/path/to/geant4-v11.2.0-install/bin/geant4-config --version</span><br></pre></td></tr></table></figure></div>
+
 <h2 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h2><h3 id="Download-the-files-required-for-testing"><a href="#Download-the-files-required-for-testing" class="headerlink" title="Download the files required for testing"></a>Download the files required for testing</h3><p>Download links:</p>
 <ul>
 <li>IHEPBox: <a class="link" target="_blank" rel="noopener" href="https://ihepbox.ihep.ac.cn/ihepbox/index.php/s/e7g3ZrpVZj8oegz">https://ihepbox.ihep.ac.cn/ihepbox/index.php/s/e7g3ZrpVZj8oegz <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
@@ -790,21 +860,28 @@ If successfully installed, you will see output similar to the following:<div cla
 <li>Other files: setup.sh, example.json</li>
 </ul>
 <h3 id="RASER-Testing"><a href="#RASER-Testing" class="headerlink" title="RASER Testing"></a>RASER Testing</h3><ol>
-<li><p>Create the tutorial directory:</p>
+<li>Create the tutorial directory:</li>
+</ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/tutorial/{cfg,ext,img,paras,setting/{absorber,detector,electronics},tests}</span><br><span class="line"><span class="built_in">cd</span> ~/tutorial</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>Copy the downloaded files to the tutorial directory:</p>
+
+<ol start="2">
+<li>Copy the downloaded files to the tutorial directory:</li>
+</ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /path/to/downloaded/setup.sh ~/tutorial/cfg/</span><br><span class="line"><span class="built_in">cp</span> /path/to/downloaded/example.json ~/tutorial/setting/detector/</span><br><span class="line"><span class="built_in">cp</span> /path/to/downloaded/raser-2.2.sif ~/tutorial/img/</span><br></pre></td></tr></table></figure></div>
+
 <p>where <code>/path/to/downloaded/</code> is the location of the downloaded demo files.</p>
-</li>
-<li><p>Clone the RASER project git repository using the git command:</p>
+<ol start="3">
+<li>Clone the RASER project git repository using the git command:</li>
+</ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://code.ihep.ac.cn/raser-team/raser.git</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>Run the example:</p>
+
+<ol start="4">
+<li>Run the example:</li>
+</ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> cfg/setup.sh</span><br><span class="line">raser field gen_devsim_db</span><br><span class="line">raser field -cv example</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>Finally, you can check the output results in the subfolder (possibly named <code>output</code>).</p>
-</li>
+
+<ol start="5">
+<li>Finally, you can check the output results in the subfolder (possibly named <code>output</code>).</li>
 </ol>
 
         </div>
@@ -820,7 +897,7 @@ If successfully installed, you will see output similar to the following:<div cla
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-07-26 14:53:51
+                    :</strong> 2024-07-26 15:05:56
             </li>
         
         <li>
