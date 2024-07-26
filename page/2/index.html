@@ -13,14 +13,14 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/categories/mechanica-theoretica/"/>
+    <link rel="canonical" href="http://example.com/page/2/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
         <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/categories/Mechanica-Theoretica/index.html">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
@@ -35,8 +35,6 @@
     <!--- Page Info-->
     
     <title>
-        
-            Category: Mechanica Theoretica -
         
         PyRLetter
     </title>
@@ -379,6 +377,41 @@ mjx-container[display="true"] + br {
 <main class="page-container" id="swup">
 
     
+        <style>
+    .home-article-item,
+    .sidebar-links,
+    .sidebar-content,
+    a.page-number,
+    a.extend,
+    .sidebar-links .links:hover,
+    .right-bottom-tools,
+    footer.footer {
+        background-color: var(--background-color-transparent-80) !important;
+    }
+    .right-bottom-tools:hover,
+    a.page-number:hover,
+    a.extend:hover {
+        background-color: var(--primary-color) !important;
+    }
+    .site-info,
+    .home-article-sticky-label {
+        background-color: var(--background-color-transparent-15) !important;
+    }
+    .home-article-sticky-label {
+        backdrop-filter: none !important;
+    }
+    .home-banner-background {
+        filter: blur(15px);
+    }
+</style>
+
+<div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
+    <img src="/images/wallhaven-wqery6-light.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
+    <img src="/images/wallhaven-wqery6-dark.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
+</div>
+
+
+    
 
     <div class="main-content-container">
 
@@ -390,9 +423,9 @@ mjx-container[display="true"] + br {
         <div class="left">
             
             <a class="logo-title" href="/">
-                
+                <h1>
                 PyRLetter
-                
+                </h1>
             </a>
         </div>
 
@@ -593,65 +626,246 @@ mjx-container[display="true"] + br {
         <div class="main-content-body">
 
             
+                <div class="home-sidebar-container">
+    <div class="sticky-container sticky">
+        
+        
+            <div class="sidebar-content">
+                <div class="avatar flex justify-center">
+    <img src="/images/avatar.jpg">
+</div>
+                <div class="author flex flex-col justify-center my-2.5 mx-0">
+    <div class="name">Albert Cheung</div>
+    
+</div>
+                <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+            </div>
+            
+                <div class="sidebar-links"   marginTop >
+                    <div class="site-info">
+                        <div class="site-name">PyRLetter</div>
+                        
+                            <div class="announcement">
+                                Email：albert.chg9@gmail.com    WeChat Official account：PyRLetter
+                            </div>
+                        
+                    </div>
+                    
+                        
+                            
+                                <a class="links" href="/tags">
+                                    
+                                        <i class="fa-regular fa-tags icon-space"></i>
+                                    
+                                    <span class="link-name">Tags</span>
+                                </a>
+                            
+                        
+                            
+                                <a class="links" href="/categories">
+                                    
+                                        <i class="fa-regular fa-folder icon-space"></i>
+                                    
+                                    <span class="link-name">Categories</span>
+                                </a>
+                            
+                        
+                    
+                </div>
+            
+        
+
+    </div>
+</div>
+
+            
 
             <div class="main-content">
 
                 
-                    <div class="category-container">
-    <div class="category-name">
-        <i class="fa-solid fa-folder"></i>&nbsp;Mechanica Theoretica
-    </div>
-    <div class="category-post-list">
+                    <div class="home-content-container">
+    <ul class="home-article-list">
         
-<div class="archive-list-container">
-    
-        <section class="archive-item mb-spacing-unit last:mb-0">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">2</span>
-            </div>
-            
-            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+            <li class="home-article-item">
+
+                
+
                 
                     
-                    
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-08'>
-                    
-                    <a href="/2024/07/08/2%20%E5%AE%88%E6%81%92%E5%AE%9A%E5%BE%8B/" class="block overflow-hidden w-fit">
-                        <span class="article-title my-0.5 text-2xl">2 守恒定律</span>
-                    </a>
-                    
                 
-                    
+
+                
+                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
+                        <a href="/2024/07/08/Thermodynamics%201/">
+                            <img src="https://github.com/albertc9/albertc9.github.io/blob/main/image/640.png?raw=true" alt="1 导论" class="w-full h-full object-cover dark:brightness-75 transition-all" />
+                        </a>
+                    </div>
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
+                    <h3 class="home-article-title">
+                        <a href="/2024/07/08/Thermodynamics%201/">
+                            1 导论
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            热学的研究对象及其特点热力学的局限性
+它只适用于粒子数很多的宏观系统
+它主要研究物质在平衡态下的性质
+它把物质视为连续体，不考虑物质的微观结构
+
+热力学系统的平衡态系统与介质热学所研究的对象称为热力学系统（thermodynamic system），...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Jul 08 2024 08:25:29 GMT+0800">
+                
+                    Jul 8, 2024
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
                     
                         
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-07'>
+                        <li>
+                            <a href="/categories/Thermologia/">Thermologia</a>&nbsp;
+                        </li>
                     
-                    <a href="/2024/07/07/1%20%E8%BF%90%E5%8A%A8%E6%96%B9%E7%A8%8B/" class="block overflow-hidden w-fit">
-                        <span class="article-title my-0.5 text-2xl">1 运动方程</span>
-                    </a>
                     
                 
-                </li> <!-- Ensure the last item is properly closed -->
             </ul>
-        </section>
-    
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Notes/">Notes</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2024/07/08/Thermodynamics%201/">Read more<span class="seo-reader-text">1 导论</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+                    
+                
+
+                
+                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
+                        <a href="/2024/07/07/1%20%E8%BF%90%E5%8A%A8%E6%96%B9%E7%A8%8B/">
+                            <img src="https://github.com/albertc9/albertc9.github.io/blob/main/image/MechanicaTheoretica/thumbnail.png?raw=true" alt="1 运动方程" class="w-full h-full object-cover dark:brightness-75 transition-all" />
+                        </a>
+                    </div>
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
+                    <h3 class="home-article-title">
+                        <a href="/2024/07/07/1%20%E8%BF%90%E5%8A%A8%E6%96%B9%E7%A8%8B/">
+                            1 运动方程
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            广义坐标通常，唯一地确定系统位置所需独立变量的数目称为系统的自由度（这里讨论的是完整系统，非完整系统自由度不能这样定义）。
+对于拥有个自由度的系统，可以找到刻画其位置的任意s个变量, , , …, ，称为对该系统的广义坐标，其导数称为广义速度。数学上...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Jul 07 2024 22:24:19 GMT+0800">
+                
+                    Jul 7, 2024
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Mechanica-Theoretica/">Mechanica Theoretica</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Notes/">Notes</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2024/07/07/1%20%E8%BF%90%E5%8A%A8%E6%96%B9%E7%A8%8B/">Read more<span class="seo-reader-text">1 运动方程</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+    </ul>
+
+    <div class="home-paginator px-7 py-5">
+        <div class="paginator">
+    <a class="extend prev" rel="prev" href="/"><i class="fa-regular fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
 </div>
 
     </div>
 </div>
-<div class="category-paginator">
-    <div class="paginator">
-    <span class="page-number current">1</span>
-</div>
 
-</div>
-
-
-
+                    <div class="comment-container pjax"></div>
                 
 
             </div>
@@ -829,6 +1043,7 @@ mjx-container[display="true"] + br {
         containers: ["#swup"],
     });
 </script>
+
 
 
 
