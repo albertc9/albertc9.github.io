@@ -30,7 +30,7 @@
 <meta property="og:description" content="ForewordLike Debian, Fedora is another distribution of the Linux system. RASER is software based on the Linux system, so it can also be directly deployed on the Fedora system. Before deployment, pleas">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-25T13:41:07.000Z">
-<meta property="article:modified_time" content="2024-07-26T07:05:56.952Z">
+<meta property="article:modified_time" content="2024-08-17T13:56:58.011Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
@@ -631,8 +631,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-07-26 15:05:56</span>
-            <span class="mobile">2024-07-26 15:05:56</span>
+            <span class="desktop">2024-08-17 21:56:58</span>
+            <span class="mobile">2024-08-17 21:56:58</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -671,7 +671,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>5 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 Mins</span>
         </span>
     
     
@@ -707,7 +707,7 @@ mjx-container[display="true"] + br {
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - newusername</span><br></pre></td></tr></table></figure></div>
 
 <p>After entering the password, you will be switched to the new user in the terminal. Since the new user is not granted root privileges, changes made in some areas will not affect the settings of all users.</p>
-<h2 id="配置所需软件或环境"><a href="#配置所需软件或环境" class="headerlink" title="配置所需软件或环境"></a>配置所需软件或环境</h2><h3 id="Python3-and-GCC"><a href="#Python3-and-GCC" class="headerlink" title="Python3 and GCC"></a>Python3 and GCC</h3><ol>
+<h2 id="Configuring-the-Required-Software-or-Environment"><a href="#Configuring-the-Required-Software-or-Environment" class="headerlink" title="Configuring the Required Software or Environment"></a>Configuring the Required Software or Environment</h2><h3 id="Python3-and-GCC"><a href="#Python3-and-GCC" class="headerlink" title="Python3 and GCC"></a>Python3 and GCC</h3><ol>
 <li>Update the system package list</li>
 </ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dnf update</span><br></pre></td></tr></table></figure></div>
@@ -813,42 +813,7 @@ mjx-container[display="true"] + br {
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root --version</span><br></pre></td></tr></table></figure></div>
 
 
-<h3 id="Geant4"><a href="#Geant4" class="headerlink" title="Geant4"></a>Geant4</h3><ol>
-<li>Download the source code archive from the official website:</li>
-</ol>
-<p>Go to <a class="link" target="_blank" rel="noopener" href="https://geant4.web.cern.ch/download/11.2.2.html">https://geant4.web.cern.ch/download/11.2.2.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> and select one of the “Source Code” options to download. It is recommended to download the tar.gz format on Fedora.</p>
-<ol start="2">
-<li>After downloading, manually extract the files, or use the command (<strong>Note: the version number may vary, please change the version number in the following steps to the one you downloaded</strong>)</li>
-</ol>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf geant4-v11.2.0.tar.gz -C /path/to</span><br></pre></td></tr></table></figure></div>
-
-<p>Here, <code>/path/to</code> is the directory where you choose to store the extracted files.</p>
-<ol start="3">
-<li>Navigate to the extracted Geant4 source code directory and create a new build directory at the same level:</li>
-</ol>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to</span><br><span class="line"><span class="built_in">mkdir</span> geant4-v11.2.0-build</span><br></pre></td></tr></table></figure></div>
-
-<ol start="4">
-<li>Use the command</li>
-</ol>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span></span><br></pre></td></tr></table></figure></div>
-
-<p>to confirm the directory structure. You should see the following output:</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geant4-v11.2.0  geant4-v11.2.0-build</span><br></pre></td></tr></table></figure></div>
-
-<ol start="5">
-<li>Configure and build the environment:</li>
-</ol>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/geant4-v11.2.0-build</span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=/path/to/geant4-v11.2.0-install /path/to/geant4-v11.2.0</span><br></pre></td></tr></table></figure></div>
-
-<p>Compile and install Geant4 using the following commands:</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make -j$(<span class="built_in">nproc</span>)</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></div>
-
-<ol start="6">
-<li>Check the installed version</li>
-</ol>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/path/to/geant4-v11.2.0-install/bin/geant4-config --version</span><br></pre></td></tr></table></figure></div>
-
+<h3 id="Geant4"><a href="#Geant4" class="headerlink" title="Geant4"></a>Geant4</h3><p>Please see <a class="link" target="_blank" rel="noopener" href="https://albertc9.github.io/2024/08/13/Building-and-Installing-Geant4-on-Linux/">Building and Installing Geant4 on Linux <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
 <h2 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h2><h3 id="Download-the-files-required-for-testing"><a href="#Download-the-files-required-for-testing" class="headerlink" title="Download the files required for testing"></a>Download the files required for testing</h3><p>Download links:</p>
 <ul>
 <li>IHEPBox: <a class="link" target="_blank" rel="noopener" href="https://ihepbox.ihep.ac.cn/ihepbox/index.php/s/e7g3ZrpVZj8oegz">https://ihepbox.ihep.ac.cn/ihepbox/index.php/s/e7g3ZrpVZj8oegz <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
@@ -898,7 +863,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-07-26 15:05:56
+                    :</strong> 2024-08-17 21:56:58
             </li>
         
         <li>
@@ -1008,7 +973,7 @@ mjx-container[display="true"] + br {
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">Installing RASER and Configuring the Related Environment on Fedora (En)</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreword"><span class="nav-text">Foreword</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%89%80%E9%9C%80%E8%BD%AF%E4%BB%B6%E6%88%96%E7%8E%AF%E5%A2%83"><span class="nav-text">配置所需软件或环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python3-and-GCC"><span class="nav-text">Python3 and GCC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apptainer"><span class="nav-text">Apptainer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CVMFS"><span class="nav-text">CVMFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROOT"><span class="nav-text">ROOT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Geant4"><span class="nav-text">Geant4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing"><span class="nav-text">Testing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-the-files-required-for-testing"><span class="nav-text">Download the files required for testing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RASER-Testing"><span class="nav-text">RASER Testing</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreword"><span class="nav-text">Foreword</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuring-the-Required-Software-or-Environment"><span class="nav-text">Configuring the Required Software or Environment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python3-and-GCC"><span class="nav-text">Python3 and GCC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apptainer"><span class="nav-text">Apptainer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CVMFS"><span class="nav-text">CVMFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROOT"><span class="nav-text">ROOT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Geant4"><span class="nav-text">Geant4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing"><span class="nav-text">Testing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-the-files-required-for-testing"><span class="nav-text">Download the files required for testing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RASER-Testing"><span class="nav-text">RASER Testing</span></a></li></ol></li></ol>
 
     </div>
 </div>
@@ -1045,7 +1010,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            28.9k words in total
+                            28.4k words in total
                         </span>
                     
                 </p>
