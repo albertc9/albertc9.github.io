@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://example.com/image/240826.4.png">
 <meta property="og:image" content="http://example.com/image/240826.4.png">
 <meta property="article:published_time" content="2024-08-20T13:53:27.000Z">
-<meta property="article:modified_time" content="2024-08-26T05:08:58.201Z">
+<meta property="article:modified_time" content="2024-08-26T05:11:55.194Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Tasks">
 <meta name="twitter:card" content="summary">
@@ -639,8 +639,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-08-26 13:08:58</span>
-            <span class="mobile">2024-08-26 13:08:58</span>
+            <span class="desktop">2024-08-26 13:11:55</span>
+            <span class="mobile">2024-08-26 13:11:55</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -707,7 +707,7 @@ mjx-container[display="true"] + br {
 </ol>
 <h3 id="One-Possible-Solution"><a href="#One-Possible-Solution" class="headerlink" title="One Possible Solution"></a>One Possible Solution</h3><h4 id="Task-1-1"><a href="#Task-1-1" class="headerlink" title="Task 1"></a>Task 1</h4><p><strong>插值</strong>通过已知的离散数据点来推测这些点之间的未知数据点，要求得到的插值函数通过所有数据点；<strong>拟合</strong>通过某种方法寻找一个目标函数或模型，能够近似表示数据趋势，但不需要通过所有数据点，通过最小化某种误差得到较优或（难以实现）最优的方案，一般得到的拟合函数不通过所有数据点。一般来说，由于插值法严格通过已知点，因此适用于精确数据，以推测未知点的数据值；拟合则允许误差的存在，适用于有噪声的或复杂的数据集，目的是捕捉数据的整体趋势。</p>
 <p>例如，在多丝正比室（MWPC）中，阳极丝检测到离散的初步信号。在技术上，常使用插值法估计粒子通过的位置。在时间投影室（TPC）中，插值法也作为重建粒子的轨迹的重要手段。在其它领域，例如地形测绘或建模中，勘探队不可能对全部位置进行精准的测量，只能得到部分离散的点位；后续在地形重建时可能会选择使用插值法生成整个区域的地形模型，得到任意位置的高度信息。以上过程中由于噪声的影响相对较小，可以将测量值认为是真实值，于是在数据分析或轨迹重建中使用了插值法。</p>
-<p>拟合适用于测量过程中具有噪声的情况。一般情况下，对于那些不具有特别高的测量精度的实验，以及具有可观噪声的实验数据，通常使用拟合法。通过曲线拟合，可以找到描述这些数据的数学模型，例如用最小二乘法拟合一条直线来描述两个变量之间的线性关系。在分析<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.489ex;" xmlns="http://www.w3.org/2000/svg" width="1.229ex" height="1.486ex" role="img" focusable="false" viewBox="0 -441 543 657"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D6FE" d="M31 249Q11 249 11 258Q11 275 26 304T66 365T129 418T206 441Q233 441 239 440Q287 429 318 386T371 255Q385 195 385 170Q385 166 386 166L398 193Q418 244 443 300T486 391T508 430Q510 431 524 431H537Q543 425 543 422Q543 418 522 378T463 251T391 71Q385 55 378 6T357 -100Q341 -165 330 -190T303 -216Q286 -216 286 -188Q286 -138 340 32L346 51L347 69Q348 79 348 100Q348 257 291 317Q251 355 196 355Q148 355 108 329T51 260Q49 251 47 251Q45 249 31 249Z"></path></g></g></g></svg></mjx-container>射线光谱时，可能会使用高斯函数对其中的光峰进行拟合，找到峰值、位置与宽度，再进行进一步的数据分析。拟合在社会学等领域也同样被广泛使用。例如，对于人口增长的预测，可能通过近10年的数据拟合得到逻辑斯蒂S型曲线以预测未来的人口，或者使用多项式拟合得到股票增长的趋势。在机器学习中，拟合更是一个核心概念。在监督学习的回归任务中，拟合用于找到输入变量和输出变量之间的最佳映射关系，即不断调整参数以得到某种程度上相对更完美的“函数”关系，无论是线性回归、多项式回归等。</p>
+<p><strong>拟合</strong>适用于测量过程中具有噪声的情况。一般情况下，对于那些不具有特别高的测量精度的实验，以及具有可观噪声的实验数据，通常使用拟合法。通过曲线拟合，可以找到描述这些数据的数学模型，例如用最小二乘法拟合一条直线来描述两个变量之间的线性关系。在分析<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.489ex;" xmlns="http://www.w3.org/2000/svg" width="1.229ex" height="1.486ex" role="img" focusable="false" viewBox="0 -441 543 657"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D6FE" d="M31 249Q11 249 11 258Q11 275 26 304T66 365T129 418T206 441Q233 441 239 440Q287 429 318 386T371 255Q385 195 385 170Q385 166 386 166L398 193Q418 244 443 300T486 391T508 430Q510 431 524 431H537Q543 425 543 422Q543 418 522 378T463 251T391 71Q385 55 378 6T357 -100Q341 -165 330 -190T303 -216Q286 -216 286 -188Q286 -138 340 32L346 51L347 69Q348 79 348 100Q348 257 291 317Q251 355 196 355Q148 355 108 329T51 260Q49 251 47 251Q45 249 31 249Z"></path></g></g></g></svg></mjx-container>射线光谱时，可能会使用高斯函数对其中的光峰进行拟合，找到峰值、位置与宽度，再进行进一步的数据分析。拟合在社会学等领域也同样被广泛使用。例如，对于人口增长的预测，可能通过近10年的数据拟合得到逻辑斯蒂S型曲线以预测未来的人口，或者使用多项式拟合得到股票增长的趋势。在机器学习中，拟合更是一个核心概念。在监督学习的回归任务中，拟合用于找到输入变量和输出变量之间的最佳映射关系，即不断调整参数以得到某种程度上相对更完美的“函数”关系，无论是线性回归、多项式回归等。</p>
 <hr>
 <p>在ROOT中，TF1类用于定义一维函数进行数据拟合，其默认的拟合方法基于最小二乘法，通过最小化观测数据点与拟合模型之间偏差的平方和来优化拟合。TF1函数是通过TH1和TGraph实现的。当然，选择不同的参数可以改变拟合方法，例如“L”使用对数似然法，“WL”使用加权对数似然法，以及“P”使用皮尔逊卡方法。最小二乘法的基本原理主要基于以下步骤：</p>
 <ul>
@@ -890,7 +890,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-08-26 13:08:58
+                    :</strong> 2024-08-26 13:11:55
             </li>
         
         <li>
