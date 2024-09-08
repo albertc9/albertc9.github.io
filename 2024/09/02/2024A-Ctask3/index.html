@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://example.com/image/240826.3.png">
 <meta property="og:image" content="http://example.com/image/240826.4.png">
 <meta property="article:published_time" content="2024-09-02T09:08:33.000Z">
-<meta property="article:modified_time" content="2024-09-08T11:54:14.807Z">
+<meta property="article:modified_time" content="2024-09-08T12:00:12.735Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Tasks">
 <meta name="twitter:card" content="summary">
@@ -640,8 +640,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-08 19:54:14</span>
-            <span class="mobile">2024-09-08 19:54:14</span>
+            <span class="desktop">2024-09-08 20:12</span>
+            <span class="mobile">2024-09-08 20:12</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -746,7 +746,7 @@ mjx-container[display="true"] + br {
 <p>我们在代码的最后，还将高斯分布和朗道分布的统计数据输出，用于比较拟合的质量（图中显示的是Vavilov分布的统计数据）：</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Gaussian Fit Results:</span><br><span class="line">Amplitude: 4411.59 ± 18.5964</span><br><span class="line">Mean: 60.5593 ± 0.0410882</span><br><span class="line">Sigma: 10.6075 ± 0.0322276</span><br><span class="line">Chi-square: 21055.5</span><br><span class="line">NDF: 187</span><br><span class="line"></span><br><span class="line">Landau Fit Results:</span><br><span class="line">Amplitude: 27436.4 ± 117.785</span><br><span class="line">MPV: 54.9014 ± 0.0326169</span><br><span class="line">Sigma: 4.9042 ± 0.0166868</span><br><span class="line">Chi-square: 8819.68</span><br><span class="line">NDF: 187</span><br></pre></td></tr></table></figure></div>
 
-<p>根据以上数据可以发现，对于高斯分布，其卡方约为21055，而对于郎道分布而言，卡方值约为8819。可以明显地看出，郎道分布具有比高斯分布更优秀的拟合结果，这在绘制出的图像中也可以明显地看出：橙色的郎道分布很好地贴合了数据曲线，而高斯分布的偏差比较明显。当然，最优秀的拟合结果是Vavilov分布，在图像中以绿色曲线表示：它无论是在上升与下降部分的贴合程度。还是在峰值两侧最低部分的贴合程度都十分好，唯一有缺陷的是在峰值上的贴合情况。这有可能是因为数据点较少，噪声的影响比较大（当然，具体的原因必须进一步讨论分析）。</p>
+<p>根据以上数据可以发现，对于高斯分布，其卡方约为21055，而对于郎道分布而言，卡方值约为8819；而在图中输出的Vavilov分布中，卡方只有1813（事实上相当不错）。可以明显地看出，郎道分布具有比高斯分布更优秀的拟合结果，这在绘制出的图像中也可以明显地看出：橙色的郎道分布很好地贴合了数据曲线，而高斯分布的偏差比较明显。当然，最优秀的拟合结果是Vavilov分布，在图像中以绿色曲线表示：它无论是在上升与下降部分的贴合程度。还是在峰值两侧最低部分的贴合程度都十分好，唯一有缺陷的是在峰值上的贴合情况。这有可能是因为数据点较少，噪声的影响比较大（当然，具体的原因必须进一步讨论分析）。</p>
 <details class="[red]" data-header-exclude=""><summary><i class="fa-solid fa-chevron-right"></i>[Question：为什么峰值附近的拟合效果较差？] </summary>
               <div class="content">
               <p>为什么峰值附近的拟合效果较差？这可能是由于噪声、探测器分辨率限制、数据量少等多种因素的共同影响。对峰值附近的数据进行进一步研究（如提高采样精度或使用不同的探测器）或许可以为实验设计提供参考。</p>
@@ -777,7 +777,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-08 19:54:14
+                    :</strong> 2024-09-08 20:00:12
             </li>
         
         <li>
