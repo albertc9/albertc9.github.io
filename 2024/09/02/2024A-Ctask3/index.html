@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://example.com/image/240826.3.png">
 <meta property="og:image" content="http://example.com/image/240826.4.png">
 <meta property="article:published_time" content="2024-09-02T09:08:33.000Z">
-<meta property="article:modified_time" content="2024-09-08T12:00:12.735Z">
+<meta property="article:modified_time" content="2024-09-10T10:28:09.526Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Tasks">
 <meta name="twitter:card" content="summary">
@@ -640,8 +640,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-08 20:12</span>
-            <span class="mobile">2024-09-08 20:12</span>
+            <span class="desktop">2024-09-10 18:28:09</span>
+            <span class="mobile">2024-09-10 18:28:09</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -679,7 +679,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>4.1k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>4.2k Words</span>
         </span>
     
     
@@ -709,7 +709,8 @@ mjx-container[display="true"] + br {
 <p>分享文件:result.root等[批量分享]</p>
 <p>云盘链接:<a class="link" target="_blank" rel="noopener" href="https://pan.cstcloud.cn/s/vMvhmHm4TPI">https://pan.cstcloud.cn/s/vMvhmHm4TPI <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </p>
 <p>过期时间:2025-09-09 16:36:03</p>
-<h3 id="One-Possible-Solution"><a href="#One-Possible-Solution" class="headerlink" title="One Possible Solution"></a>One Possible Solution</h3><p>首先，硅微条探测器是一种基于半导体硅材料的粒子探测器。它可以通过探测带电粒子穿过硅材料时产生的电荷进而测量粒子的路径、能量和其他相关物理量。硅微条探测器的基本工作原理依赖于硅的电离效应：当高能带电粒子穿过硅材料时，会与硅原子发生相互作用，产生电子-空穴对。这些电子和空穴在电场作用下分别向不同的电极移动，从而形成可检测的电信号。</p>
+<h3 id="One-Possible-Solution"><a href="#One-Possible-Solution" class="headerlink" title="One Possible Solution"></a>One Possible Solution</h3><p><strong>注意：硅微条探测器的知识放在<a class="link" target="_blank" rel="noopener" href="https://albertc9.github.io/2024/09/10/2024A-Ctask4/">task 1.4 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>中展开讲解。另外，在提供的电子材料中也有相关课件与资料，详见”<a class="link" target="_blank" rel="noopener" href="https://albertc9.github.io/2024/08/13/AMS-CEPC-Guide/">Beginner’s Guide：Possible Starting Pathway <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>“部分。</strong></p>
+<p>首先，硅微条探测器是一种基于半导体硅材料的粒子探测器。它可以通过探测带电粒子穿过硅材料时产生的电荷进而测量粒子的路径、能量和其他相关物理量。硅微条探测器的基本工作原理依赖于硅的电离效应：当高能带电粒子穿过硅材料时，会与硅原子发生相互作用，产生电子-空穴对。这些电子和空穴在电场作用下分别向不同的电极移动，从而形成可检测的电信号。</p>
 <p>硅微条探测器中的能量损失分布和粒子在穿越探测器时的电离过程的能量损失分布相似，这其实和上一次作业中粒子穿越不同厚度的介质产生不同电离能量损失的分布的相关。事实上，它们的原理几乎是一样的，都是依赖于粒子通过材料时产生的电离效应。不同的是，硅微条探测器将这种能量损失通过半导体中的电荷收集过程转化为可测量的电信号。题目中提到的投影到Y上的信号实际上就是粒子的能量沉积。</p>
 <p>可以粗略地依靠直觉首先判断出投影后的结果服从何种分布。正常情况下，带电粒子穿过硅时的平均自由程通常依赖于粒子的类型、能量以及硅材料的密度。题目中没有提到被测粒子是何种粒子，可以暂且假设它不具有太高的能量。对于高能带电粒子，如质子或电子，穿过硅时的平均自由程大致在几微米到几十微米的范围内；具体数值取决于粒子的能量水平：能量越高，自由程越长。这样的硅条具有300微米的厚度，可以显然地断言我们得到的分布不应当是高斯分布或者不应当具有太对称的结构，毕竟厚度和自由程的数量级差异并不大；同时，我们也可以发现它不太应该满足完美的朗道分布，因为硅微条其实并不太薄。不过从直觉上而言，高斯分布产生的原因是大数碰撞的中心极限定理的结果，在厚度仅比自由程大一个数量级的情况下，朗道分布应当能够得到更好的拟合结果。</p>
 <p>不过一般情况下，Vavilov修正的Landau显然能够满足大部分的分布拟合，无论是薄片还是较厚的微条，唯一的缺点就是有时可能较为复杂，不好处理。所以不妨最后再添加一个Vavilov分布的拟合，用来比较朗道分布和高斯分布在不同位置的拟合结果（例如峰值的两侧的低点，左侧可能更符合高斯分布，而右侧在朗道分布的拟合下表现可能更好。<strong>为什么？</strong>）</p>
@@ -777,7 +778,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-08 20:00:12
+                    :</strong> 2024-09-10 18:28:09
             </li>
         
         <li>
@@ -821,9 +822,9 @@ mjx-container[display="true"] + br {
 </a><a class="recommended-article-item" href="/2024/08/14/2024A-Ctask1/" title="A&C_Task 1.1" rel="bookmark">
   <img src="/images/wallhaven-wqery6-light.webp" alt="A&C_Task 1.1" class="!max-w-none">
   <span class="title">A&C_Task 1.1</span>
-</a><a class="recommended-article-item" href="/2024/07/13/2-分子动理学理论的平衡态理论/" title="2 分子动理学理论的平衡态理论" rel="bookmark">
-  <img src="https://github.com/albertc9/albertc9.github.io/blob/main/image/640.png?raw=true" alt="2 分子动理学理论的平衡态理论" class="!max-w-none">
-  <span class="title">2 分子动理学理论的平衡态理论</span>
+</a><a class="recommended-article-item" href="/2024/09/10/2024A-Ctask4/" title="A&C_task 1.4" rel="bookmark">
+  <img src="/images/wallhaven-wqery6-light.webp" alt="A&C_task 1.4" class="!max-w-none">
+  <span class="title">A&C_task 1.4</span>
 </a></div>
    </div>
    <div class="recommended-mobile">
@@ -926,7 +927,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            43.9k words in total
+                            44k words in total
                         </span>
                     
                 </p>
