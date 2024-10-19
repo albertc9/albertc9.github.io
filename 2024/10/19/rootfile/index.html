@@ -32,7 +32,7 @@
 <meta property="og:description" content="GeneralROOT files contain C++ objects that are stored to disk. You can open files when starting ROOT 1$ root file.root  CreateCreate ROOT file by 1std::unique_ptr&lt;TFile&gt; myFile( TFile::Open(&quot;fil">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-19T09:04:38.000Z">
-<meta property="article:modified_time" content="2024-10-19T11:00:00.833Z">
+<meta property="article:modified_time" content="2024-10-19T11:16:49.525Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
@@ -613,7 +613,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">31</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">32</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -665,8 +665,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-10-19 19:00</span>
-            <span class="mobile">2024-10-19 19:00</span>
+            <span class="desktop">2024-10-19 19:16:49</span>
+            <span class="mobile">2024-10-19 19:16:49</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -704,7 +704,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>279 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>289 Words</span>
         </span>
     
     
@@ -754,6 +754,9 @@ mjx-container[display="true"] + br {
 <p>or</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aPointerOfHist -&gt; Write();</span><br></pre></td></tr></table></figure></div>
 
+<h3 id="ROOT-Object-Browser"><a href="#ROOT-Object-Browser" class="headerlink" title="ROOT Object Browser"></a>ROOT Object Browser</h3><p>Use</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ root file.root</span><br><span class="line">root[0] TBrowser b</span><br></pre></td></tr></table></figure></div>
+
 <h3 id="Other-Cmd-Line-Tools"><a href="#Other-Cmd-Line-Tools" class="headerlink" title="Other Cmd Line Tools"></a>Other Cmd Line Tools</h3><ul>
 <li><code>rootls</code>: Lists the content of a ROOT file.</li>
 <li><code>rootcp</code>: Copies objects stored in a ROOT file to another ROOT file.</li>
@@ -779,7 +782,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-10-19 19:00:00
+                    :</strong> 2024-10-19 19:16:49
             </li>
         
         <li>
@@ -817,33 +820,48 @@ mjx-container[display="true"] + br {
     <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>推荐阅读</span>
     </div>
-    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/07/25/Installing-RASER-and-Configuring-the-Related-Environment-on-Fedora/" title="Installing RASER and Configuring the Related Environment on Fedora (En)" rel="bookmark">
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/10/19/object-ownership/" title="Important Object Ownership Management" rel="bookmark">
+  <img src="/images/wallhaven-wqery6-light.webp" alt="Important Object Ownership Management" class="!max-w-none">
+  <span class="title">Important Object Ownership Management</span>
+</a><a class="recommended-article-item" href="/2024/07/25/Installing-RASER-and-Configuring-the-Related-Environment-on-Fedora/" title="Installing RASER and Configuring the Related Environment on Fedora (En)" rel="bookmark">
   <img src="/images/wallhaven-wqery6-light.webp" alt="Installing RASER and Configuring the Related Environment on Fedora (En)" class="!max-w-none">
   <span class="title">Installing RASER and Configuring the Related Environment on Fedora (En)</span>
 </a><a class="recommended-article-item" href="/2024/10/19/root-guide/" title="CERN ROOT Tutorial Notes (w.i.p.)" rel="bookmark">
   <img src="/images/wallhaven-wqery6-light.webp" alt="CERN ROOT Tutorial Notes (w.i.p.)" class="!max-w-none">
   <span class="title">CERN ROOT Tutorial Notes (w.i.p.)</span>
-</a><a class="recommended-article-item" href="/2024/08/13/AMS-CEPC-Guide/" title="Beginner’s Guide：Possible Starting Pathway (w.i.p.)" rel="bookmark">
-  <img src="/images/wallhaven-wqery6-light.webp" alt="Beginner’s Guide：Possible Starting Pathway (w.i.p.)" class="!max-w-none">
-  <span class="title">Beginner’s Guide：Possible Starting Pathway (w.i.p.)</span>
 </a></div>
    </div>
    <div class="recommended-mobile">
    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>推荐阅读</span>
    </div>
-   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/07/25/Installing-RASER-and-Configuring-the-Related-Environment-on-Fedora/" title="Installing RASER and Configuring the Related Environment on Fedora (En)" rel="bookmark">
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/10/19/object-ownership/" title="Important Object Ownership Management" rel="bookmark">
+  <img src="/images/wallhaven-wqery6-light.webp" alt="Important Object Ownership Management" class="!max-w-none">
+  <span class="title">Important Object Ownership Management</span>
+</a><a class="recommended-article-item" href="/2024/07/25/Installing-RASER-and-Configuring-the-Related-Environment-on-Fedora/" title="Installing RASER and Configuring the Related Environment on Fedora (En)" rel="bookmark">
   <img src="/images/wallhaven-wqery6-light.webp" alt="Installing RASER and Configuring the Related Environment on Fedora (En)" class="!max-w-none">
   <span class="title">Installing RASER and Configuring the Related Environment on Fedora (En)</span>
-</a><a class="recommended-article-item" href="/2024/10/19/root-guide/" title="CERN ROOT Tutorial Notes (w.i.p.)" rel="bookmark">
-  <img src="/images/wallhaven-wqery6-light.webp" alt="CERN ROOT Tutorial Notes (w.i.p.)" class="!max-w-none">
-  <span class="title">CERN ROOT Tutorial Notes (w.i.p.)</span>
 </a></div>
    </div>
   </div>
 
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/10/19/object-ownership/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Important Object Ownership Management</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
                 
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
@@ -874,7 +892,7 @@ mjx-container[display="true"] + br {
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">ROOT File .root</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#General"><span class="nav-text">General</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create"><span class="nav-text">Create</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read"><span class="nav-text">Read</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Storing-an-Object-in-a-ROOT-File"><span class="nav-text">Storing an Object in a ROOT File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-Cmd-Line-Tools"><span class="nav-text">Other Cmd Line Tools</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#General"><span class="nav-text">General</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create"><span class="nav-text">Create</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read"><span class="nav-text">Read</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Storing-an-Object-in-a-ROOT-File"><span class="nav-text">Storing an Object in a ROOT File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROOT-Object-Browser"><span class="nav-text">ROOT Object Browser</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-Cmd-Line-Tools"><span class="nav-text">Other Cmd Line Tools</span></a></li></ol>
 
     </div>
 </div>
@@ -909,11 +927,11 @@ mjx-container[display="true"] + br {
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        31 posts in total
+                        32 posts in total
                     </span>
                     
                         <span>
-                            67.5k words in total
+                            67.8k words in total
                         </span>
                     
                 </p>
