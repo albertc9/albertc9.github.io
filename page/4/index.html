@@ -19,22 +19,17 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/08/13/building-and-installing-geant4-on-linux-ch/"/>
+    <link rel="canonical" href="http://example.com/page/4/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="从源代码构建和安装123注意：在下文中请注意将其中所有的&#96;&#x2F;home&#x2F;username&#x2F;Downloads&#96;修改为真实路径。这是你配置文件存放的位置。本文以版本v11.2.2为例，请注意将下文中包含的版本号更换为下载时版本号。如有任何疑问，请参考帮助文档https:&#x2F;&#x2F;geant4.web.cern.ch&#x2F;docs&#x2F;   下载源代码压缩包  进入Geant4官网 https:&#x2F;&#x2F;geant4.we">
-<meta property="og:type" content="article">
-<meta property="og:title" content="在Linux上构建和安装Geant4（中文）">
-<meta property="og:url" content="http://example.com/2024/08/13/Building-and-Installing-Geant4-on-Linux-ch/index.html">
+        <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="从源代码构建和安装123注意：在下文中请注意将其中所有的&#96;&#x2F;home&#x2F;username&#x2F;Downloads&#96;修改为真实路径。这是你配置文件存放的位置。本文以版本v11.2.2为例，请注意将下文中包含的版本号更换为下载时版本号。如有任何疑问，请参考帮助文档https:&#x2F;&#x2F;geant4.web.cern.ch&#x2F;docs&#x2F;   下载源代码压缩包  进入Geant4官网 https:&#x2F;&#x2F;geant4.we">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-08-13T03:51:05.000Z">
-<meta property="article:modified_time" content="2024-08-13T04:41:05.106Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
     
     
@@ -56,8 +51,6 @@
     <!--- Page Info-->
     
     <title>
-        
-            在Linux上构建和安装Geant4（中文） -
         
         Any%
     </title>
@@ -382,6 +375,41 @@ mjx-container[display="true"] + br {
 <main class="page-container" id="swup">
 
     
+        <style>
+    .home-article-item,
+    .sidebar-links,
+    .sidebar-content,
+    a.page-number,
+    a.extend,
+    .sidebar-links .links:hover,
+    .right-bottom-tools,
+    footer.footer {
+        background-color: var(--background-color-transparent-80) !important;
+    }
+    .right-bottom-tools:hover,
+    a.page-number:hover,
+    a.extend:hover {
+        background-color: var(--primary-color) !important;
+    }
+    .site-info,
+    .home-article-sticky-label {
+        background-color: var(--background-color-transparent-15) !important;
+    }
+    .home-article-sticky-label {
+        backdrop-filter: none !important;
+    }
+    .home-banner-background {
+        filter: blur(15px);
+    }
+</style>
+
+<div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
+    <img src="/images/pillars_of_creation.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
+    <img src="/images/pillars_of_creation.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
+</div>
+
+
+    
 
     <div class="main-content-container">
 
@@ -393,9 +421,9 @@ mjx-container[display="true"] + br {
         <div class="left">
             
             <a class="logo-title" href="/">
-                
+                <h1>
                 Any%
-                
+                </h1>
             </a>
         </div>
 
@@ -629,309 +657,168 @@ mjx-container[display="true"] + br {
         <div class="main-content-body">
 
             
+                <div class="home-sidebar-container">
+    <div class="sticky-container sticky">
+        
+        
+            <div class="sidebar-content">
+                <div class="avatar flex justify-center">
+    <img src="/images/avatar.JPG">
+</div>
+                <div class="author flex flex-col justify-center my-2.5 mx-0">
+    <div class="name">Albert Cheung</div>
+    
+</div>
+                <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">31</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+            </div>
+            
+                <div class="sidebar-links"   marginTop >
+                    <div class="site-info">
+                        <div class="site-name">Any%</div>
+                        
+                            <div class="announcement">
+                                Email：albert.chg9@gmail.com    WeChat Official Account：PyRLetter
+                            </div>
+                        
+                    </div>
+                    
+                        
+                            
+                                <a class="links" href="/tags">
+                                    
+                                        <i class="fa-regular fa-tags icon-space"></i>
+                                    
+                                    <span class="link-name">Tags</span>
+                                </a>
+                            
+                        
+                            
+                                <a class="links" href="/categories">
+                                    
+                                        <i class="fa-regular fa-folder icon-space"></i>
+                                    
+                                    <span class="link-name">Categories</span>
+                                </a>
+                            
+                        
+                    
+                </div>
+            
+        
+
+    </div>
+</div>
+
+            
 
             <div class="main-content">
 
                 
-                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
-    <div class="article-content-container">
-
-        <div class="article-title relative w-full">
-            
-                <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">在Linux上构建和安装Geant4（中文）</h1>
-                </div>
-            
-            </div>
-
+                    <div class="home-content-container">
+    <ul class="home-article-list">
         
-            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
-                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-                    <img src="/images/avatar.JPG">
-                </div>
-                <div class="info flex flex-col justify-between">
-                    <div class="author flex items-center">
-                        <span class="name text-default-text-color text-lg font-semibold">Albert Cheung</span>
+            <li class="home-article-item">
+
+                
+
+                
+                    
+                
+
+                
+                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
+                        <a href="/2024/07/07/1%20%E8%BF%90%E5%8A%A8%E6%96%B9%E7%A8%8B/">
+                            <img src="https://github.com/albertc9/albertc9.github.io/blob/main/image/MechanicaTheoretica/thumbnail.png?raw=true" alt="1 运动方程" class="w-full h-full object-cover dark:brightness-75 transition-all" />
+                        </a>
+                    </div>
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
+                    <h3 class="home-article-title">
+                        <a href="/2024/07/07/1%20%E8%BF%90%E5%8A%A8%E6%96%B9%E7%A8%8B/">
+                            1 运动方程
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            广义坐标通常，唯一地确定系统位置所需独立变量的数目称为系统的自由度（这里讨论的是完整系统，非完整系统自由度不能这样定义）。
+对于拥有个自由度的系统，可以找到刻画其位置的任意s个变量, , , …, ，称为对该系统的广义坐标，其导数称为广义速度。数学上，在某时刻给定所有广义坐标和速度就唯一地确定了该时刻的加速度。
+加速度与坐标、速度的关系式称为运动方程。对于函数式来说，这个式子就是二阶微分方程...
                         
                     </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-08-13 11:51:05</span>
-        <span class="mobile">2024-08-13 11:51:05</span>
-        <span class="hover-info">Created</span>
-    </span>
-    
-        <span class="article-date article-meta-item">
-            <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-08-13 12:41:05</span>
-            <span class="mobile">2024-08-13 12:41:05</span>
-            <span class="hover-info">Updated</span>
-        </span>
-    
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Jul 07 2024 22:24:19 GMT+0800">
+                
+                    Jul 7, 2024
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
             <ul>
                 
                 
                     
                         
                         <li>
-                            <a href="/categories/AMS-CEPC-Group/">AMS&amp;CEPC Group</a>&nbsp;
+                            <a href="/categories/Mechanica-Theoretica/">Mechanica Theoretica</a>&nbsp;
                         </li>
                     
                     
                 
             </ul>
         </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/Notes/">Notes</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Notes/">Notes</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
 
-    
-    
-        <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>865 Words</span>
-        </span>
-    
-    
-        <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 Mins</span>
-        </span>
-    
-    
+    <a href="/2024/07/07/1%20%E8%BF%90%E5%8A%A8%E6%96%B9%E7%A8%8B/">Read more<span class="seo-reader-text">1 运动方程</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
-                    </div>
                 </div>
-            </div>
-        
-
-        
-
-
-        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h4 id="从源代码构建和安装"><a href="#从源代码构建和安装" class="headerlink" title="从源代码构建和安装"></a>从源代码构建和安装</h4><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">注意：在下文中请注意将其中所有的`/home/username/Downloads`修改为真实路径。这是你配置文件存放的位置。</span><br><span class="line">本文以版本v11.2.2为例，请注意将下文中包含的版本号更换为下载时版本号。</span><br><span class="line">如有任何疑问，请参考帮助文档https://geant4.web.cern.ch/docs/</span><br></pre></td></tr></table></figure></div>
-
-<ol>
-<li><strong>下载源代码压缩包</strong></li>
-</ol>
-<p>进入Geant4官网 <a class="link" target="_blank" rel="noopener" href="https://geant4.web.cern.ch/%EF%BC%8C">https://geant4.web.cern.ch/， <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 点击上方下载链接，选择”Source code”中的”Download tar.gz”并下载。假设已经下载至子目录<code>/home/username/Downloads</code>中。</p>
-<p>在Fedora或者Ubuntu中，还可以通过终端下载</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -P /home/username/Downloads https://gitlab.cern.ch/geant4/geant4/-/archive/v11.2.2/geant4-v11.2.2.tar.gz</span><br></pre></td></tr></table></figure></div>
-
-<ol start="2">
-<li><strong>在终端中进行解压</strong></li>
-</ol>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xzvf /home/username/Downloads/geant4-v11.2.2.tar.gz -C /home/username/Downloads</span><br></pre></td></tr></table></figure></div>
-
-<p>将其中的<code>/home/username/Downloads</code>修改为真实路径。</p>
-<p>现在，Geant4源包已经在子目录中</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/username/Downloads/geant4-v11.2.2</span><br></pre></td></tr></table></figure></div>
-
-<p>这是解压后的文件路径。</p>
-<ol start="3">
-<li><strong>新建构建目录</strong></li>
-</ol>
-<p>构建目录用于配置和运行构建并存储构建产品。此目录不应与源目录相同或位于源目录内。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /home/username/Downloads</span><br><span class="line">$ <span class="built_in">mkdir</span> geant4-v11.2.2-build</span><br></pre></td></tr></table></figure></div>
-
-<p>使用<code>ls</code>确认目录结构，输出应当含有以下内容</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">geant4-v11.2.2  geant4-v11.2.2-build</span><br></pre></td></tr></table></figure></div>
-
-<p>切换到构建目录中并进行配置</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /home/username/Downloads/geant4-v11.2.2-build</span><br><span class="line">$ cmake -DCMAKE_INSTALL_PREFIX=/home/username/Downloads/geant4-v11.2.2-install /home/username/Downloads/geant4-v11.2.2</span><br></pre></td></tr></table></figure></div>
-
-<ol start="4">
-<li><strong>进行安装设置（可选）</strong></li>
-</ol>
-<p>可以在安装时设置参数以添加其它的安装可选项。例如，在按上述方式运行 CMake 后，您可能希望激活Geant4数据集的安装</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /home/username/Downloads/geant4-v11.2.0-build</span><br><span class="line">$ cmake -DGEANT4_INSTALL_DATA=ON .</span><br></pre></td></tr></table></figure></div>
-
-<p>请不要忽略末尾的<code> .</code>。更多可选项，例如启动图形界面的安装等，请查看</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html#geant4buildoptions</span><br></pre></td></tr></table></figure></div>
-
-<p>只需要将</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -DGEANT4_INSTALL_DATA=ON .</span><br></pre></td></tr></table></figure></div>
-
-<p>切换为对应代码输入即可。安装完成后，终端会输出取决于平台的不同的内容，但最后三行应该大致是</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- Configuring <span class="keyword">done</span></span><br><span class="line">-- Generating <span class="keyword">done</span></span><br><span class="line">-- Build files have been written to: /home/username/Downloads/geant4-v11.2.0-build</span><br></pre></td></tr></table></figure></div>
-
-<p>这表明已经配置完成。如果你没有安装数据集，可能会提出警告，但不影响整体的安装。</p>
-<ol start="5">
-<li><strong>运行构建</strong></li>
-</ol>
-<p>首先，请查看您设备的处理器核心数量</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">nproc</span></span><br></pre></td></tr></table></figure></div>
-
-<p>输出的数字<code>N</code>代表您设备的处理器核心数。然后运行构建</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /home/username/Downloads/geant4-v11.2.0-build</span><br><span class="line">$ make -jn</span><br></pre></td></tr></table></figure></div>
-
-<p>如果没有特别的要求，可以将<code>n</code>替换为<code>N</code>；如果希望在编译时完成其它工作，可以适当降低一些<code>n</code><br>的数值；例如，如果您的设备拥有32核处理器，可以设置<code>n</code>为32、30甚至28，取决于您的要求。</p>
-<p>配置时有时可能会报错，这时请运行</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ make -jN VERBOSE=1</span><br></pre></td></tr></table></figure></div>
-<p>它会输出更多来帮助解决问题或仅为了获取信息的内容。</p>
-<ol start="6">
-<li><strong>安装Geant4</strong></li>
-</ol>
-<p>一旦构建完毕，你可以将Geant4下载到您之前在<code>CMAKE_INSTALL_PREFIX</code>中指定的位置</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /home/username/Downloads/geant4-v11.2.2-install</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure></div>
-
-<p>可以进一步检查安装版本以确定是否安装完毕</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/username/Downloads/geant4-v11.2.2-install/bin/geant4-config --version</span><br></pre></td></tr></table></figure></div>
-
-<p>如果安装完成，应当会输出版本号。</p>
-<ol start="7">
-<li><strong>卸载</strong></li>
-</ol>
-<p>如果需要卸载，请运行</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ make uninstall</span><br></pre></td></tr></table></figure></div>
-        </div>
-
-        
-            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li><strong>Title:</strong> 在Linux上构建和安装Geant4（中文）</li>
-        <li><strong>Author:</strong> Albert Cheung</li>
-        <li><strong>Created at
-                :</strong> 2024-08-13 11:51:05</li>
-        
-            <li>
-                <strong>Updated at
-                    :</strong> 2024-08-13 12:41:05
             </li>
         
-        <li>
-            <strong>Link:</strong> https://www.albertc9.github.io/2024/08/13/Building-and-Installing-Geant4-on-Linux-ch/
-        </li>
-        <li>
-            <strong>
-                License:
-            </strong>
-            
-
-            
-                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
-            
-        </li>
     </ul>
+
+    <div class="home-paginator px-7 py-5">
+        <div class="paginator">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa-regular fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
 </div>
-
-            </div>
-        
-
-        
-            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/Notes/">#Notes</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
-
-        
-  <div class="recommended-article px-2 sm:px-6 md:px-8">
-   <div class="recommended-desktop">
-    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
-     <i aria-hidden="true"></i><span>推荐阅读</span>
-    </div>
-    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/08/13/Building-and-Installing-Geant4-on-Linux/" title="Building and Installing Geant4 on Linux" rel="bookmark">
-  <img src="/images/wallhaven-wqery6-light.webp" alt="Building and Installing Geant4 on Linux" class="!max-w-none">
-  <span class="title">Building and Installing Geant4 on Linux</span>
-</a><a class="recommended-article-item" href="/2024/07/25/Installing-RASER-and-Configuring-the-Related-Environment-on-Fedora-CN/" title="在Fedora上安装RASER并配置相关环境(中文)" rel="bookmark">
-  <img src="/images/wallhaven-wqery6-light.webp" alt="在Fedora上安装RASER并配置相关环境(中文)" class="!max-w-none">
-  <span class="title">在Fedora上安装RASER并配置相关环境(中文)</span>
-</a><a class="recommended-article-item" href="/2024/07/25/Installing-RASER-and-Configuring-the-Related-Environment-on-Fedora/" title="Installing RASER and Configuring the Related Environment on Fedora (En)" rel="bookmark">
-  <img src="/images/wallhaven-wqery6-light.webp" alt="Installing RASER and Configuring the Related Environment on Fedora (En)" class="!max-w-none">
-  <span class="title">Installing RASER and Configuring the Related Environment on Fedora (En)</span>
-</a></div>
-   </div>
-   <div class="recommended-mobile">
-   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
-     <i aria-hidden="true"></i><span>推荐阅读</span>
-   </div>
-   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/08/13/Building-and-Installing-Geant4-on-Linux/" title="Building and Installing Geant4 on Linux" rel="bookmark">
-  <img src="/images/wallhaven-wqery6-light.webp" alt="Building and Installing Geant4 on Linux" class="!max-w-none">
-  <span class="title">Building and Installing Geant4 on Linux</span>
-</a><a class="recommended-article-item" href="/2024/07/25/Installing-RASER-and-Configuring-the-Related-Environment-on-Fedora-CN/" title="在Fedora上安装RASER并配置相关环境(中文)" rel="bookmark">
-  <img src="/images/wallhaven-wqery6-light.webp" alt="在Fedora上安装RASER并配置相关环境(中文)" class="!max-w-none">
-  <span class="title">在Fedora上安装RASER并配置相关环境(中文)</span>
-</a></div>
-   </div>
-  </div>
-
-        
-            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
-                
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/08/14/2024A-Ctask1/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">A&amp;C_Task 1.1</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="next"
-                        rel="next"
-                        href="/2024/08/13/Building-and-Installing-Geant4-on-Linux/"
-                        >
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Building and Installing Geant4 on Linux</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-
-        
-    </div>
-
-    
-        <div class="toc-content-container">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        <div class="toc-title">On this page</div>
-        <div class="page-title">在Linux上构建和安装Geant4（中文）</div>
-        
 
     </div>
 </div>
-        </div>
-    
-</div>
 
-
-
+                    <div class="comment-container pjax"></div>
                 
 
             </div>
@@ -1013,23 +900,6 @@ mjx-container[display="true"] + br {
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="article-tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="right-bottom-tools page-aside-toggle">
-                <i class="fa-regular fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-side-tools-container">
@@ -1131,6 +1001,7 @@ mjx-container[display="true"] + br {
         containers: ["#swup"],
     });
 </script>
+
 
 
 
