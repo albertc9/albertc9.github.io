@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/image/24110701.png">
 <meta property="og:image" content="http://example.com/image/24110702.png">
 <meta property="article:published_time" content="2024-11-07T12:20:39.000Z">
-<meta property="article:modified_time" content="2024-11-07T16:09:29.742Z">
+<meta property="article:modified_time" content="2024-11-07T16:11:55.539Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
@@ -668,8 +668,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-08 00:09:29</span>
-            <span class="mobile">2024-11-08 00:09:29</span>
+            <span class="desktop">2024-11-08 00:11:55</span>
+            <span class="mobile">2024-11-08 00:11:55</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -762,14 +762,14 @@ mjx-container[display="true"] + br {
 </ul>
 <p>在本教程中，FL、CL 和 RTL 模型都使用基于端口的接口、并发模块和结构化组合的方式。此外，PyMTL3 支持高级多态接口连接，允许不同级别的接口通过自动插入适配器进行直接连接。这种基于端口和多态的方式支持 PyMTL3 的混合级别建模，即可以将 FL、CL 和 RTL 模型组合成一个统一的系统模型。</p>
 <h3 id="2-2-可综合与非可综合-RTL-建模"><a href="#2-2-可综合与非可综合-RTL-建模" class="headerlink" title="2.2 可综合与非可综合 RTL 建模"></a>2.2 可综合与非可综合 RTL 建模</h3><p>由于 PyMTL3 嵌入在 Python 中（Python 是一种通用编程语言），<em>可以非常容易地编写无法模拟实际硬件的 PyMTL3 代码</em>，而这对于构建 FL 模型、测试框架、断言和行跟踪等功能是必需的。因此，学生在建模时必须谨慎选择自己编写的是可综合的 RTL 模型还是非可综合代码，时刻明确自己在模拟什么样的硬件以及如何模拟。</p>
-<p>学生的设计任务几乎完全使用可综合的 PyMTL3 RTL 模型。可以在 update_ff、update 和 update_once 并发模块之外的 Python 代码（即展开代码）中使用任何 Python 代码，因为<em>展开代码用于生成硬件而不是实际建模硬件</em>。在并发模块中可适量包含非可综合代码用于调试、断言或行跟踪，但应通过注释标记这些非可综合代码，以便自动化工具在综合设计前将其移除。</p>
+<p>学生的设计任务几乎完全使用可综合的 PyMTL3 RTL 模型。可以在 <code>update_ff</code>、<code>update</code> 和 <code>update_once</code> 并发模块之外的 Python 代码（即展开代码）中使用任何 Python 代码，因为<em>展开代码用于生成硬件而不是实际建模硬件</em>。在并发模块中可适量包含非可综合代码用于调试、断言或行跟踪，但应通过注释标记这些非可综合代码，以便自动化工具在综合设计前将其移除。</p>
 <p>下面包含了一个表格，列出了哪些 Python 结构在可综合的 PyMTL3 并发模块中允许使用、有限制地允许使用以及显式禁止使用的结构。与 ECE 4750 不同，这些规则仅作为建议。我们可以使用 PyMTL3 可翻译成 Verilog 且 Synopsys Design Compiler 可综合的任何内容。如果发现更高级的语法可以简化设计且可被综合，亦可采用该语法。</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="/image/24110701.png" alt="24110701"></p>
-<p><img lazyload="" src="/images/loading.svg" data-src="/image/24110702.png" alt="24110702"></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24110701.png" alt="1"></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24110702.png" alt="2"></p>
 <h2 id="第03章-PyMTL3基础：数据类型和操作符"><a href="#第03章-PyMTL3基础：数据类型和操作符" class="headerlink" title="第03章 PyMTL3基础：数据类型和操作符"></a>第03章 PyMTL3基础：数据类型和操作符</h2><p>从本章开始，我们将从基本内容开始，写一些非常基础的代码来介绍PyMTL3的基础数据类型和操作符。我们通过</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure></div>
 
-<p>来导入PyMTL3框架。</p>
+<p>在Python的开头来导入PyMTL3框架。</p>
 <h3 id="3-1-Bits数据类型"><a href="#3-1-Bits数据类型" class="headerlink" title="3.1 Bits数据类型"></a>3.1 Bits数据类型</h3><p>在硬件建模框架 PyMTL3 中，Bits 类用于表示固定位宽的值。与许多硬件描述语言 (HDL) 支持四态值（0, 1, X, Z，其中 X 表示未知值，Z 表示高阻抗值）不同，PyMTL3 的 Bits 仅支持二态值（0 和 1）。虽然这种设计可以加速仿真并避免 X 值带来的问题，但也增加了描述一些硬件结构的复杂度。此外，在仅支持二态值的环境下处理复位逻辑可能会有一定挑战，但可以通过已知的技术加以解决。</p>
 <h4 id="3-1-1-创建与操作-Bits-对象"><a href="#3-1-1-创建与操作-Bits-对象" class="headerlink" title="3.1.1 创建与操作 Bits 对象"></a>3.1.1 创建与操作 Bits 对象</h4><p>以下示例展示了如何在 Python 中实例化和操作 Bits 对象：</p>
 <ul>
@@ -873,7 +873,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-11-08 00:09:29
+                    :</strong> 2024-11-08 00:11:55
             </li>
         
         <li>
@@ -1007,7 +1007,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            202.7k words in total
+                            202.8k words in total
                         </span>
                     
                 </p>
