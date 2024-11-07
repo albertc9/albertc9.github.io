@@ -24,17 +24,17 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="第01章 简介在本课程的实验中，将使用 PyMTL3 硬件建模框架 进行功能级建模、验证以及模拟器的使用。学生可以选择 PyMTL3 或 Verilog 进行寄存器传输级建模，但即便使用 Verilog，也需完成本教程，因为课程中部分内容仍需使用 PyMTL3。需要注意的是，PyMTL3 是 PyMTL2 的改进版本，虽然二者在 API 上的差异不大，但 PyMTL3 在具体实现上有显著更新，因此">
+        <meta name="description" content="第01章 简介我们将在接下来的部分使用 PyMTL3 硬件建模框架进行功能级建模、验证以及模拟器的使用。可以选择 PyMTL3 或 Verilog 进行寄存器传输级建模，但即便使用 Verilog，也需完成本教程，因为课程中部分内容仍需使用 PyMTL3。需要注意的是，PyMTL3 是 PyMTL2 的改进版本，虽然二者在 API 上的差异不大，但 PyMTL3 在具体实现上有显著更新，因此需留意">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PyMTL基础入门">
 <meta property="og:url" content="http://example.com/2024/11/07/introduction-to-pymtl-basics/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="第01章 简介在本课程的实验中，将使用 PyMTL3 硬件建模框架 进行功能级建模、验证以及模拟器的使用。学生可以选择 PyMTL3 或 Verilog 进行寄存器传输级建模，但即便使用 Verilog，也需完成本教程，因为课程中部分内容仍需使用 PyMTL3。需要注意的是，PyMTL3 是 PyMTL2 的改进版本，虽然二者在 API 上的差异不大，但 PyMTL3 在具体实现上有显著更新，因此">
+<meta property="og:description" content="第01章 简介我们将在接下来的部分使用 PyMTL3 硬件建模框架进行功能级建模、验证以及模拟器的使用。可以选择 PyMTL3 或 Verilog 进行寄存器传输级建模，但即便使用 Verilog，也需完成本教程，因为课程中部分内容仍需使用 PyMTL3。需要注意的是，PyMTL3 是 PyMTL2 的改进版本，虽然二者在 API 上的差异不大，但 PyMTL3 在具体实现上有显著更新，因此需留意">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/image/24110701.png">
 <meta property="og:image" content="http://example.com/image/24110702.png">
 <meta property="article:published_time" content="2024-11-07T12:20:39.000Z">
-<meta property="article:modified_time" content="2024-11-07T15:33:44.367Z">
+<meta property="article:modified_time" content="2024-11-07T16:06:37.377Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
@@ -668,8 +668,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-07 23:33:44</span>
-            <span class="mobile">2024-11-07 23:33:44</span>
+            <span class="desktop">2024-11-08 00:06:37</span>
+            <span class="mobile">2024-11-08 00:06:37</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -707,12 +707,12 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.2k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>3.2k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>8 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>12 Mins</span>
         </span>
     
     
@@ -727,9 +727,9 @@ mjx-container[display="true"] + br {
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h2 id="第01章-简介"><a href="#第01章-简介" class="headerlink" title="第01章 简介"></a>第01章 简介</h2><p>在本课程的实验中，将使用 PyMTL3 硬件建模框架 进行功能级建模、验证以及模拟器的使用。学生可以选择 PyMTL3 或 Verilog 进行寄存器传输级建模，但即便使用 Verilog，也需完成本教程，因为课程中部分内容仍需使用 PyMTL3。需要注意的是，PyMTL3 是 PyMTL2 的改进版本，虽然二者在 API 上的差异不大，但 PyMTL3 在具体实现上有显著更新，因此需留意这些变化。</p>
-<p>本教程聚焦于 PyMTL3 框架的基本知识，包括开发、测试与评估方法，以及课程中使用的代码规范。涉及的开源工具包括：用于测试驱动开发的 pytest 框架，将 Verilog 转为 C++ 的 Verilator，以及用于查看波形的 GTKWave。PyMTL3 框架本身为开源项目，可在 GitHub 上访问，学生可以浏览其源码以深入了解框架的实现。</p>
-<p>这里提供一个建议安装流程：</p>
+            <h2 id="第01章-简介"><a href="#第01章-简介" class="headerlink" title="第01章 简介"></a>第01章 简介</h2><p>我们将在接下来的部分使用 PyMTL3 硬件建模框架进行功能级建模、验证以及模拟器的使用。可以选择 PyMTL3 或 Verilog 进行寄存器传输级建模，但即便使用 Verilog，也需完成本教程，因为课程中部分内容仍需使用 PyMTL3。需要注意的是，PyMTL3 是 PyMTL2 的改进版本，虽然二者在 API 上的差异不大，但 PyMTL3 在具体实现上有显著更新，因此需留意这些变化。</p>
+<p>本教程聚焦于 PyMTL3 框架的基本知识，包括开发、测试与评估方法，以及课程中使用的代码规范。涉及的开源工具包括：用于测试驱动开发的 pytest 框架，将 Verilog 转为 C++ 的 Verilator，以及用于查看波形的 GTKWave。PyMTL3 框架本身为开源项目，<a class="link" target="_blank" rel="noopener" href="https://github.com/pymtl/pymtl3">可在 GitHub 上访问 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，我们可以浏览其源码以深入了解框架的实现。</p>
+<p>这里提供一个建议安装流程。</p>
 <p>首先安装依赖项:</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dnf install python3 python3-pip python3-venv</span><br></pre></td></tr></table></figure></div>
 
@@ -780,27 +780,85 @@ mjx-container[display="true"] + br {
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = Bits16(<span class="number">37</span>)  <span class="comment"># 创建 16 位宽、初值为 37 的 Bits 对象</span></span><br><span class="line"><span class="built_in">type</span>(a)  <span class="comment"># 输出 &lt;class 'pymtl3.datatypes.bits_import.Bits16'&gt;</span></span><br></pre></td></tr></table></figure></div>
 
 
-<h3 id="3-1-2-常量、负数与进制支持"><a href="#3-1-2-常量、负数与进制支持" class="headerlink" title="3.1.2 常量、负数与进制支持"></a>3.1.2 常量、负数与进制支持</h3><ul>
+<h4 id="3-1-2-常量、负数与进制支持"><a href="#3-1-2-常量、负数与进制支持" class="headerlink" title="3.1.2 常量、负数与进制支持"></a>3.1.2 常量、负数与进制支持</h4><ul>
 <li>常量创建：可以通过 bN 语法创建常量，如 <code>b16(37)</code>。</li>
 <li>进制表示：Bits 支持二进制和十六进制表示，如 <code>Bits8(0b10101100)</code> 和 <code>Bits32(0xabcd0123)</code>。</li>
 <li>负值：Bits 对象可存储负数，采用二进制补码表示，例如 <code>Bits8(-1)</code> 将存储为 <code>0xff</code>。</li>
 <li>动态范围检查：当赋值超出位宽允许的范围时，Bits 构造函数将抛出异常。例如，<code>Bits8(300)</code> 将会报错，因为 300 无法用 8 位表示。</li>
 <li>截断初值：可以通过 <code>trunc_int=True</code> 参数来截断过大的初值值，如 <code>Bits8(0xdeadbeef, trunc_int=True)</code> 将返回 <code>Bits8(0xef)</code>。</li>
 </ul>
-<h3 id="3-1-3-获取位宽与数值"><a href="#3-1-3-获取位宽与数值" class="headerlink" title="3.1.3 获取位宽与数值"></a>3.1.3 获取位宽与数值</h3><p>可以使用 <code>nbits</code> 属性获取 Bits 对象的位宽，<code>uint()</code> 方法获取无符号整数值，<code>int()</code> 方法获取有符号整数值。例如：</p>
+<h4 id="3-1-3-获取位宽与数值"><a href="#3-1-3-获取位宽与数值" class="headerlink" title="3.1.3 获取位宽与数值"></a>3.1.3 获取位宽与数值</h4><p>可以使用 <code>nbits</code> 属性获取 Bits 对象的位宽，<code>uint()</code> 方法获取无符号整数值，<code>int()</code> 方法获取有符号整数值。例如：</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = Bits8(<span class="number">128</span>)</span><br><span class="line">a.nbits  <span class="comment"># 返回 8</span></span><br><span class="line">a.uint()  <span class="comment"># 返回 128</span></span><br><span class="line">a.<span class="built_in">int</span>()  <span class="comment"># 返回 -128</span></span><br></pre></td></tr></table></figure></div>
 
-<h3 id="3-1-4-位切片与复制"><a href="#3-1-4-位切片与复制" class="headerlink" title="3.1.4 位切片与复制"></a>3.1.4 位切片与复制</h3><ul>
+<h4 id="3-1-4-位切片与复制"><a href="#3-1-4-位切片与复制" class="headerlink" title="3.1.4 位切片与复制"></a>3.1.4 位切片与复制</h4><ul>
 <li>位切片：Bits 对象可以像 Python 列表一样进行位切片以读取或写入特定位段。切片语法 [start:end] 包含 start 位、不包含 end 位。例如，<code>a[28:32]</code> 表示获取 a 的高四位。</li>
 </ul>
 <p>示例：</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = Bits32(<span class="number">0xabcd0123</span>)</span><br><span class="line">a[<span class="number">28</span>:<span class="number">32</span>]  <span class="comment"># 返回 Bits4(0xa)</span></span><br><span class="line">a[<span class="number">4</span>:<span class="number">24</span>]  <span class="comment"># 返回 Bits20(0xcd012)</span></span><br></pre></td></tr></table></figure></div>
 
 <ul>
-<li>修改位段：通过赋值可以修改特定位段的值，例如，a[28:32] = 0xf 将高四位修改为 f。</li>
-<li>复制对象：直接赋值并不会复制 Bits 对象，而是创建引用。若想复制 Bits 对象，需要显式创建新对象。例如，b = Bits32(a) 会创建 a 的副本，之后对 a 或 b 的修改不会影响对方。</li>
+<li>修改位段：通过赋值可以修改特定位段的值，例如，<code>a[28:32] = 0xf</code> 将高四位修改为 <code>f</code>。</li>
+<li>复制对象：直接赋值并不会复制 Bits 对象，而是创建引用。若想复制 Bits 对象，需要显式创建新对象。例如，<code>b = Bits32(a)</code> 会创建 <code>a</code> 的副本，之后对 a 或 b 的修改不会影响对方。</li>
 </ul>
 <p>通过上述操作，PyMTL3 的 Bits 数据类型提供了丰富的位宽、进制、切片及复制功能，为硬件设计提供了灵活的数值表示与操作接口。</p>
+<h3 id="3-2-Bits操作符"><a href="#3-2-Bits操作符" class="headerlink" title="3.2 Bits操作符"></a>3.2 Bits操作符</h3><h4 id="3-2-1-支持的操作符"><a href="#3-2-1-支持的操作符" class="headerlink" title="3.2.1 支持的操作符"></a>3.2.1 支持的操作符</h4><p>PyMTL3 中的 Bits 对象支持多种操作符，分为以下几类：</p>
+<ul>
+<li>逻辑操作符：包括按位与 <code>&amp;</code>、按位或 <code>|</code>、按位异或 <code>^</code> 和按位非 <code>~</code>。</li>
+<li>算术操作符：支持加法 <code>+</code>、减法 <code>-</code> 和乘法 <code>*</code>。</li>
+<li>缩减操作符：包括 <code>reduce_and</code>（按位与缩减）、<code>reduce_or</code>（按位或缩减）和 <code>reduce_xor</code>（按位异或缩减），这些操作符会将 Bits 对象缩减为单个位宽。</li>
+<li>移位操作符：支持右移 <code>&gt;&gt;</code> 和左移 <code>&lt;&lt;</code>。</li>
+<li>关系操作符：包括相等 <code>==</code>、不等 <code>!=</code>、大于 <code>&gt;</code>、大于或等于 <code>&gt;=</code>、小于 <code>&lt;</code> 和小于或等于 <code>&lt;=</code>。</li>
+</ul>
+<p>其他函数：</p>
+<ul>
+<li><code>sext</code>：符号扩展。</li>
+<li><code>zext</code>：零扩展。</li>
+<li><code>concat</code>：连接多个 Bits 对象。</li>
+</ul>
+<p>Python 还支持其他一些操作符（如除法 <code>/</code> 和取模 <code>%</code>），但在 PyMTL3 的 RTL 模型中这些操作符不可翻译，因此应避免使用。</p>
+<h4 id="3-2-2-操作符使用示例"><a href="#3-2-2-操作符使用示例" class="headerlink" title="3.2.2 操作符使用示例"></a>3.2.2 操作符使用示例</h4><p>逻辑与缩减操作符：可以对 Bits 对象执行逻辑运算。PyMTL3 支持自动将整数隐式转换为 Bits 对象，但如果两个 Bits 对象的位宽不同，会导致类型不匹配错误。可通过 <code>sext</code> 或 <code>zext</code> 扩展位宽，以匹配操作数的位宽。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = Bits4(<span class="number">0b1010</span>)</span><br><span class="line">b = Bits4(<span class="number">0b1100</span>)</span><br><span class="line">a &amp; b  <span class="comment"># 返回 Bits4(0x8) =&gt; 0b1000</span></span><br></pre></td></tr></table></figure></div>
+
+<p>移位操作符：支持逻辑左移和右移。移位的位数可以是整数或 Bits 对象，右移时高位用零填充，移位结果的位宽与操作数的位宽一致。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = Bits4(<span class="number">0b1011</span>)</span><br><span class="line">a &lt;&lt; <span class="number">2</span>  <span class="comment"># 返回 Bits4(0xc) =&gt; 0b1100</span></span><br></pre></td></tr></table></figure></div>
+
+<p>算术操作符：加法和减法操作的结果位宽为操作数位宽的最大值，支持模运算并采用二进制补码表示负数。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = Bits4(<span class="number">3</span>)</span><br><span class="line">a + <span class="number">15</span>  <span class="comment"># 返回 Bits4(0x2)</span></span><br></pre></td></tr></table></figure></div>
+
+<p>关系操作符：支持比较两个 Bits 对象，结果为单个位宽的 Bits 对象，比较操作默认将操作数视为无符号整数。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = Bits4(<span class="number">3</span>)</span><br><span class="line">b = Bits4(<span class="number">2</span>)</span><br><span class="line">a &gt; b  <span class="comment"># 返回 Bits1(0x1)</span></span><br></pre></td></tr></table></figure></div>
+
+<p>其他函数：</p>
+<ul>
+<li>连接：<code>concat</code> 可将多个 Bits 对象连接成一个新对象。</li>
+<li>扩展与截断：sext 和 <code>zext</code> 可将 Bits 对象扩展到更大的位宽；<code>trunc</code> 可将 Bits 对象截断为较小的位宽。</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = Bits4(<span class="number">0xa</span>)</span><br><span class="line">zext(a, <span class="number">8</span>)  <span class="comment"># 零扩展为 Bits8(0x0a)</span></span><br></pre></td></tr></table></figure></div>
+
+<p>通过这些丰富的操作符，Bits 类型在 PyMTL3 中为硬件建模提供了高效的数值操作和逻辑控制功能。</p>
+<h3 id="3-3-BitStruct-数据类型"><a href="#3-3-BitStruct-数据类型" class="headerlink" title="3.3 BitStruct 数据类型"></a>3.3 BitStruct 数据类型</h3><p>BitStruct 是 PyMTL3 中用于定义带有命名位字段的结构体类型，这些字段具有固定的位宽。通过 BitStruct，可以将多种数据字段组合成一个紧凑的 Bits 对象，并为这些字段赋予便于访问和操作的名称。</p>
+<h4 id="3-3-1-创建-BitStruct"><a href="#3-3-1-创建-BitStruct" class="headerlink" title="3.3.1 创建 BitStruct"></a>3.3.1 创建 BitStruct</h4><p>在 PyMTL3 中，使用 <code>@bitstruct</code> 装饰器定义 BitStruct 类，这类似于 Python 3.7 引入的 dataclass。以下是一个定义 Point 的示例，它表示一个二维点，包括 x 和 y 两个四位的字段：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@bitstruct</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span>:</span><br><span class="line">    x: Bits4</span><br><span class="line">    y: Bits4</span><br></pre></td></tr></table></figure></div>
+
+<p>创建 Point 实例时，可以直接赋值并访问各字段：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pt1 = Point(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(pt1.x)  <span class="comment"># 输出 Bits4(0x3)</span></span><br><span class="line"><span class="built_in">print</span>(pt1.y)  <span class="comment"># 输出 Bits4(0x4)</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-3-2-转换与打包"><a href="#3-3-2-转换与打包" class="headerlink" title="3.3.2 转换与打包"></a>3.3.2 转换与打包</h4><ul>
+<li>打包为 Bits 对象：使用 <code>to_bits()</code> 方法可以将 BitStruct 实例打包为一个 Bits 对象，方便在更大的位结构中使用。此方法从最高有效位开始打包。</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pt1.to_bits()  <span class="comment"># 输出 Bits8(0x34)，按高位优先顺序</span></span><br></pre></td></tr></table></figure></div>
+
+
+<ul>
+<li>解包为 BitStruct 实例：可以通过 <code>from_bits</code> 方法将 Bits 对象解包为 BitStruct 实例：</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Point.from_bits(Bits8(<span class="number">0x34</span>))  <span class="comment"># 返回 Point(Bits4(0x3), Bits4(0x4))</span></span><br></pre></td></tr></table></figure></div>
+
+
+<h4 id="3-3-3-参数化的-BitStruct"><a href="#3-3-3-参数化的-BitStruct" class="headerlink" title="3.3.3 参数化的 BitStruct"></a>3.3.3 参数化的 BitStruct</h4><p>在某些情况下，字段的位宽可能在运行时才确定。PyMTL3 提供了 <code>mk_bitstruct</code> 函数，支持在运行时定义具有指定位宽的 BitStruct。例如，可以根据参数创建一个位宽为 8 的 Point 结构体：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nbits = <span class="number">8</span></span><br><span class="line">PointN = mk_bitstruct(<span class="string">"Point8"</span>, {</span><br><span class="line">    <span class="string">'x'</span>: mk_bits(nbits),</span><br><span class="line">    <span class="string">'y'</span>: mk_bits(nbits),</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line">pt2 = PointN(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(pt2.to_bits())  <span class="comment"># 输出 Bits16(0x0304)</span></span><br></pre></td></tr></table></figure></div>
+
+<p>通过 BitStruct，PyMTL3 提供了一种灵活的方式来定义和操作带有命名字段的结构体，便于在硬件建模中管理复杂的多字段数据结构。</p>
 
         </div>
 
@@ -815,7 +873,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-11-07 23:33:44
+                    :</strong> 2024-11-08 00:06:37
             </li>
         
         <li>
@@ -910,7 +968,7 @@ mjx-container[display="true"] + br {
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">PyMTL基础入门</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC01%E7%AB%A0-%E7%AE%80%E4%BB%8B"><span class="nav-text">第01章 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC02%E7%AB%A0-PyMTL3-%E7%9A%84%E5%8A%9F%E8%83%BD%E7%BA%A7%E3%80%81%E5%91%A8%E6%9C%9F%E7%BA%A7%E5%92%8C%E5%AF%84%E5%AD%98%E5%99%A8%E4%BC%A0%E8%BE%93%E7%BA%A7%E5%BB%BA%E6%A8%A1"><span class="nav-text">第02章 PyMTL3 的功能级、周期级和寄存器传输级建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-FL%E3%80%81CL-%E5%92%8C-RTL-%E5%BB%BA%E6%A8%A1%E6%AF%94%E8%BE%83"><span class="nav-text">2.1 FL、CL 和 RTL 建模比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8F%AF%E7%BB%BC%E5%90%88%E4%B8%8E%E9%9D%9E%E5%8F%AF%E7%BB%BC%E5%90%88-RTL-%E5%BB%BA%E6%A8%A1"><span class="nav-text">2.2 可综合与非可综合 RTL 建模</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC03%E7%AB%A0-PyMTL3%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">第03章 PyMTL3基础：数据类型和操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Bits%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.1 Bits数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-%E5%B8%B8%E9%87%8F%E3%80%81%E8%B4%9F%E6%95%B0%E4%B8%8E%E8%BF%9B%E5%88%B6%E6%94%AF%E6%8C%81"><span class="nav-text">3.1.2 常量、负数与进制支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-%E8%8E%B7%E5%8F%96%E4%BD%8D%E5%AE%BD%E4%B8%8E%E6%95%B0%E5%80%BC"><span class="nav-text">3.1.3 获取位宽与数值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-4-%E4%BD%8D%E5%88%87%E7%89%87%E4%B8%8E%E5%A4%8D%E5%88%B6"><span class="nav-text">3.1.4 位切片与复制</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC01%E7%AB%A0-%E7%AE%80%E4%BB%8B"><span class="nav-text">第01章 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC02%E7%AB%A0-PyMTL3-%E7%9A%84%E5%8A%9F%E8%83%BD%E7%BA%A7%E3%80%81%E5%91%A8%E6%9C%9F%E7%BA%A7%E5%92%8C%E5%AF%84%E5%AD%98%E5%99%A8%E4%BC%A0%E8%BE%93%E7%BA%A7%E5%BB%BA%E6%A8%A1"><span class="nav-text">第02章 PyMTL3 的功能级、周期级和寄存器传输级建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-FL%E3%80%81CL-%E5%92%8C-RTL-%E5%BB%BA%E6%A8%A1%E6%AF%94%E8%BE%83"><span class="nav-text">2.1 FL、CL 和 RTL 建模比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8F%AF%E7%BB%BC%E5%90%88%E4%B8%8E%E9%9D%9E%E5%8F%AF%E7%BB%BC%E5%90%88-RTL-%E5%BB%BA%E6%A8%A1"><span class="nav-text">2.2 可综合与非可综合 RTL 建模</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC03%E7%AB%A0-PyMTL3%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">第03章 PyMTL3基础：数据类型和操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Bits%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.1 Bits数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Bits%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">3.2 Bits操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-BitStruct-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.3 BitStruct 数据类型</span></a></li></ol></li></ol>
 
     </div>
 </div>
@@ -949,7 +1007,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            201.7k words in total
+                            202.7k words in total
                         </span>
                     
                 </p>
