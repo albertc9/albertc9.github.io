@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://example.com/image/24111102.jpg">
 <meta property="og:image" content="http://example.com/image/24111301.png">
 <meta property="article:published_time" content="2024-11-07T12:20:39.000Z">
-<meta property="article:modified_time" content="2024-11-13T15:37:10.912Z">
+<meta property="article:modified_time" content="2024-11-15T04:59:06.002Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
@@ -671,8 +671,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-13 23:37:10</span>
-            <span class="mobile">2024-11-13 23:37:10</span>
+            <span class="desktop">2024-11-15 12:59:06</span>
+            <span class="mobile">2024-11-15 12:59:06</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -710,12 +710,12 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>9k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>9.1k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>36 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>37 Mins</span>
         </span>
     
     
@@ -1091,7 +1091,9 @@ mjx-container[display="true"] + br {
 <h4 id="4-5-2-运行测试脚本"><a href="#4-5-2-运行测试脚本" class="headerlink" title="4.5.2 运行测试脚本"></a>4.5.2 运行测试脚本</h4><p>将测试脚本 RegIncr_extra_test.py 放置在目录中。可以在 build 目录下运行以下命令来执行测试脚本：</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">${TUTROOT}</span>/build</span><br><span class="line">pytest ../tut3_pymtl/regincr/test/RegIncr_extra_test.py</span><br></pre></td></tr></table></figure></div>
 
-<p>测试结果将显示每个测试函数的通过情况，成功的测试用例以 <code>.</code> 表示。此测试脚本可以自动发现并运行所有包含 _test.py 后缀的文件中的测试用例。</p>
+<p>测试结果将显示每个测试函数的通过情况，成功的测试用例以 <code>.</code> 表示。此测试脚本可以自动发现并运行所有包含 _test.py 后缀的文件中的测试用例。这是输出结果：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(pymtl3_env) (usr) albert@alberts-fedora:~/CSC/cpt4$ pytest RegIncr_extra_test.py </span><br><span class="line">======================================== <span class="built_in">test</span> session starts =========================================</span><br><span class="line">platform linux -- Python 3.8.20, pytest-7.2.0, pluggy-1.5.0</span><br><span class="line">rootdir: /home/albert/CSC/cpt4</span><br><span class="line">plugins: hypothesis-6.113.0, pymtl3-3.1.16</span><br><span class="line">collected 3 items                                                                                    </span><br><span class="line"></span><br><span class="line">RegIncr_extra_test.py ...                                                                      [100%]</span><br><span class="line"></span><br><span class="line">========================================= 3 passed <span class="keyword">in</span> 0.80s ==========================================</span><br></pre></td></tr></table></figure></div>
+
 <h4 id="4-5-3-使用-pytest-命令行选项"><a href="#4-5-3-使用-pytest-命令行选项" class="headerlink" title="4.5.3 使用 pytest 命令行选项"></a>4.5.3 使用 pytest 命令行选项</h4><ul>
 <li><code>-v</code> 选项：用于显示详细输出，列出每个测试用例的执行结果。</li>
 </ul>
@@ -1126,7 +1128,7 @@ mjx-container[display="true"] + br {
 </ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest ../tut3_pymtl/regincr/test/RegIncr2stage_test.py -v -x --tb=short</span><br></pre></td></tr></table></figure></div>
 
-
+<h3 id="4-6-使用随机测试验证模型"><a href="#4-6-使用随机测试验证模型" class="headerlink" title="4.6 使用随机测试验证模型"></a>4.6 使用随机测试验证模型</h3><p>1</p>
 
         </div>
 
@@ -1141,7 +1143,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-11-13 23:37:10
+                    :</strong> 2024-11-15 12:59:06
             </li>
         
         <li>
@@ -1236,7 +1238,7 @@ mjx-container[display="true"] + br {
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">PyMTL基础入门</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC01%E7%AB%A0-%E7%AE%80%E4%BB%8B"><span class="nav-text">第01章 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC02%E7%AB%A0-PyMTL3-%E7%9A%84%E5%8A%9F%E8%83%BD%E7%BA%A7%E3%80%81%E5%91%A8%E6%9C%9F%E7%BA%A7%E5%92%8C%E5%AF%84%E5%AD%98%E5%99%A8%E4%BC%A0%E8%BE%93%E7%BA%A7%E5%BB%BA%E6%A8%A1"><span class="nav-text">第02章 PyMTL3 的功能级、周期级和寄存器传输级建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-FL%E3%80%81CL-%E5%92%8C-RTL-%E5%BB%BA%E6%A8%A1%E6%AF%94%E8%BE%83"><span class="nav-text">2.1 FL、CL 和 RTL 建模比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8F%AF%E7%BB%BC%E5%90%88%E4%B8%8E%E9%9D%9E%E5%8F%AF%E7%BB%BC%E5%90%88-RTL-%E5%BB%BA%E6%A8%A1"><span class="nav-text">2.2 可综合与非可综合 RTL 建模</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC03%E7%AB%A0-PyMTL3%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">第03章 PyMTL3基础：数据类型和操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Bits%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.1 Bits数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Bits%E6%93%8D%E4%BD%9C%E7%AC%A6-Bits-Operators"><span class="nav-text">3.2 Bits操作符(Bits Operators)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-BitStruct-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.3 BitStruct 数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC04%E7%AB%A0-%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8-Registered-Incrementer"><span class="nav-text">第04章 寄存增量器(Registered Incrementer)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%BB%BA%E6%A8%A1%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8"><span class="nav-text">4.1 建模寄存增量器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%A8%A1%E6%8B%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.2 模拟模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-text">4.3 可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E4%BD%BF%E7%94%A8pytest%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.4 使用pytest进行单元测试验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E5%90%91%E9%87%8F%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.5 使用测试向量验证模型</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC01%E7%AB%A0-%E7%AE%80%E4%BB%8B"><span class="nav-text">第01章 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC02%E7%AB%A0-PyMTL3-%E7%9A%84%E5%8A%9F%E8%83%BD%E7%BA%A7%E3%80%81%E5%91%A8%E6%9C%9F%E7%BA%A7%E5%92%8C%E5%AF%84%E5%AD%98%E5%99%A8%E4%BC%A0%E8%BE%93%E7%BA%A7%E5%BB%BA%E6%A8%A1"><span class="nav-text">第02章 PyMTL3 的功能级、周期级和寄存器传输级建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-FL%E3%80%81CL-%E5%92%8C-RTL-%E5%BB%BA%E6%A8%A1%E6%AF%94%E8%BE%83"><span class="nav-text">2.1 FL、CL 和 RTL 建模比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8F%AF%E7%BB%BC%E5%90%88%E4%B8%8E%E9%9D%9E%E5%8F%AF%E7%BB%BC%E5%90%88-RTL-%E5%BB%BA%E6%A8%A1"><span class="nav-text">2.2 可综合与非可综合 RTL 建模</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC03%E7%AB%A0-PyMTL3%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">第03章 PyMTL3基础：数据类型和操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Bits%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.1 Bits数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Bits%E6%93%8D%E4%BD%9C%E7%AC%A6-Bits-Operators"><span class="nav-text">3.2 Bits操作符(Bits Operators)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-BitStruct-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.3 BitStruct 数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC04%E7%AB%A0-%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8-Registered-Incrementer"><span class="nav-text">第04章 寄存增量器(Registered Incrementer)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%BB%BA%E6%A8%A1%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8"><span class="nav-text">4.1 建模寄存增量器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%A8%A1%E6%8B%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.2 模拟模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-text">4.3 可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E4%BD%BF%E7%94%A8pytest%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.4 使用pytest进行单元测试验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E5%90%91%E9%87%8F%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.5 使用测试向量验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%9C%BA%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.6 使用随机测试验证模型</span></a></li></ol></li></ol>
 
     </div>
 </div>
@@ -1275,7 +1277,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            208.4k words in total
+                            208.5k words in total
                         </span>
                     
                 </p>
