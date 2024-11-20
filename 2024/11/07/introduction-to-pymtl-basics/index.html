@@ -36,8 +36,11 @@
 <meta property="og:image" content="http://example.com/image/24111001.png">
 <meta property="og:image" content="http://example.com/image/24111102.jpg">
 <meta property="og:image" content="http://example.com/image/24111301.png">
+<meta property="og:image" content="http://example.com/image/24112001">
+<meta property="og:image" content="http://example.com/image/24112002">
+<meta property="og:image" content="http://example.com/image/24112003">
 <meta property="article:published_time" content="2024-11-07T12:20:39.000Z">
-<meta property="article:modified_time" content="2024-11-15T04:59:06.002Z">
+<meta property="article:modified_time" content="2024-11-20T12:38:23.613Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
@@ -671,8 +674,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-15 12:59:06</span>
-            <span class="mobile">2024-11-15 12:59:06</span>
+            <span class="desktop">2024-11-20 20:38:23</span>
+            <span class="mobile">2024-11-20 20:38:23</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -710,12 +713,12 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>9.1k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>13.2k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>37 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>53 Mins</span>
         </span>
     
     
@@ -1128,7 +1131,288 @@ mjx-container[display="true"] + br {
 </ol>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest ../tut3_pymtl/regincr/test/RegIncr2stage_test.py -v -x --tb=short</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="4-6-使用随机测试验证模型"><a href="#4-6-使用随机测试验证模型" class="headerlink" title="4.6 使用随机测试验证模型"></a>4.6 使用随机测试验证模型</h3><p>1</p>
+<h3 id="4-6-使用随机测试验证模型"><a href="#4-6-使用随机测试验证模型" class="headerlink" title="4.6 使用随机测试验证模型"></a>4.6 使用随机测试验证模型</h3><p>在前面的测试中，我们采用了定向逐周期灰盒测试策略，手动设计了特定的输入输出来验证模型的功能。然而，除了手工编写的定向测试外，随机测试也能有效提高验证的覆盖率和测试的严谨性。通过随机生成输入值，能帮助发现手动测试难以察觉的潜在错误。</p>
+<p>Python 提供的 <code>random</code> 模块可以方便地生成随机输入值，<strong>但在使用随机测试时需要注意模型的延迟，确保每个期望的输出值出现在正确的周期位置上</strong>。以下是一个适用于8位加1器模型的随机测试用例示例。</p>
+<p>以下代码展示了如何生成随机测试向量表，并利用 <code>run_test_vector_sim</code> 函数来进行随机测试：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pymtl3.stdlib.test_utils <span class="keyword">import</span> run_test_vector_sim</span><br><span class="line"><span class="keyword">from</span> RegIncr <span class="keyword">import</span> RegIncr</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试随机输入值</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_random</span>(<span class="params">cmdline_opts</span>):</span><br><span class="line">    <span class="comment"># 初始化测试向量表，表头定义输入/输出端口</span></span><br><span class="line">    test_vector_table = [(<span class="string">'in_'</span>, <span class="string">'out*'</span>)]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 初始化上一个周期的期望输出</span></span><br><span class="line">    last_result = <span class="string">'?'</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 随机生成 20 个周期的输入输出对</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">        <span class="comment"># 生成一个 8 位随机数作为输入</span></span><br><span class="line">        rand_value = b8(random.randint(<span class="number">0</span>, <span class="number">0xff</span>))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 将输入值和上一个周期的期望输出添加到测试向量表</span></span><br><span class="line">        test_vector_table.append([rand_value, last_result])</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算当前输入值的期望输出（输入值 +1，确保为 8 位）</span></span><br><span class="line">        last_result = b8(rand_value + <span class="number">1</span>, trunc_int=<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 运行测试向量模拟</span></span><br><span class="line">    run_test_vector_sim(RegIncr(), test_vector_table, cmdline_opts)</span><br></pre></td></tr></table></figure></div>
+
+<p>代码解析:</p>
+<ol>
+<li>导入 random 模块：使用 Python 的 random 模块生成随机输入值。</li>
+<li>定义测试向量表：</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_vector_table = [(<span class="string">'in_'</span>, <span class="string">'out*'</span>)]</span><br></pre></td></tr></table></figure></div>
+
+<p>初始化测试向量表，首行为表头，<code>in_</code> 为输入端口，<code>out*</code> 为输出端口。</p>
+<ol start="3">
+<li>设置期望输出的初始值：</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">last_result = <span class="string">'?'</span></span><br></pre></td></tr></table></figure></div>
+
+<p><code>last_result</code> 初始值为 <code>'?'</code>，表示在第一个周期不关心输出值。</p>
+<ol start="4">
+<li>生成随机测试向量：</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">    rand_value = b8(random.randint(<span class="number">0</span>, <span class="number">0xff</span>))</span><br><span class="line">    test_vector_table.append([rand_value, last_result])</span><br><span class="line">    last_result = b8(rand_value + <span class="number">1</span>, trunc_int=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>循环生成 20 个测试向量，每次随机生成一个 8 位输入值 <code>rand_value</code>。</li>
+<li><code>rand_value</code> 和 <code>last_result</code> 被添加到测试向量表中。</li>
+<li>更新 <code>last_result</code> 为当前输入值加 1 的结果，用于下一个周期的期望输出。<code>trunc_int=True</code> 确保溢出时截断到 8 位。</li>
+</ul>
+<ol start="5">
+<li>运行测试：</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run_test_vector_sim(RegIncr(), test_vector_table, cmdline_opts)</span><br></pre></td></tr></table></figure></div>
+
+<p>通过 <code>run_test_vector_sim</code> 函数运行测试向量模拟，以验证模型对随机输入的处理是否正确。</p>
+<p>我们还可以运行随机测试并启用行跟踪。在终端中执行以下命令运行随机测试用例，并启用行跟踪（<code>-s</code> 选项显示输出）：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ${TUTROOT}/build</span><br><span class="line">pytest ../tut3_pymtl/regincr/test/RegIncr_extra_test.py -k random -s</span><br></pre></td></tr></table></figure></div>
+
+<p>此命令将运行 <code>test_random</code> 测试函数，并打印出行跟踪信息，有助于观察每个周期的输入输出关系。<code>-k random</code> 参数确保仅运行包含<code>random</code>名称的测试。</p>
+<p><strong>注意：在设计随机测试时，应考虑模型的延迟，确保期望输出与正确的周期对应。对于复杂模型，可以增加随机测试的周期数以增强测试覆盖率。</strong></p>
+<h2 id="第05章-排序单元-Sort-Unit"><a href="#第05章-排序单元-Sort-Unit" class="headerlink" title="第05章 排序单元(Sort Unit)"></a>第05章 排序单元(Sort Unit)</h2><h3 id="5-1-排序单元的-FL-模型"><a href="#5-1-排序单元的-FL-模型" class="headerlink" title="5.1 排序单元的 FL 模型"></a>5.1 排序单元的 FL 模型</h3><p><strong>功能级（Functional-Level，FL）模型专注于实现目标硬件的功能行为，而不关注具体的硬件时序。FL 模型通常是硬件设计的第一步，它可以快速实现功能验证，同时为后续的周期级（Cycle-Level，CL）和寄存器传输级（Register-Transfer-Level，RTL）模型设计打下基础。</strong></p>
+<p><strong>排序单元（Sort Unit）</strong>的功能是对四个输入值进行排序，使输出端口按从小到大的顺序排列。排序单元具有以下接口：</p>
+<p>输入端口：</p>
+<ul>
+<li><code>in_val</code>：标志输入值是否有效。</li>
+<li><code>in_[0:3]</code>：四个待排序的输入值。</li>
+</ul>
+<p>输出端口：</p>
+<ul>
+<li><code>out_val</code>：标志输出值是否有效。</li>
+<li><code>out[0:3]</code>：按升序排列的输出值。</li>
+</ul>
+<p>下图使用 “cloud diagram” 对排序单元进行了抽象表示，重点突出其功能逻辑，而忽略了具体的实现细节:</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24112001" alt="24112001"></p>
+<p>FL 模型的设计主要关注以下几点：</p>
+<ol>
+<li>功能实现：使用简单的排序函数实现输入值的排序逻辑。</li>
+<li>有效性标志：通过 <code>in_val</code> 和 <code>out_val</code> 标志输入和输出值的有效性。</li>
+<li>行跟踪（Line Trace）：提供易于阅读的输入输出状态显示。</li>
+<li>默认信号重置：依赖 PyMTL3 框架的默认信号初始化功能。</li>
+</ol>
+<p>以下代码展示了排序单元 FL 模型的实现，<em>核心功能是对输入端口的四个值进行排序，并通过输出端口返回结果</em>。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 排序功能实现</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sort_fl</span>(<span class="params">arr</span>):</span><br><span class="line">    <span class="string">"""排序函数，接收一个数组并返回排序后的结果。"""</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sorted</span>(arr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 排序单元 FL 模型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SortUnitFL</span>(<span class="title class_ inherited__">Component</span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 构造函数</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">construct</span>(<span class="params">s, nbits=<span class="number">8</span></span>):</span><br><span class="line">        <span class="comment"># 定义输入端口</span></span><br><span class="line">        s.in_val = InPort()  <span class="comment"># 输入有效性标志</span></span><br><span class="line">        s.in_ = [InPort(nbits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]  <span class="comment"># 四个输入端口</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 定义输出端口</span></span><br><span class="line">        s.out_val = OutPort()  <span class="comment"># 输出有效性标志</span></span><br><span class="line">        s.out = [OutPort(nbits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]  <span class="comment"># 四个输出端口</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 核心排序逻辑（update_ff 块）</span></span><br><span class="line"><span class="meta">        @update_ff</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">block</span>():</span><br><span class="line">            <span class="comment"># 将输入有效性标志传递到输出</span></span><br><span class="line">            s.out_val &lt;&lt;= s.in_val</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 对输入端口值排序，并赋值到输出端口</span></span><br><span class="line">            <span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="built_in">enumerate</span>(sort_fl(s.in_)):</span><br><span class="line">                s.out[i] &lt;&lt;= v</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 行跟踪（显示输入输出状态）</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">line_trace</span>(<span class="params">s</span>):</span><br><span class="line">        <span class="comment"># 输入状态字符串</span></span><br><span class="line">        in_str = <span class="string">'{'</span> + <span class="string">','</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>, s.in_)) + <span class="string">'}'</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s.in_val:</span><br><span class="line">            in_str = <span class="string">' '</span> * <span class="built_in">len</span>(in_str)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 输出状态字符串</span></span><br><span class="line">        out_str = <span class="string">'{'</span> + <span class="string">','</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>, s.out)) + <span class="string">'}'</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s.out_val:</span><br><span class="line">            out_str = <span class="string">' '</span> * <span class="built_in">len</span>(out_str)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 返回格式化的输入输出状态</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f"<span class="subst">{in_str}</span>|<span class="subst">{out_str}</span>"</span></span><br></pre></td></tr></table></figure></div>
+
+<p>代码解释：</p>
+<ol>
+<li>排序功能实现（<code>sort_fl</code> 函数）：</li>
+</ol>
+<ul>
+<li>使用 Python 的内置 <code>sorted</code> 函数对数组进行排序。</li>
+<li>该函数对 <code>in_</code> 输入端口的四个值排序后，将结果传递给输出端口 <code>out</code>。</li>
+</ul>
+<ol start="2">
+<li>输入输出端口定义：</li>
+</ol>
+<ul>
+<li><code>InPort</code> 和 <code>OutPort</code> 用于定义输入和输出接口，支持参数化位宽（默认为 8 位）。</li>
+<li>输入端口包括 <code>in_val</code>（输入有效性标志）和 <code>in_[0:3]</code>（四个待排序的值）。</li>
+<li>输出端口包括 <code>out_val</code>（输出有效性标志）和 <code>out[0:3]</code>（排序后的值）。</li>
+</ul>
+<ol start="3">
+<li>核心排序逻辑：</li>
+</ol>
+<ul>
+<li>使用 <code>@update_ff</code> 定义逻辑块，确保信号值在时钟上升沿后更新。</li>
+<li>通过非阻塞赋值（<code>&lt;&lt;=</code>）将排序后的结果赋值到输出端口。</li>
+<li>输入有效性标志 <code>in_val</code> 被直接传递到输出有效性标志 <code>out_val</code>。</li>
+</ul>
+<ol start="4">
+<li>行跟踪（Line Trace）：</li>
+</ol>
+<ul>
+<li>提供 <code>line_trace</code> 方法，用于在模拟过程中格式化显示输入输出状态。</li>
+<li>当输入或输出无效时，用空格代替显示，使得行跟踪信息更加直观。</li>
+<li>例如：{8,3,5,1}|{1,3,5,8} 表示输入值为 {8,3,5,1}，排序后输出 {1,3,5,8}。</li>
+</ul>
+<ol start="5">
+<li>默认信号重置：</li>
+</ol>
+<ul>
+<li>PyMTL3 框架默认将信号初始化为 0，简化了 FL 模型的设计。</li>
+<li>这种简化在 CL 模型中也适用，但在 RTL 模型中需要显式实现状态重置。</li>
+</ul>
+<p>接下来可以进行排序单元的测试。排序单元测试包括四个定向测试用例和一个随机测试用例。这些测试验证了 SortUnitFL 的功能正确性：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pymtl3.stdlib.test_utils <span class="keyword">import</span> run_test_vector_sim</span><br><span class="line"><span class="keyword">from</span> ..SortUnitFL <span class="keyword">import</span> SortUnitFL</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基本测试</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_basic</span>(<span class="params">cmdline_opts</span>):</span><br><span class="line">    run_test_vector_sim(SortUnitFL(), [</span><br><span class="line">        (<span class="string">'in_val in_[0] in_[1] in_[2] in_[3] out_val out[0] out[1] out[2] out[3]*'</span>),</span><br><span class="line">        [ <span class="number">1</span>,      <span class="number">8</span>,    <span class="number">3</span>,    <span class="number">5</span>,    <span class="number">1</span>,    <span class="number">1</span>,     <span class="number">1</span>,     <span class="number">3</span>,     <span class="number">5</span>,     <span class="number">8</span>       ],</span><br><span class="line">        [ <span class="number">0</span>,      <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>       ],</span><br><span class="line">    ], cmdline_opts)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机测试</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_random</span>(<span class="params">cmdline_opts</span>):</span><br><span class="line">    <span class="keyword">import</span> random</span><br><span class="line">    test_vector_table = [(<span class="string">'in_val in_[0] in_[1] in_[2] in_[3] out_val out[0] out[1] out[2] out[3]*'</span>)]</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">        rand_inputs = [random.randint(<span class="number">0</span>, <span class="number">255</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line">        sorted_outputs = <span class="built_in">sorted</span>(rand_inputs)</span><br><span class="line">        test_vector_table.append([<span class="number">1</span>] + rand_inputs + [<span class="number">1</span>] + sorted_outputs)</span><br><span class="line">    run_test_vector_sim(SortUnitFL(), test_vector_table, cmdline_opts)</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>运行所有测试：</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="built_in">cd</span> <span class="variable">${TUTROOT}</span>/build</span><br><span class="line">&gt;&gt;&gt; pytest ../tut3_pymtl/sort/SortUnitFL_test.py -v</span><br></pre></td></tr></table></figure></div>
+
+
+<ul>
+<li>运行基本测试：</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; pytest ../tut3_pymtl/sort/SortUnitFL_test.py -k test_basic -s</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>运行随机测试：</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; pytest ../tut3_pymtl/sort/SortUnitFL_test.py -k test_random -s</span><br></pre></td></tr></table></figure></div>
+
+<p>如前面所述，FL模型有如下几个最直接的作用：</p>
+<ol>
+<li>早期验证：FL 模型可以快速实现并验证硬件设计的基本功能，为后续的 CL 和 RTL 模型提供测试基准。</li>
+<li>模块化设计：通过 FL 模型验证功能后，可在更高抽象级别逐步优化和细化设计。</li>
+<li>代码复用性：在 FL 模型中完成的测试用例可以直接复用于 CL 和 RTL 模型，确保验证过程一致。</li>
+</ol>
+<h3 id="5-2-排序单元的-CL-模型"><a href="#5-2-排序单元的-CL-模型" class="headerlink" title="5.2 排序单元的 CL 模型"></a>5.2 排序单元的 CL 模型</h3><p>在 FL（功能级）模型的基础上，我们可以逐步将其细化为 CL（周期级）模型。CL 模型捕获硬件目标的周期近似行为，关注其在每个时钟周期内的性能表现，而不是单纯的功能正确性。</p>
+<p>CL 模型在第一周期完成输入值的排序，并使用流水线模拟目标硬件的周期延迟。如 Figure 30 所示：</p>
+<ul>
+<li>输入端口 in_ 和 in_val 提供值及其有效性标志。</li>
+<li>排序逻辑在第一周期内完成值的排序。</li>
+<li>使用 pipe（双端队列）模拟流水线延迟，将排序结果在多个周期内逐步输出。</li>
+<li>输出端口 out_ 和 out_val 提供按顺序排列的结果及其有效性。</li>
+</ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24112002" alt="24112002"></p>
+<p>5.2.2 CL 模型的实现</p>
+<p>以下代码展示了排序单元 CL 模型的具体实现，重点在于使用流水线结构模拟硬件的延迟:</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"><span class="keyword">from</span> copy <span class="keyword">import</span> deepcopy</span><br><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> .SortUnitFL <span class="keyword">import</span> sort_fl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 排序单元 CL 模型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SortUnitCL</span>(<span class="title class_ inherited__">Component</span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 构造函数</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">construct</span>(<span class="params">s, nbits=<span class="number">8</span>, nstages=<span class="number">3</span></span>):</span><br><span class="line">        <span class="comment"># 定义输入端口</span></span><br><span class="line">        s.in_val = InPort()</span><br><span class="line">        s.in_ = [InPort(nbits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 定义输出端口</span></span><br><span class="line">        s.out_val = OutPort()</span><br><span class="line">        s.out = [OutPort(nbits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 初始化流水线队列</span></span><br><span class="line">        s.pipe = deque([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]] * (nstages - <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 更新块：核心排序与流水线逻辑</span></span><br><span class="line"><span class="meta">        @update_ff</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">block</span>():</span><br><span class="line">            <span class="comment"># 将输入值与有效性标志排序后存入队列</span></span><br><span class="line">            s.pipe.append(deepcopy([s.in_val] + sort_fl(s.in_)))</span><br><span class="line">            <span class="comment"># 从队列中取出最早的值</span></span><br><span class="line">            data = s.pipe.popleft()</span><br><span class="line">            <span class="comment"># 更新输出端口</span></span><br><span class="line">            s.out_val &lt;&lt;= data[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="built_in">enumerate</span>(data[<span class="number">1</span>:]):</span><br><span class="line">                s.out[i] &lt;&lt;= v</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 行跟踪（显示输入输出状态）</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">line_trace</span>(<span class="params">s</span>):</span><br><span class="line">        <span class="comment"># 输入状态字符串</span></span><br><span class="line">        in_str = <span class="string">'{'</span> + <span class="string">','</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>, s.in_)) + <span class="string">'}'</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s.in_val:</span><br><span class="line">            in_str = <span class="string">' '</span> * <span class="built_in">len</span>(in_str)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 输出状态字符串</span></span><br><span class="line">        out_str = <span class="string">'{'</span> + <span class="string">','</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>, s.out)) + <span class="string">'}'</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s.out_val:</span><br><span class="line">            out_str = <span class="string">' '</span> * <span class="built_in">len</span>(out_str)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 返回格式化的输入输出状态</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f"<span class="subst">{in_str}</span>|<span class="subst">{out_str}</span>"</span></span><br></pre></td></tr></table></figure></div>
+
+<p>代码解释：</p>
+<ol>
+<li>双端队列 <code>pipe</code> 的作用</li>
+</ol>
+<p>双端队列（<code>deque</code>）是 Python 标准库 <code>collections</code> 模块中的一种数据结构，用于高效地在序列两端添加或删除元素。</p>
+<ul>
+<li>模拟流水线延迟：<br>在硬件中，流水线的延迟表现为信号从输入端逐步传播到输出端的过程。在这个 CL 模型中，<code>pipe</code> 作为一个双端队列，用于存储每个时钟周期的输入有效信号 <code>in_val</code> 和排序后的数据列表 <code>sort_fl(s.in_)</code>。</li>
+<li>元素格式：<br>队列的每个元素是一个列表，包含有效性标志 <code>in_val</code> 和排序结果 <code>[sorted_value1, sorted_value2, sorted_value3, sorted_value4]</code>。例如：</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]  <span class="comment"># 1 是有效信号，2–5 是排序后的值</span></span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>模拟延迟逻辑</li>
+</ol>
+<p>在每个时钟周期：</p>
+<ul>
+<li>调用 <code>append</code> 方法将新的输入有效信号和排序后的数据加入队列末尾。</li>
+<li>调用 <code>popleft</code> 方法从队列头部取出最早的信号值和数据，用于更新输出端口。</li>
+<li>初始化长度：<br>队列的初始长度为 <code>nstages - 1</code>（流水线的阶段数减一）。例如，当 <code>nstages=3</code> 时，初始队列长度为 2。这种设计在 <code>nstages=1</code> 时（单周期延迟）能够直接运行，不会增加额外的延迟。</li>
+</ul>
+<ol start="3">
+<li>深拷贝 <code>deepcopy</code></li>
+</ol>
+<p>Python 的赋值操作默认是引用传递，这意味着多个变量可能同时指向同一个对象。如果直接将输入信号和排序后的结果添加到队列中，可能会出现以下问题：</p>
+<ul>
+<li>信号值在后续周期被修改时，队列中存储的值也会随之改变。</li>
+<li>导致信号不稳定或与预期不符。</li>
+</ul>
+<p>解决方案：</p>
+<ul>
+<li>使用 <code>copy</code> 模块中的 <code>deepcopy</code> 函数对信号和排序结果进行深度拷贝，生成一个独立的副本。</li>
+<li>深拷贝确保了队列中的值与输入信号完全独立，避免了因共享内存而引发的副作用。例如：</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.pipe.append(deepcopy([s.in_val] + sort_fl(s.in_)))</span><br></pre></td></tr></table></figure></div>
+
+<ol start="4">
+<li>更新块逻辑</li>
+</ol>
+<p>更新块是通过 <code>@update_ff</code> 装饰器定义的同步逻辑，它在每个时钟上升沿被调用，模拟硬件中寄存器的行为。</p>
+<p>排序与存储：</p>
+<ul>
+<li>调用 <code>sort_fl(s.in_)</code> 函数对输入信号列表 <code>s.in_</code> 进行排序。</li>
+<li>使用深拷贝将输入有效信号 <code>s.in_val</code> 和排序后的列表组合后追加到队列末尾。</li>
+</ul>
+<p>队列的读取：</p>
+<ul>
+<li>调用 <code>popleft</code> 从队列头部取出最早的信号值和数据。</li>
+<li>将有效性标志 <code>data[0]</code> 赋值给输出端口 <code>s.out_val</code>，并将排序后的数据列表赋值给输出数据端口 <code>s.out[i]</code>。</li>
+</ul>
+<p>流水线延迟：</p>
+<ul>
+<li>队列的长度为 <code>nstages - 1</code>，每次调用 <code>append</code> 和 <code>popleft</code> 操作都会导致数据沿着流水线推进一段距离。</li>
+<li>如果 <code>nstages=3</code>，则总延迟为 3 个周期（包括更新块本身的 1 个周期延迟）。</li>
+</ul>
+<ol start="5">
+<li>行跟踪（Line Trace）</li>
+</ol>
+<p>行跟踪用于在测试和调试过程中直观地展示输入和输出信号的变化。</p>
+<ul>
+<li>显示输入状态：</li>
+<li>将输入端口 <code>s.in_</code> 的值通过 <code>map</code> 和 <code>str</code> 转换为字符串，并用花括号包裹。</li>
+<li>当 <code>in_val</code> 无效时，用空格替代对应的字符串，以清晰显示无效周期。例如：</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">in_str = <span class="string">'{'</span> + <span class="string">','</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>, s.in_)) + <span class="string">'}'</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> s.in_val:</span><br><span class="line">    in_str = <span class="string">' '</span> * <span class="built_in">len</span>(in_str)</span><br></pre></td></tr></table></figure></div>
+
+<p>显示输出状态：</p>
+<ul>
+<li>将输出端口 <code>s.out</code> 的值转换为字符串，同样在无效周期中用空格替代。</li>
+<li>输出字符串与输入字符串通过<code>|</code>分隔，表示输入输出之间的关系。</li>
+<li>输出格式：<br>行跟踪的结果是一个固定宽度的字符串，便于观察信号的传递。例如：</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">{04,02,03,01}|         <span class="comment"># 第 4 周期：输入有效，输出无效</span></span><br><span class="line">             |{01,02,03,04}  <span class="comment"># 第 7 周期：输入无效，输出有效</span></span><br></pre></td></tr></table></figure></div>
+
+<p>代码逻辑图解</p>
+<ol>
+<li>初始化队列：</li>
+</ol>
+<ul>
+<li>假设 <code>nstages=3</code>，则队列初始状态为：</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]  <span class="comment"># 两个占位元素</span></span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>周期操作：</li>
+</ol>
+<ul>
+<li>周期 1：输入 <code>{4, 2, 3, 1}</code>，排序后追加队列：</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[0, 0, 0, 0, 0], [1, 1, 2, 3, 4]]</span><br></pre></td></tr></table></figure></div>
+
+
+<ul>
+<li><p>周期 2：从队列头部取出一个值更新输出，同时追加新输入。</p>
+</li>
+<li><p>周期 3：队列状态为：</p>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[1, 1, 2, 3, 4]]</span><br></pre></td></tr></table></figure></div>
+
+<p>输出 <code>{1, 2, 3, 4}</code>。</p>
+<p>CL 模型的测试使用参数化测试，包括<strong>定向测试</strong>和<strong>随机测试</strong>，覆盖了不同输入值和不同流水线深度。</p>
+<p>测试示例代码</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pymtl3.stdlib.test_utils <span class="keyword">import</span> run_test_vector_sim</span><br><span class="line"><span class="keyword">from</span> ..SortUnitCL <span class="keyword">import</span> SortUnitCL</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试函数：三阶段流水线</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_3stage_stream</span>(<span class="params">cmdline_opts</span>):</span><br><span class="line">    run_test_vector_sim(SortUnitCL(nstages=<span class="number">3</span>), [</span><br><span class="line">        (<span class="string">'in_val in_[0] in_[1] in_[2] in_[3] out_val out[0] out[1] out[2] out[3]*'</span>),</span><br><span class="line">        [ <span class="number">1</span>,      <span class="number">4</span>,    <span class="number">2</span>,    <span class="number">3</span>,    <span class="number">1</span>,    <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>       ],</span><br><span class="line">        [ <span class="number">0</span>,      <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>       ],</span><br><span class="line">        [ <span class="number">0</span>,      <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>,     <span class="number">0</span>       ],</span><br><span class="line">        [ <span class="number">0</span>,      <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">0</span>,    <span class="number">1</span>,     <span class="number">1</span>,     <span class="number">2</span>,     <span class="number">3</span>,     <span class="number">4</span>       ],</span><br><span class="line">    ], cmdline_opts)</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>运行所有测试：</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="built_in">cd</span> <span class="variable">${TUTROOT}</span>/build</span><br><span class="line">&gt;&gt;&gt; pytest ../tut3_pymtl/sort/test/SortUnitCL_test.py -v</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>运行特定测试：</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; pytest ../tut3_pymtl/sort/test/SortUnitCL_test.py -k 3stage_stream -s</span><br></pre></td></tr></table></figure></div>
+
+<p>Figure 32 显示了测试的行跟踪输出：</p>
+<ul>
+<li>第 3 周期：无输入和输出。</li>
+<li>第 4 周期：输入值 <code>{4, 2, 3, 1}</code> 被记录。</li>
+<li>第 7 周期：输出值 <code>{1, 2, 3, 4}</code> 被排序后输出。</li>
+</ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24112003" alt="24112003"></p>
+<p>此结果验证了 CL 模型正确捕获了排序单元的周期行为。</p>
+<p>CL 模型的意义:</p>
+<ol>
+<li>性能建模：</li>
+</ol>
+<ul>
+<li>CL 模型可模拟硬件的周期行为，便于评估不同流水线深度的性能。</li>
+</ul>
+<ol start="2">
+<li>设计探索：</li>
+</ol>
+<ul>
+<li>模型参数化（如 <code>nstages</code>）使其易于探索不同设计配置对系统性能的影响。</li>
+</ul>
+<ol start="3">
+<li>系统集成：</li>
+</ol>
+<ul>
+<li>CL 模型比 RTL 模型更简单，适用于早期系统级验证，并可提升模拟速度。</li>
+</ul>
 
         </div>
 
@@ -1143,7 +1427,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-11-15 12:59:06
+                    :</strong> 2024-11-20 20:38:23
             </li>
         
         <li>
@@ -1238,7 +1522,7 @@ mjx-container[display="true"] + br {
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">PyMTL基础入门</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC01%E7%AB%A0-%E7%AE%80%E4%BB%8B"><span class="nav-text">第01章 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC02%E7%AB%A0-PyMTL3-%E7%9A%84%E5%8A%9F%E8%83%BD%E7%BA%A7%E3%80%81%E5%91%A8%E6%9C%9F%E7%BA%A7%E5%92%8C%E5%AF%84%E5%AD%98%E5%99%A8%E4%BC%A0%E8%BE%93%E7%BA%A7%E5%BB%BA%E6%A8%A1"><span class="nav-text">第02章 PyMTL3 的功能级、周期级和寄存器传输级建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-FL%E3%80%81CL-%E5%92%8C-RTL-%E5%BB%BA%E6%A8%A1%E6%AF%94%E8%BE%83"><span class="nav-text">2.1 FL、CL 和 RTL 建模比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8F%AF%E7%BB%BC%E5%90%88%E4%B8%8E%E9%9D%9E%E5%8F%AF%E7%BB%BC%E5%90%88-RTL-%E5%BB%BA%E6%A8%A1"><span class="nav-text">2.2 可综合与非可综合 RTL 建模</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC03%E7%AB%A0-PyMTL3%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">第03章 PyMTL3基础：数据类型和操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Bits%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.1 Bits数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Bits%E6%93%8D%E4%BD%9C%E7%AC%A6-Bits-Operators"><span class="nav-text">3.2 Bits操作符(Bits Operators)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-BitStruct-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.3 BitStruct 数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC04%E7%AB%A0-%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8-Registered-Incrementer"><span class="nav-text">第04章 寄存增量器(Registered Incrementer)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%BB%BA%E6%A8%A1%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8"><span class="nav-text">4.1 建模寄存增量器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%A8%A1%E6%8B%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.2 模拟模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-text">4.3 可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E4%BD%BF%E7%94%A8pytest%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.4 使用pytest进行单元测试验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E5%90%91%E9%87%8F%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.5 使用测试向量验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%9C%BA%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.6 使用随机测试验证模型</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC01%E7%AB%A0-%E7%AE%80%E4%BB%8B"><span class="nav-text">第01章 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC02%E7%AB%A0-PyMTL3-%E7%9A%84%E5%8A%9F%E8%83%BD%E7%BA%A7%E3%80%81%E5%91%A8%E6%9C%9F%E7%BA%A7%E5%92%8C%E5%AF%84%E5%AD%98%E5%99%A8%E4%BC%A0%E8%BE%93%E7%BA%A7%E5%BB%BA%E6%A8%A1"><span class="nav-text">第02章 PyMTL3 的功能级、周期级和寄存器传输级建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-FL%E3%80%81CL-%E5%92%8C-RTL-%E5%BB%BA%E6%A8%A1%E6%AF%94%E8%BE%83"><span class="nav-text">2.1 FL、CL 和 RTL 建模比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8F%AF%E7%BB%BC%E5%90%88%E4%B8%8E%E9%9D%9E%E5%8F%AF%E7%BB%BC%E5%90%88-RTL-%E5%BB%BA%E6%A8%A1"><span class="nav-text">2.2 可综合与非可综合 RTL 建模</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC03%E7%AB%A0-PyMTL3%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">第03章 PyMTL3基础：数据类型和操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Bits%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.1 Bits数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Bits%E6%93%8D%E4%BD%9C%E7%AC%A6-Bits-Operators"><span class="nav-text">3.2 Bits操作符(Bits Operators)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-BitStruct-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.3 BitStruct 数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC04%E7%AB%A0-%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8-Registered-Incrementer"><span class="nav-text">第04章 寄存增量器(Registered Incrementer)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%BB%BA%E6%A8%A1%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8"><span class="nav-text">4.1 建模寄存增量器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%A8%A1%E6%8B%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.2 模拟模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-text">4.3 可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E4%BD%BF%E7%94%A8pytest%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.4 使用pytest进行单元测试验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E5%90%91%E9%87%8F%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.5 使用测试向量验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%9C%BA%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.6 使用随机测试验证模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC05%E7%AB%A0-%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83-Sort-Unit"><span class="nav-text">第05章 排序单元(Sort Unit)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83%E7%9A%84-FL-%E6%A8%A1%E5%9E%8B"><span class="nav-text">5.1 排序单元的 FL 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83%E7%9A%84-CL-%E6%A8%A1%E5%9E%8B"><span class="nav-text">5.2 排序单元的 CL 模型</span></a></li></ol></li></ol>
 
     </div>
 </div>
@@ -1277,7 +1561,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            208.5k words in total
+                            212.6k words in total
                         </span>
                     
                 </p>
