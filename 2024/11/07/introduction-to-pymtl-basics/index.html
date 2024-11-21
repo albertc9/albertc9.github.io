@@ -36,11 +36,11 @@
 <meta property="og:image" content="http://example.com/image/24111001.png">
 <meta property="og:image" content="http://example.com/image/24111102.jpg">
 <meta property="og:image" content="http://example.com/image/24111301.png">
-<meta property="og:image" content="http://example.com/image/24112001">
-<meta property="og:image" content="http://example.com/image/24112002">
-<meta property="og:image" content="http://example.com/image/24112003">
+<meta property="og:image" content="http://example.com/image/24112001.png">
+<meta property="og:image" content="http://example.com/image/24112002.png">
+<meta property="og:image" content="http://example.com/image/24112003.png">
 <meta property="article:published_time" content="2024-11-07T12:20:39.000Z">
-<meta property="article:modified_time" content="2024-11-20T12:38:23.613Z">
+<meta property="article:modified_time" content="2024-11-21T00:24:03.433Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
@@ -674,8 +674,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-20 20:38:23</span>
-            <span class="mobile">2024-11-20 20:38:23</span>
+            <span class="desktop">2024-11-21 08:24:03</span>
+            <span class="mobile">2024-11-21 08:24:03</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -1184,7 +1184,7 @@ mjx-container[display="true"] + br {
 <li><code>out[0:3]</code>：按升序排列的输出值。</li>
 </ul>
 <p>下图使用 “cloud diagram” 对排序单元进行了抽象表示，重点突出其功能逻辑，而忽略了具体的实现细节:</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="/image/24112001" alt="24112001"></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24112001.png" alt="24112001"></p>
 <p>FL 模型的设计主要关注以下几点：</p>
 <ol>
 <li>功能实现：使用简单的排序函数实现输入值的排序逻辑。</li>
@@ -1267,7 +1267,7 @@ mjx-container[display="true"] + br {
 <li>使用 pipe（双端队列）模拟流水线延迟，将排序结果在多个周期内逐步输出。</li>
 <li>输出端口 out_ 和 out_val 提供按顺序排列的结果及其有效性。</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="/image/24112002" alt="24112002"></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24112002.png" alt="24112002"></p>
 <p>5.2.2 CL 模型的实现</p>
 <p>以下代码展示了排序单元 CL 模型的具体实现，重点在于使用流水线结构模拟硬件的延迟:</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"><span class="keyword">from</span> copy <span class="keyword">import</span> deepcopy</span><br><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> .SortUnitFL <span class="keyword">import</span> sort_fl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 排序单元 CL 模型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SortUnitCL</span>(<span class="title class_ inherited__">Component</span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 构造函数</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">construct</span>(<span class="params">s, nbits=<span class="number">8</span>, nstages=<span class="number">3</span></span>):</span><br><span class="line">        <span class="comment"># 定义输入端口</span></span><br><span class="line">        s.in_val = InPort()</span><br><span class="line">        s.in_ = [InPort(nbits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 定义输出端口</span></span><br><span class="line">        s.out_val = OutPort()</span><br><span class="line">        s.out = [OutPort(nbits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 初始化流水线队列</span></span><br><span class="line">        s.pipe = deque([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]] * (nstages - <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 更新块：核心排序与流水线逻辑</span></span><br><span class="line"><span class="meta">        @update_ff</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">block</span>():</span><br><span class="line">            <span class="comment"># 将输入值与有效性标志排序后存入队列</span></span><br><span class="line">            s.pipe.append(deepcopy([s.in_val] + sort_fl(s.in_)))</span><br><span class="line">            <span class="comment"># 从队列中取出最早的值</span></span><br><span class="line">            data = s.pipe.popleft()</span><br><span class="line">            <span class="comment"># 更新输出端口</span></span><br><span class="line">            s.out_val &lt;&lt;= data[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="built_in">enumerate</span>(data[<span class="number">1</span>:]):</span><br><span class="line">                s.out[i] &lt;&lt;= v</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 行跟踪（显示输入输出状态）</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">line_trace</span>(<span class="params">s</span>):</span><br><span class="line">        <span class="comment"># 输入状态字符串</span></span><br><span class="line">        in_str = <span class="string">'{'</span> + <span class="string">','</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>, s.in_)) + <span class="string">'}'</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s.in_val:</span><br><span class="line">            in_str = <span class="string">' '</span> * <span class="built_in">len</span>(in_str)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 输出状态字符串</span></span><br><span class="line">        out_str = <span class="string">'{'</span> + <span class="string">','</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>, s.out)) + <span class="string">'}'</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s.out_val:</span><br><span class="line">            out_str = <span class="string">' '</span> * <span class="built_in">len</span>(out_str)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 返回格式化的输入输出状态</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f"<span class="subst">{in_str}</span>|<span class="subst">{out_str}</span>"</span></span><br></pre></td></tr></table></figure></div>
@@ -1392,7 +1392,7 @@ mjx-container[display="true"] + br {
 <li>第 4 周期：输入值 <code>{4, 2, 3, 1}</code> 被记录。</li>
 <li>第 7 周期：输出值 <code>{1, 2, 3, 4}</code> 被排序后输出。</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="/image/24112003" alt="24112003"></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24112003.png" alt="24112003"></p>
 <p>此结果验证了 CL 模型正确捕获了排序单元的周期行为。</p>
 <p>CL 模型的意义:</p>
 <ol>
@@ -1427,7 +1427,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-11-20 20:38:23
+                    :</strong> 2024-11-21 08:24:03
             </li>
         
         <li>
