@@ -36,13 +36,15 @@
 <meta property="og:image" content="http://example.com/image/24111001.png">
 <meta property="og:image" content="http://example.com/image/24111102.jpg">
 <meta property="og:image" content="http://example.com/image/24111301.png">
+<meta property="og:image" content="http://example.com/image/24112501.png">
+<meta property="og:image" content="http://example.com/image/24112502.png">
 <meta property="og:image" content="http://example.com/image/24112001.png">
 <meta property="og:image" content="http://example.com/image/24112002.png">
 <meta property="og:image" content="http://example.com/image/24112003.png">
 <meta property="og:image" content="http://example.com/image/24112101.png">
 <meta property="og:image" content="http://example.com/image/24112102.png">
 <meta property="article:published_time" content="2024-11-07T12:20:39.000Z">
-<meta property="article:modified_time" content="2024-11-21T01:00:44.213Z">
+<meta property="article:modified_time" content="2024-11-25T07:03:45.764Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
@@ -676,8 +678,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-21 09:44</span>
-            <span class="mobile">2024-11-21 09:44</span>
+            <span class="desktop">2024-11-25 15:03:45</span>
+            <span class="mobile">2024-11-25 15:03:45</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -715,12 +717,12 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>14.2k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>20.6k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>57 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>82 Mins</span>
         </span>
     
     
@@ -1173,6 +1175,233 @@ mjx-container[display="true"] + br {
 
 <p>此命令将运行 <code>test_random</code> 测试函数，并打印出行跟踪信息，有助于观察每个周期的输入输出关系。<code>-k random</code> 参数确保仅运行包含<code>random</code>名称的测试。</p>
 <p><strong>注意：在设计随机测试时，应考虑模型的延迟，确保期望输出与正确的周期对应。对于复杂模型，可以增加随机测试的周期数以增强测试覆盖率。</strong></p>
+<h3 id="4-7-两级寄存递增器的设计与测试"><a href="#4-7-两级寄存递增器的设计与测试" class="headerlink" title="4.7 两级寄存递增器的设计与测试"></a>4.7 两级寄存递增器的设计与测试</h3><p>本节详细介绍了如何通过模块化和层次化设计思想，将简单的单级寄存递增器模型（RegIncr）组合成一个两级寄存递增器（RegIncr2stage）。</p>
+<p>下图展示了两级寄存递增器的硬件结构，其中：</p>
+<ul>
+<li>输入端口 in 接收 8 位数据。</li>
+<li>两个 RegIncr 模块串联，分别完成递增操作。</li>
+<li>输出端口 out 传递最终结果。</li>
+</ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24112501.png" alt="24112501"></p>
+<p>以下为两级寄存递增器的 PyMTL3 实现。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> .RegIncr <span class="keyword">import</span> RegIncr</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RegIncr2stage</span>( <span class="title class_ inherited__">Component</span> ):</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 构造函数</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">construct</span>(<span class="params"> s </span>):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 接口定义：输入和输出均为 8 位宽</span></span><br><span class="line">        s.in_ = InPort(<span class="number">8</span>)</span><br><span class="line">        s.out = OutPort(<span class="number">8</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 第一级：实例化第一个单级寄存递增器</span></span><br><span class="line">        s.reg_incr_0 = RegIncr()</span><br><span class="line">        connect( s.in_, s.reg_incr_0.in_ )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 第二级：实例化第二个单级寄存递增器</span></span><br><span class="line">        s.reg_incr_1 = RegIncr()</span><br><span class="line">        s.reg_incr_0.out //= s.reg_incr_1.in_  <span class="comment"># 使用//= 连接信号</span></span><br><span class="line">        s.reg_incr_1.out //= s.out</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">line_trace</span>(<span class="params"> s </span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"{} ({}|{}) {}"</span>.<span class="built_in">format</span>(</span><br><span class="line">        s.in_,</span><br><span class="line">        s.reg_incr_0.line_trace(),  <span class="comment"># 第一阶段的线性跟踪</span></span><br><span class="line">        s.reg_incr_1.line_trace(),  <span class="comment"># 第二阶段的线性跟踪</span></span><br><span class="line">        s.out</span><br><span class="line">    )</span><br></pre></td></tr></table></figure></div>
+
+<p>代码解析</p>
+<p>接口定义：</p>
+<ul>
+<li><code>s.in_</code> 是输入端口，接收 8 位宽的数据。</li>
+<li><code>s.out</code> 是输出端口，输出最终的处理结果。</li>
+</ul>
+<p>模块实例化：</p>
+<ul>
+<li>分别实例化了两个单级寄存递增器（<code>RegIncr</code>），分别完成第一阶段和第二阶段的递增操作。</li>
+</ul>
+<p>端口连接：</p>
+<ul>
+<li>使用 connect 方法和 <code>//=</code> 操作符连接输入、输出和子模块接口。</li>
+</ul>
+<p>层次化设计：</p>
+<ul>
+<li>line_trace 方法结合子模块的 line_trace 输出，提供了两阶段递增器内部状态的完整视图。</li>
+</ul>
+<p>测试脚本通过多个测试用例验证了两级寄存递增器的功能，包括：</p>
+<ol>
+<li>小值测试（Small Test）：测试小范围数据的递增功能。</li>
+<li>大值测试（Large Test）：验证较大范围数据的处理情况。</li>
+<li>溢出测试（Overflow Test）：测试数据溢出的正确性。</li>
+<li>随机测试（Random Test）：随机生成数据进行验证，覆盖更广的数据范围。</li>
+</ol>
+<p>以下为部分测试脚本实现：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pymtl3.stdlib.test_utils <span class="keyword">import</span> run_test_vector_sim</span><br><span class="line"><span class="keyword">from</span> ..RegIncr2stage <span class="keyword">import</span> RegIncr2stage</span><br><span class="line"></span><br><span class="line"><span class="comment"># 小值测试</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_small</span>(<span class="params"> cmdline_opts </span>):</span><br><span class="line">    run_test_vector_sim( RegIncr2stage(), [</span><br><span class="line">        (<span class="string">'in_ out*'</span>),</span><br><span class="line">        [ <span class="number">0x00</span>,<span class="string">'?'</span> ],  <span class="comment"># 第一周期：输出未知</span></span><br><span class="line">        [ <span class="number">0x03</span>,<span class="string">'?'</span> ],  <span class="comment"># 第二周期：输出未知</span></span><br><span class="line">        [ <span class="number">0x06</span>, <span class="number">0x02</span> ],  <span class="comment"># 第三周期：输出0x02（0x00+2）</span></span><br><span class="line">        [ <span class="number">0x00</span>, <span class="number">0x05</span> ],  <span class="comment"># 第四周期：输出0x05（0x03+2）</span></span><br><span class="line">        [ <span class="number">0x00</span>, <span class="number">0x08</span> ],  <span class="comment"># 第五周期：输出0x08（0x06+2）</span></span><br><span class="line">    ], cmdline_opts )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机测试</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_random</span>(<span class="params"> cmdline_opts </span>):</span><br><span class="line">    test_vector_table = [(<span class="string">'in_'</span>, <span class="string">'out*'</span>)]</span><br><span class="line">    last_result_0 = <span class="string">'?'</span></span><br><span class="line">    last_result_1 = <span class="string">'?'</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">        rand_value = b8( random.randint(<span class="number">0</span>, <span class="number">0xff</span>) )</span><br><span class="line">        test_vector_table.append([rand_value, last_result_1])</span><br><span class="line">        last_result_1 = last_result_0</span><br><span class="line">        last_result_0 = b8(rand_value + <span class="number">2</span>, trunc_int=<span class="literal">True</span>)</span><br><span class="line">    run_test_vector_sim( RegIncr2stage(), test_vector_table, cmdline_opts )</span><br></pre></td></tr></table></figure></div>
+
+<p>逻辑说明:</p>
+<p>延迟处理：</p>
+<ul>
+<li>由于两级寄存递增器的两周期延迟，前两周期的输出为未知值（<code>?</code>）。</li>
+<li>测试用例在第三周期开始断言输出值是否正确。</li>
+</ul>
+<p>随机测试：</p>
+<ul>
+<li>随机生成 20 组输入数据，通过计算参考输出（<code>+2</code>），验证递增器的功能正确性。</li>
+<li>延迟处理同样适用于随机测试，注意保持参考输出与实际行为的一致性。</li>
+</ul>
+<p>接下来可以进行运行测试与结果分析。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行所有测试用例</span></span><br><span class="line">% <span class="built_in">cd</span> <span class="variable">${TUTROOT}</span>/build</span><br><span class="line">% pytest ../tut3_pymtl/regincr/test/RegIncr2stage_test.py -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行特定测试用例</span></span><br><span class="line">% pytest ../tut3_pymtl/regincr/test/RegIncr2stage_test.py -k test_small</span><br></pre></td></tr></table></figure></div>
+
+<p>运行以下命令生成线性跟踪信息：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">% pytest ../tut3_pymtl/regincr/test/RegIncr2stage_test.py -k test_small -s</span><br></pre></td></tr></table></figure></div>
+
+<p>图 20 展示了 test_small 测试的线性跟踪结果，其中：</p>
+<ul>
+<li>每一列对应模型中不同模块的状态。</li>
+<li>数据从 <code>in</code> 输入，经过 <code>reg_incr_0</code> 和 <code>reg_incr_1</code> 两阶段处理，最终输出到 <code>out</code>。</li>
+<li>通过观察高亮标注的 <code>0x03</code>，可以清晰地看到数据如何逐周期传递并递增。</li>
+</ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24112502.png" alt="24112502"></p>
+<p>使用以下命令生成 VCD 波形文件：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">% pytest ../tut3_pymtl/regincr/test/RegIncr2stage_test.py --dump-vcd</span><br><span class="line">% <span class="built_in">ls</span> *.vcd</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4-8-使用“静态”展开进行组件参数化"><a href="#4-8-使用“静态”展开进行组件参数化" class="headerlink" title="4.8 使用“静态”展开进行组件参数化"></a>4.8 使用“静态”展开进行组件参数化</h3><p>在硬件设计中，参数化组件能够显著提高模块的复用性，并支持灵活的设计空间探索。PyMTL3 提供了动态硬件生成工具，结合 Python 的动态特性，允许通过参数化实现组件的“静态”展开。参数化组件可以通过构造函数传递参数来决定组件的接口、行为以及子组件的结构组合。</p>
+<p>需要注意的是：</p>
+<ul>
+<li>PyMTL3 的静态展开（Static Elaboration）发生在模拟器或测试脚本的运行时，通过 Python 的动态代码生成硬件结构。</li>
+<li>这种展开过程与传统硬件描述语言（如 Verilog 或 VHDL）的静态展开类似，只不过 PyMTL3 是在“运行时”完成展开。</li>
+<li>参数化组件的不同配置需要独立验证，这通常要求更加复杂的测试策略以覆盖所有可能的参数组合。</li>
+</ul>
+<p>下面是一个支持位宽（nbits）和递增量（amount）参数化的组合逻辑递增器。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Incrementer</span>( <span class="title class_ inherited__">Component</span> ):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">construct</span>(<span class="params"> s, nbits=<span class="number">1</span>, amount=<span class="number">1</span> </span>):  <span class="comment"># 参数 nbits 和 amount</span></span><br><span class="line">        <span class="comment"># 接口</span></span><br><span class="line">        s.in_ = InPort( nbits )</span><br><span class="line">        s.out = OutPort( nbits )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 参数化递增逻辑</span></span><br><span class="line"><span class="meta">        @update</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">comb_logic</span>():</span><br><span class="line">            s.out @= s.in_ + amount</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>端口宽度通过 <code>nbits</code> 参数控制，适用于不同数据宽度的输入和输出信号。</li>
+<li>递增量由 <code>amount</code> 参数决定，使递增器能够适配不同加法需求。</li>
+</ul>
+<p>下面是一个支持寄存器级数参数化的多级寄存递增器（RegIncrNstage）。通过参数 <code>nstages</code>，用户可以灵活指定寄存递增器的级数。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> .RegIncr <span class="keyword">import</span> RegIncr</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RegIncrNstage</span>( <span class="title class_ inherited__">Component</span> ):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">construct</span>(<span class="params"> s, nstages=<span class="number">2</span> </span>):  <span class="comment"># 参数 nstages 指定寄存递增器的级数</span></span><br><span class="line">        <span class="comment"># 接口定义</span></span><br><span class="line">        s.in_ = InPort(<span class="number">8</span>)</span><br><span class="line">        s.out = OutPort(<span class="number">8</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 实例化多级寄存递增器</span></span><br><span class="line">        s.reg_incrs = [ RegIncr() <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(nstages) ]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 输入连接到第一个寄存递增器</span></span><br><span class="line">        s.in_ //= s.reg_incrs[<span class="number">0</span>].in_</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 级联连接</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(nstages - <span class="number">1</span>):</span><br><span class="line">            s.reg_incrs[i].out //= s.reg_incrs[i+<span class="number">1</span>].in_</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 输出连接到最后一个寄存递增器</span></span><br><span class="line">        s.reg_incrs[-<span class="number">1</span>].out //= s.out</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 线性跟踪</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">line_trace</span>(<span class="params"> s </span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f"<span class="subst">{s.in_}</span> "</span> \</span><br><span class="line">               <span class="string">f"(<span class="subst">{<span class="string">'|'</span>.join([ <span class="built_in">str</span>(x.out) <span class="keyword">for</span> x <span class="keyword">in</span> s.reg_incrs ])}</span>) "</span> \</span><br><span class="line">               <span class="string">f"<span class="subst">{s.out}</span>"</span></span><br></pre></td></tr></table></figure></div>
+
+
+<p>参数化组件的不同配置需要动态生成测试用例和测试向量，以覆盖所有参数组合。</p>
+<p>对于参数化的寄存递增器，其参考输出与级数（nstages）相关，需要动态生成测试向量表。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">mk_test_vector_table</span>(<span class="params"> nstages, inputs </span>):</span><br><span class="line">    <span class="comment"># 补充零值以模拟延迟</span></span><br><span class="line">    inputs.extend( [<span class="number">0</span>]*nstages )</span><br><span class="line">    </span><br><span class="line">    test_vector_table = [ (<span class="string">'in_ out*'</span>) ]</span><br><span class="line">    last_results = collections.deque( [<span class="string">'?'</span>]*nstages )  <span class="comment"># 初始化延迟队列</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> input_ <span class="keyword">in</span> inputs:</span><br><span class="line">        test_vector_table.append( [ input_, last_results.popleft() ] )</span><br><span class="line">        last_results.append( b8( input_ + nstages, trunc_int=<span class="literal">True</span> ) )</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> test_vector_table</span><br></pre></td></tr></table></figure></div>
+
+<p>解析：</p>
+<ol>
+<li>延迟模拟：</li>
+</ol>
+<ul>
+<li>使用 <code>collections.deque</code> 模拟多级寄存递增器的延迟。</li>
+<li>输入向量后补零，确保输出参考值正确。</li>
+</ul>
+<ol start="2">
+<li>位截断：</li>
+</ol>
+<ul>
+<li>使用 <code>trunc_int=True</code> 确保计算结果符合位宽限制。</li>
+</ul>
+<p>通过 <code>pytest.mark.parametrize</code>，可以为参数化组件生成测试用例。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">test_case_table = mk_test_case_table([</span><br><span class="line">    ( <span class="string">"nstages inputs "</span>),</span><br><span class="line">    [ <span class="string">"2stage_small"</span>, <span class="number">2</span>, [ <span class="number">0x00</span>, <span class="number">0x03</span>, <span class="number">0x06</span> ] ],</span><br><span class="line">    [ <span class="string">"2stage_large"</span>, <span class="number">2</span>, [ <span class="number">0xa0</span>, <span class="number">0xb3</span>, <span class="number">0xc6</span> ] ],</span><br><span class="line">    [ <span class="string">"3stage_small"</span>, <span class="number">3</span>, [ <span class="number">0x00</span>, <span class="number">0x03</span>, <span class="number">0x06</span> ] ],</span><br><span class="line">    [ <span class="string">"3stage_large"</span>, <span class="number">3</span>, [ <span class="number">0xa0</span>, <span class="number">0xb3</span>, <span class="number">0xc6</span> ] ],</span><br><span class="line">])</span><br><span class="line"><span class="meta">@pytest.mark.parametrize(<span class="params"> **test_case_table </span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params"> test_params, cmdline_opts </span>):</span><br><span class="line">    nstages = test_params.nstages</span><br><span class="line">    inputs = test_params.inputs</span><br><span class="line">    run_test_vector_sim( RegIncrNstage( nstages ),</span><br><span class="line">                         mk_test_vector_table( nstages, inputs ), cmdline_opts )</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>每一行对应一个参数化测试，列表示不同的参数。</li>
+<li><code>pytest.mark.parametrize</code> 自动生成并运行对应的测试用例。</li>
+</ul>
+<p>使用随机生成的输入向量对多级寄存递增器进行测试。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@pytest.mark.parametrize(<span class="params"> <span class="string">"n"</span>, [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> ] </span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_random</span>(<span class="params"> n, cmdline_opts </span>):</span><br><span class="line">    run_test_vector_sim( RegIncrNstage( nstages=n ),</span><br><span class="line">                         mk_test_vector_table( n, sample(<span class="built_in">range</span>(<span class="number">0xff</span>),<span class="number">20</span>) ), cmdline_opts )</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>使用 <code>sample(range(0xff), 20)</code> 生成 20 个随机输入值。</li>
+</ul>
+<p>运行所有测试用例：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">% <span class="built_in">cd</span> <span class="variable">${TUTROOT}</span>/build</span><br><span class="line">% pytest ../tut3_pymtl/regincr/test/RegIncrNstage_test.py -v</span><br></pre></td></tr></table></figure></div>
+
+<p>运行指定测试用例：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">% pytest ../tut3_pymtl/regincr/test/RegIncrNstage_test.py -k 3stage -sv</span><br></pre></td></tr></table></figure></div>
+
+<p>生成波形文件：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">% pytest ../tut3_pymtl/regincr/test/RegIncrNstage_test.py --dump-vcd</span><br><span class="line">% <span class="built_in">ls</span> *.vcd</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>测试通过显示 <code>PASSED</code>，若失败会显示 <code>FAILED</code>。</li>
+<li>参数化测试生成的测试用例以方括号标记参数组合（如 <code>test[2stage_small]</code>）。</li>
+</ul>
+<h3 id="4-9-打包模型集合"><a href="#4-9-打包模型集合" class="headerlink" title="4.9 打包模型集合"></a>4.9 打包模型集合</h3><p>在硬件设计中，尤其是使用 PyMTL3 框架时，将相关模型组织到单独的子目录中可以显著提升项目的模块化程度。通过打包（Packaging），可以使这些子目录成为标准的 Python 包，并通过 <code>import</code> 命令方便地在其他子项目中复用这些模型。本节详细介绍了如何配置打包、使用模型集合，以及如何正确管理包路径。</p>
+<ol>
+<li>什么是打包？</li>
+</ol>
+<ul>
+<li>打包是将一个子目录（即子项目）转换为标准 Python 包的过程。一个打包的子项目可以通过 <code>import</code> 命令访问其内部的模型、函数或类。</li>
+<li>打包的核心是创建一个 Python 包配置脚本，命名为 <code>__init__.py</code>，并将其放置在子项目的根目录中。</li>
+</ul>
+<ol start="2">
+<li>子项目目录结构</li>
+</ol>
+<ul>
+<li>子项目通常由一组相关模型组成，位于一个单独的子目录中。</li>
+<li>如果子项目中存在嵌套的子目录，每个子目录都需要包含一个 <code>__init__.py</code> 文件，即使该文件为空。</li>
+</ul>
+<ol start="3">
+<li><code>__init__.py</code> 的作用</li>
+</ol>
+<ul>
+<li><code>__init__.py</code> 脚本的主要功能是导入子项目中的模型、函数或类，从而创建包命名空间。</li>
+</ul>
+<p>下面展示了 <code>regincr</code> 包的配置脚本 <code>__init__.py</code> 的内容。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#=========================================================================</span></span><br><span class="line"><span class="comment"># regincr</span></span><br><span class="line"><span class="comment">#=========================================================================</span></span><br><span class="line"><span class="keyword">from</span> .RegIncr <span class="keyword">import</span> RegIncr  <span class="comment"># 导入单级寄存递增器模型</span></span><br><span class="line"><span class="keyword">from</span> .RegIncr2stage <span class="keyword">import</span> RegIncr2stage  <span class="comment"># 导入两级寄存递增器模型</span></span><br><span class="line"><span class="keyword">from</span> .RegIncrNstage <span class="keyword">import</span> RegIncrNstage  <span class="comment"># 导入多级寄存递增器模型</span></span><br></pre></td></tr></table></figure></div>
+
+<p>解析：</p>
+<ol>
+<li>导入模型：</li>
+</ol>
+<ul>
+<li>将 <code>regincr</code> 子项目中的所有模型导入包命名空间。</li>
+<li>使用 <code>from .</code> 表示从当前目录（即 <code>regincr</code> 子目录）导入模块。</li>
+</ul>
+<ol start="2">
+<li>灵活扩展：</li>
+</ol>
+<ul>
+<li>除了模型，还可以将其他功能，例如辅助函数或工具类，导入包命名空间，供外部使用。</li>
+</ul>
+<p>在项目根目录（TUTROOT）中，可以直接导入打包后的 <code>regincr</code> 子项目，并对其中的模型进行使用和仿真。</p>
+<p>下面展示了如何从项目根目录导入包，并对模型进行简单仿真。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">% <span class="built_in">cd</span> <span class="variable">${TUTROOT}</span>  <span class="comment"># 切换到项目根目录</span></span><br><span class="line">% python          <span class="comment"># 启动 Python 解释器</span></span><br></pre></td></tr></table></figure></div>
+
+<p>我们之前建议使用conda在虚拟环境中运行，如果你遵守了，操作流程也是类似的。</p>
+<p>在 Python 交互环境中，运行以下命令：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from pymtl3 import *                             <span class="comment"># 导入 PyMTL3 框架</span></span><br><span class="line">&gt;&gt;&gt; from tut3_pymtl.regincr import RegIncr           <span class="comment"># 从 regincr 包中导入 RegIncr 模型</span></span><br><span class="line">&gt;&gt;&gt; model = RegIncr()                                <span class="comment"># 实例化模型</span></span><br><span class="line">&gt;&gt;&gt; model.apply( DefaultPassGroup() )                <span class="comment"># 应用默认 Pass 组</span></span><br><span class="line">&gt;&gt;&gt; model.sim_reset()                                <span class="comment"># 重置仿真</span></span><br><span class="line">&gt;&gt;&gt; model.in_ @= 0x24                                <span class="comment"># 设置输入</span></span><br><span class="line">&gt;&gt;&gt; model.sim_tick()                                 <span class="comment"># 执行一个时钟周期</span></span><br><span class="line">&gt;&gt;&gt; model.out                                        <span class="comment"># 检查输出</span></span><br><span class="line">Bits8(0x25)                                          <span class="comment"># 输出正确，递增 1</span></span><br></pre></td></tr></table></figure></div>
+
+<p>解析：</p>
+<ul>
+<li><p>使用 <code>from tut3_pymtl.regincr import RegIncr</code> 导入模型。</p>
+</li>
+<li><p>使用 PyMTL3 的 API 对模型进行仿真，包括初始化、设置输入值、执行时钟周期操作，以及读取输出值。</p>
+</li>
+</ul>
+<p>四、从构建目录中导入包</p>
+<p>如果切换到构建目录（build），直接导入 <code>tut3_pymtl.regincr</code> 包会报错。因为 Python 默认的搜索路径不包含 <code>tut3_pymtl</code> 包所在的项目根目录。</p>
+<p>下面展示了如何通过设置环境变量 <code>PYTHONPATH</code> 解决这一问题。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">% <span class="built_in">cd</span> <span class="variable">${TUTROOT}</span>/build                     <span class="comment"># 切换到构建目录</span></span><br><span class="line">% <span class="built_in">env</span> PYTHONPATH=<span class="string">".."</span> python              <span class="comment"># 设置 PYTHONPATH 为项目根目录</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在 Python 交互环境中，运行以下命令：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from tut3_pymtl.regincr import RegIncr           <span class="comment"># 导入 RegIncr 模型</span></span><br><span class="line">&gt;&gt;&gt; model = RegIncr()                                <span class="comment"># 实例化模型</span></span><br><span class="line">&gt;&gt;&gt; model.elaborate()                                <span class="comment"># 展开模型结构</span></span><br><span class="line">&gt;&gt;&gt; [ x.get_field_name() <span class="keyword">for</span> x <span class="keyword">in</span> model.get_input_value_ports() ]  <span class="comment"># 获取输入端口名称</span></span><br><span class="line">[<span class="string">'clk'</span>, <span class="string">'in_'</span>, <span class="string">'reset'</span>]</span><br><span class="line">&gt;&gt;&gt; [ x.get_field_name() <span class="keyword">for</span> x <span class="keyword">in</span> model.get_wires() ]             <span class="comment"># 获取内部连线名称</span></span><br><span class="line">[<span class="string">'reg_out'</span>]</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><p>使用 <code>env PYTHONPATH=".."</code> 将项目根目录添加到 Python 包搜索路径。</p>
+</li>
+<li><p>调用 <code>model.elaborate()</code> 方法展开模型，生成完整的硬件结构。</p>
+</li>
+<li><p>使用 PyMTL3 提供的接口检查方法，例如 <code>get_input_value_ports()</code> 和 <code>get_wires()</code>，可以获取模型的输入输出端口及内部连线信息。</p>
+</li>
+</ul>
+<p>PyMTL3 框架提供了一系列强大的 API，用于检查已展开（elaborated）模型的结构和组件。这些工具对于调试复杂模型和参数化模型尤为有用。</p>
+<ol>
+<li>获取端口信息：</li>
+</ol>
+<ul>
+<li><code>get_input_value_ports()</code>：返回模型的输入端口列表。</li>
+<li><code>get_output_value_ports()</code>：返回模型的输出端口列表。</li>
+</ul>
+<ol start="2">
+<li>获取内部连线：</li>
+</ol>
+<ul>
+<li><code>get_wires()</code>：返回模型内部的连线。</li>
+</ul>
+<ol start="3">
+<li>获取子组件：</li>
+</ol>
+<ul>
+<li><code>get_child_components()</code>：返回模型的子组件列表。</li>
+</ul>
+<ol start="4">
+<li>获取并发块：</li>
+</ol>
+<ul>
+<li><code>get_update_blocks()</code>：返回模型的并发块。</li>
+</ul>
+<p>示例：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; model.get_input_value_ports()        <span class="comment"># 检查输入端口</span></span><br><span class="line">&gt;&gt;&gt; model.get_child_components()         <span class="comment"># 检查子组件</span></span><br></pre></td></tr></table></figure></div>
+
+
 <h2 id="第05章-排序单元-Sort-Unit"><a href="#第05章-排序单元-Sort-Unit" class="headerlink" title="第05章 排序单元(Sort Unit)"></a>第05章 排序单元(Sort Unit)</h2><h3 id="5-1-排序单元的-FL-模型"><a href="#5-1-排序单元的-FL-模型" class="headerlink" title="5.1 排序单元的 FL 模型"></a>5.1 排序单元的 FL 模型</h3><p><strong>功能级（Functional-Level，FL）模型专注于实现目标硬件的功能行为，而不关注具体的硬件时序。FL 模型通常是硬件设计的第一步，它可以快速实现功能验证，同时为后续的周期级（Cycle-Level，CL）和寄存器传输级（Register-Transfer-Level，RTL）模型设计打下基础。</strong></p>
 <p><strong>排序单元（Sort Unit）</strong>的功能是对四个输入值进行排序，使输出端口按从小到大的顺序排列。排序单元具有以下接口：</p>
 <p>输入端口：</p>
@@ -1477,6 +1706,247 @@ mjx-container[display="true"] + br {
 
 <p>输出行跟踪如下（Figure 35）：</p>
 <p><img lazyload="" src="/images/loading.svg" data-src="/image/24112102.png" alt="24112102"></p>
+<h3 id="5-4-基于结构化-RTL-模型的排序单元"><a href="#5-4-基于结构化-RTL-模型的排序单元" class="headerlink" title="5.4 基于结构化 RTL 模型的排序单元"></a>5.4 基于结构化 RTL 模型的排序单元</h3><p>平面RTL模型虽然可以直接实现排序单元，但其设计复杂且代码单一，难以有效利用排序器内部的层次化结构。在这一节中，我们采用结构化RTL模型，通过模块化和层次化的设计方法，将复杂设计分解为多个子模块。这种方法的主要优点包括：</p>
+<ul>
+<li>可维护性：通过模块化分离复杂功能，降低了设计和测试的复杂性。</li>
+<li>独立测试：每个子模块可以独立开发和测试，从而提高整体模型的可靠性。</li>
+<li>代码清晰性：层次化的设计使得代码更易读且逻辑清晰。</li>
+</ul>
+<p>它的设计思想如下：</p>
+<ol>
+<li>结构化设计：</li>
+</ol>
+<ul>
+<li>使用寄存器存储流水线中每个阶段的中间状态。</li>
+<li>将排序逻辑封装到独立的<strong>最小-最大单元（MinMaxUnit）</strong>中。</li>
+</ul>
+<ol start="2">
+<li>模块化流水线：</li>
+</ol>
+<ul>
+<li>每个流水线阶段由寄存器和组合逻辑组成。</li>
+<li>数据从一个阶段流入下一个阶段，同时每个阶段执行特定的排序逻辑。</li>
+</ul>
+<ol start="3">
+<li>测试可复用性：</li>
+</ol>
+<ul>
+<li>测试脚本可共享之前的测试向量和测试工具，提高测试效率。</li>
+</ul>
+<p>以下是排序单元结构化RTL模型的代码（以第一个流水线阶段为例）：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pymtl3.stdlib.basic_rtl <span class="keyword">import</span> Reg, RegRst</span><br><span class="line"><span class="keyword">from</span> .MinMaxUnit <span class="keyword">import</span> MinMaxUnit  <span class="comment"># 引入最小-最大单元模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SortUnitStructRTL</span>(<span class="title class_ inherited__">Component</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">construct</span>(<span class="params">s, nbits=<span class="number">8</span></span>):</span><br><span class="line">        <span class="comment"># ---------------------------------------------------------------------</span></span><br><span class="line">        <span class="comment"># 接口定义</span></span><br><span class="line">        <span class="comment"># ---------------------------------------------------------------------</span></span><br><span class="line">        s.in_val = InPort()  <span class="comment"># 输入有效信号</span></span><br><span class="line">        s.in_ = [InPort(nbits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]  <span class="comment"># 4个输入端口，每个宽度为nbits</span></span><br><span class="line">        s.out_val = OutPort()  <span class="comment"># 输出有效信号</span></span><br><span class="line">        s.out = [OutPort(nbits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]  <span class="comment"># 4个输出端口</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># ---------------------------------------------------------------------</span></span><br><span class="line">        <span class="comment"># Stage S0-&gt;S1: 流水线寄存器</span></span><br><span class="line">        <span class="comment"># ---------------------------------------------------------------------</span></span><br><span class="line">        <span class="comment"># 输入有效信号寄存器化（带复位功能）</span></span><br><span class="line">        s.val_S0S1 = RegRst(Bits1)  </span><br><span class="line">        s.val_S0S1.in_ //= s.in_val  <span class="comment"># 将输入有效信号连接到寄存器输入</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 输入数据寄存器化</span></span><br><span class="line">        s.elm_S0S1 = [Reg(mk_bits(nbits)) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">            s.elm_S0S1[i].in_ //= s.in_[i]  <span class="comment"># 将每个输入端口连接到对应寄存器的输入端口</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># ---------------------------------------------------------------------</span></span><br><span class="line">        <span class="comment"># Stage S1: 组合逻辑（最小-最大排序单元）</span></span><br><span class="line">        <span class="comment"># ---------------------------------------------------------------------</span></span><br><span class="line">        <span class="comment"># 第一组比较单元</span></span><br><span class="line">        s.minmax0_S1 = m = MinMaxUnit(nbits)  <span class="comment"># 实例化一个最小-最大单元</span></span><br><span class="line">        m.in0 //= s.elm_S0S1[<span class="number">0</span>].out  <span class="comment"># 第1个寄存器的输出连接到最小-最大单元的输入0</span></span><br><span class="line">        m.in1 //= s.elm_S0S1[<span class="number">1</span>].out  <span class="comment"># 第2个寄存器的输出连接到最小-最大单元的输入1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第二组比较单元</span></span><br><span class="line">        s.minmax1_S1 = m = MinMaxUnit(nbits)</span><br><span class="line">        m.in0 //= s.elm_S0S1[<span class="number">2</span>].out</span><br><span class="line">        m.in1 //= s.elm_S0S1[<span class="number">3</span>].out</span><br></pre></td></tr></table></figure></div>
+
+<p>代码详解:</p>
+<ol>
+<li>接口定义：</li>
+</ol>
+<ul>
+<li>定义了一个输入有效信号端口<code>in_val</code>和一个输出有效信号端口<code>out_val</code>，用于指示输入数据和输出数据的有效性。</li>
+<li>定义了4个输入端口<code>in_</code>和4个输出端口<code>out</code>，每个端口的位宽为<code>nbits</code>（默认为8位）。</li>
+</ul>
+<ol start="2">
+<li>流水线寄存器（Stage S0-&gt;S1）：</li>
+</ol>
+<ul>
+<li>使用RegRst寄存器存储输入有效信号（<code>in_val</code>），并支持复位功能。</li>
+<li>使用4个普通寄存器（<code>Reg</code>）存储输入数据，每个寄存器分别对应4个输入端口。</li>
+<li>通过//=操作符连接寄存器的输入和接口的输入，实现信号的直连。</li>
+</ul>
+<ol start="3">
+<li>组合逻辑（<code>Stage S1</code>）：</li>
+</ol>
+<ul>
+<li>实例化两个最小-最大比较单元（MinMaxUnit），每个单元比较两个输入数据并输出较小值和较大值。</li>
+<li>第一组比较单元（<code>minmax0_S1</code>）比较寄存器<code>elm_S0S1[0]</code>和<code>elm_S0S1[1]</code>的输出数据。</li>
+<li>第二组比较单元（<code>minmax1_S1</code>）比较寄存器<code>elm_S0S1[2]</code>和<code>elm_S0S1[3]</code>的输出数据。</li>
+</ul>
+<ol start="4">
+<li>模块间连接：</li>
+</ol>
+<ul>
+<li>使用<code>//=</code>操作符将寄存器输出连接到比较单元输入，避免声明中间信号，简化代码。</li>
+</ul>
+<p>测试脚本:</p>
+<p>结构化RTL模型的测试脚本包含以下几个关键点：</p>
+<ol>
+<li>测试脚本复用：</li>
+</ol>
+<ul>
+<li>使用SortUnitCL_test.py中的<code>mk_test_vector_table</code>生成测试向量，从而复用已有的测试逻辑。</li>
+</ul>
+<ol start="2">
+<li>测试用例：</li>
+</ol>
+<ul>
+<li>包含四个定向测试（directed tests）和一个随机测试（random test），覆盖了排序单元的主要功能。</li>
+</ul>
+<ol start="3">
+<li>运行测试：</li>
+</ol>
+<ul>
+<li>执行所有测试：</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">${TUTROOT}</span>/build</span><br><span class="line">pytest ../tut3_pymtl/sort/test/SortUnitStructRTL_test.py -v</span><br></pre></td></tr></table></figure></div>
+
+
+<ul>
+<li>查看基本测试的行跟踪：</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest ../tut3_pymtl/sort/test/SortUnitStructRTL_test.py -k test_basic -s</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="5-5-使用模拟器评估排序单元"><a href="#5-5-使用模拟器评估排序单元" class="headerlink" title="5.5 使用模拟器评估排序单元"></a>5.5 使用模拟器评估排序单元</h3><p>在硬件设计中，评估（Evaluation）是验证（Verification）之后的关键一步。评估的核心目标是量化设计性能，例如执行某个输入数据集所需的时钟周期数、平均延迟、吞吐量等。这一步的重点在于使用模拟器而不是单元测试，模拟器通过完整的循环流程运行设计，生成统计数据，而不再关注具体功能是否正确。</p>
+<p>模拟器的功能</p>
+<ol>
+<li>处理命令行参数：通过参数指定实现模型、输入模式等选项。</li>
+<li>生成输入数据集：支持多种输入模式（如随机输入、升序输入、降序输入）。</li>
+<li>实例化并展开设计：根据指定的实现类型创建模型。</li>
+<li>主循环运行设计：驱动输入信号，检测输出有效信号，记录设计行为。</li>
+<li>生成性能统计数据：包括总时钟周期数、平均每次排序所需周期数等。</li>
+</ol>
+<p>以下是简化版模拟器脚本的代码和功能详细说明：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">opts = parse_cmdline()  <span class="comment"># 解析命令行参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># 1. 生成输入数据集</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line">ninputs = <span class="number">100</span>  <span class="comment"># 输入数据集大小（可调整）</span></span><br><span class="line">inputs = []  <span class="comment"># 初始化输入数据列表</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据命令行参数生成输入数据集</span></span><br><span class="line"><span class="keyword">if</span> opts.<span class="built_in">input</span> == <span class="string">"random"</span>:  <span class="comment"># 随机模式</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(ninputs):</span><br><span class="line">        inputs.append([randint(<span class="number">0</span>, <span class="number">0xff</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)])  <span class="comment"># 每组生成4个随机数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># 2. 实例化并展开设计</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line">model_impl_dict = {</span><br><span class="line">    <span class="string">'cl'</span>: SortUnitCL,          <span class="comment"># 周期近似模型（Cycle-Level Approximate Model）</span></span><br><span class="line">    <span class="string">'rtl-flat'</span>: SortUnitFlatRTL,  <span class="comment"># 平面RTL模型</span></span><br><span class="line">    <span class="string">'rtl-struct'</span>: SortUnitStructRTL  <span class="comment"># 结构化RTL模型</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">model = model_impl_dict[opts.impl]()  <span class="comment"># 根据命令行参数选择对应模型</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置模拟器的选项</span></span><br><span class="line">unique_name = <span class="string">f"sort-<span class="subst">{opts.impl}</span>-<span class="subst">{opts.<span class="built_in">input</span>}</span>"</span>  <span class="comment"># 唯一标识模拟运行</span></span><br><span class="line">cmdline_opts = {</span><br><span class="line">    <span class="string">'dump_vcd'</span>: <span class="string">f"<span class="subst">{unique_name}</span>"</span> <span class="keyword">if</span> opts.dump_vcd <span class="keyword">else</span> <span class="string">''</span>,  <span class="comment"># 是否生成波形文件</span></span><br><span class="line">    <span class="string">'test_verilog'</span>: <span class="string">'zeros'</span> <span class="keyword">if</span> opts.translate <span class="keyword">else</span> <span class="string">''</span>       <span class="comment"># 是否进行Verilog测试</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置并初始化模型</span></span><br><span class="line">model = config_model_with_cmdline_opts(model, cmdline_opts, duts=[])</span><br><span class="line">model.apply(DefaultPassGroup(linetrace=opts.trace))  <span class="comment"># 添加行跟踪（Line Trace）</span></span><br><span class="line">model.sim_reset()  <span class="comment"># 重置模拟器</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># 3. 执行主循环</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line">counter = <span class="number">0</span>  <span class="comment"># 记录已处理输出的计数器</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> counter &lt; ninputs:</span><br><span class="line">    <span class="comment"># 记录输出有效信号</span></span><br><span class="line">    <span class="keyword">if</span> model.out_val:  <span class="comment"># 如果输出有效信号为True</span></span><br><span class="line">        counter += <span class="number">1</span>   <span class="comment"># 增加计数器</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 驱动输入信号</span></span><br><span class="line">    <span class="keyword">if</span> inputs:  <span class="comment"># 如果输入队列非空</span></span><br><span class="line">        model.in_val @= <span class="number">1</span>  <span class="comment"># 设置输入有效信号</span></span><br><span class="line">        <span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="built_in">enumerate</span>(inputs.pop()):  <span class="comment"># 弹出一组输入数据</span></span><br><span class="line">            model.in_[i] @= v</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        model.in_val @= <span class="number">0</span>  <span class="comment"># 设置输入无效信号</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):  <span class="comment"># 清空输入端口</span></span><br><span class="line">            model.in_[i] @= <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    model.sim_eval_combinational()  <span class="comment"># 计算组合逻辑</span></span><br><span class="line">    <span class="keyword">if</span> opts.trace:  <span class="comment"># 如果启用行跟踪</span></span><br><span class="line">        model.print_line_trace()  <span class="comment"># 打印行跟踪信息</span></span><br><span class="line">    model.sim_tick()  <span class="comment"># 模拟器前进一个时钟周期</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># 4. 报告统计数据</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="keyword">if</span> opts.stats:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f"num_cycles = <span class="subst">{model.ncycles}</span>"</span>)  <span class="comment"># 总时钟周期数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f"num_cycles_per_sort = <span class="subst">{model.ncycles / ninputs:<span class="number">.2</span>f}</span>"</span>)  <span class="comment"># 每次排序的平均周期数</span></span><br></pre></td></tr></table></figure></div>
+
+<p>代码详解</p>
+<ol>
+<li>生成输入数据集</li>
+</ol>
+<ul>
+<li>根据<code>--input</code>命令行参数生成输入数据：</li>
+<li>随机模式（random）：每组数据包含4个随机数，范围为[0, 255]。</li>
+<li>升序模式（sorted-fwd）：生成升序排列的输入数据。</li>
+<li>降序模式（sorted-rev）：生成降序排列的输入数据。</li>
+<li>可以通过修改<code>ninputs</code>变量调整数据集大小。</li>
+</ul>
+<ol start="2">
+<li>实例化并展开模型</li>
+</ol>
+<ul>
+<li>使用字典<code>model_impl_dict</code>映射命令行参数到模型类，实现灵活切换模型：</li>
+<li><code>cl</code>模型：周期近似模型，快速模拟排序行为。</li>
+<li><code>rtl-flat</code>模型：平面RTL模型，直接实现硬件行为。</li>
+<li><code>rtl-struct</code>模型：结构化RTL模型，通过层次化结构实现更高的代码复用性。</li>
+</ul>
+<p>配置选项包括：</p>
+<ul>
+<li>是否生成波形文件（<code>--dump-vcd</code>）。</li>
+<li>是否进行Verilog测试（<code>--test-verilog</code>）。</li>
+</ul>
+<ol start="3">
+<li>执行主循环</li>
+</ol>
+<ul>
+<li>模拟器通过主循环驱动设计，记录输出有效信号并计算性能统计数据。</li>
+</ul>
+<p>输入处理逻辑：</p>
+<ul>
+<li>如果输入队列非空，则弹出一组数据，驱动输入端口。</li>
+<li>如果输入队列为空，则设置输入信号为无效。</li>
+</ul>
+<p>输出处理逻辑：</p>
+<ul>
+<li>检测<code>out_val</code>信号，统计输出次数。</li>
+</ul>
+<p>调用流程：</p>
+<ul>
+<li><code>sim_eval_combinational()</code>：更新组合逻辑。</li>
+<li><code>sim_tick()</code>：前进一个时钟周期。</li>
+</ul>
+<ol start="4">
+<li>统计结果输出</li>
+</ol>
+<ul>
+<li>模拟器通过<code>--stats</code>选项输出以下统计信息：</li>
+<li>总时钟周期数（<code>num_cycles</code>）：完成所有数据处理所需的总周期数。</li>
+<li>平均每次排序的周期数（<code>num_cycles_per_sort</code>）：衡量设计的吞吐量。</li>
+</ul>
+<p>命令行参数使用示例</p>
+<ol>
+<li>评估不同实现模型</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">${TUTROOT}</span>/build</span><br><span class="line">../tut3_pymtl/sort/sort-sim --stats --impl cl         <span class="comment"># 周期近似模型</span></span><br><span class="line">../tut3_pymtl/sort/sort-sim --stats --impl rtl-flat   <span class="comment"># 平面RTL模型</span></span><br><span class="line">../tut3_pymtl/sort/sort-sim --stats --impl rtl-struct <span class="comment"># 结构化RTL模型</span></span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>使用不同的输入数据集</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">../tut3_pymtl/sort/sort-sim --stats --impl cl --input random       <span class="comment"># 随机输入</span></span><br><span class="line">../tut3_pymtl/sort/sort-sim --stats --impl cl --input sorted-fwd   <span class="comment"># 升序输入</span></span><br><span class="line">../tut3_pymtl/sort/sort-sim --stats --impl cl --input sorted-rev   <span class="comment"># 降序输入</span></span><br></pre></td></tr></table></figure></div>
+
+<ol start="3">
+<li>生成行跟踪和波形文件</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">../tut3_pymtl/sort/sort-sim --stats --impl rtl-struct --trace --dump-vcd</span><br></pre></td></tr></table></figure></div>
+
+<p>注意事项</p>
+<ol>
+<li>模拟器与单元测试的区别：</li>
+</ol>
+<ul>
+<li>模拟器：关注设计的性能指标，例如吞吐量和延迟。</li>
+<li>单元测试：验证设计的功能正确性。</li>
+</ul>
+<ol start="2">
+<li>流水线启动开销：</li>
+</ol>
+<ul>
+<li>模拟结果显示，每次排序的平均时钟周期略高于1，这是由于流水线启动阶段的开销。</li>
+</ul>
+<ol start="3">
+<li>设计验证与性能评估的分离：</li>
+</ol>
+<ul>
+<li>模拟器假定设计功能正确，所有功能验证工作应在测试阶段完成。</li>
+</ul>
+<h3 id="5-6-将排序单元的-RTL-模型翻译为-Verilog"><a href="#5-6-将排序单元的-RTL-模型翻译为-Verilog" class="headerlink" title="5.6 将排序单元的 RTL 模型翻译为 Verilog"></a>5.6 将排序单元的 RTL 模型翻译为 Verilog</h3><p>完成从功能级（FL）模型到周期级（CL）模型，再到寄存器传输级（RTL）模型的逐步细化设计后，我们需要将RTL模型翻译为硬件描述语言（HDL），如Verilog或SystemVerilog。</p>
+<p>PyMTL3框架提供了强大的翻译功能，支持从RTL模型到Verilog的转换，同时保持模型的层次性和可读性。</p>
+<p><strong>翻译流程</strong></p>
+<ol>
+<li>基本翻译实现</li>
+</ol>
+<p>翻译流程通过<code>VerilogTranslationPass</code>实现，以下是关键步骤：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入相关模块</span></span><br><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pymtl3.passes.backends.verilog <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> tut3_pymtl.sort <span class="keyword">import</span> SortUnitFlatRTL</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建RTL模型实例</span></span><br><span class="line">model = SortUnitFlatRTL()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启用Verilog翻译功能</span></span><br><span class="line">model.set_metadata(VerilogTranslationPass.enable, <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 应用Verilog翻译</span></span><br><span class="line">model.apply(VerilogTranslationPass())</span><br></pre></td></tr></table></figure></div>
+
+<p>运行上述代码后，PyMTL3将生成翻译后的Verilog代码。</p>
+<ol start="2">
+<li>输出文件</li>
+</ol>
+<p>文件命名：<code>SortUnitFlatRTL__nbits_8__pickled.v</code>。</p>
+<ul>
+<li>文件名包含模型的参数信息（如<code>nbits=8</code>），确保不同参数化实例的模块名唯一。</li>
+</ul>
+<p>文件内容：</p>
+<ul>
+<li>翻译生成的Verilog代码保留了模块层次。</li>
+<li><code>update_ff</code>块翻译为<code>always_ff</code>块。</li>
+<li><code>update</code>块翻译为<code>always_comb</code>块。</li>
+<li>每个并发块的PyMTL3代码会以注释形式保留在Verilog代码中，方便调试。</li>
+</ul>
+<ol start="3">
+<li>代码特点</li>
+</ol>
+<ul>
+<li>层次保留：翻译工具保留了模型的模块层次结构，如子模块实例化。</li>
+<li>易读性：通过名称修饰规则（name mangling），生成的Verilog代码具有良好的可读性。</li>
+</ul>
+<p>翻译优化：</p>
+<ul>
+<li>翻译结果支持缓存机制，避免重复翻译相同模型。</li>
+<li>在调试过程中可通过注释和层次结构快速定位问题。</li>
+</ul>
+<p><strong>高级翻译功能</strong></p>
+<p>PyMTL3提供了VerilogTranslationImportPass，其功能远超简单的Verilog代码生成。它可以<br>    1.	翻译RTL模型为Verilog。<br>    2.	使用Verilator工具将Verilog代码转换为C++。<br>    3.	生成C++包装器，用于调用Verilog的C++仿真。<br>    4.	创建PyMTL3包装器，将C++包装器嵌入PyMTL3模型，形成一个精确的周期级硬件模拟器。</p>
+<p>这一流程允许在PyMTL3中无缝调用翻译后的Verilog，同时使用相同的测试脚本验证模型功能。</p>
+<p>翻译后可以进行模型测试。以下是一个支持翻译后模型测试的单元测试脚本示例：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymtl3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pymtl3.passes.backends.verilog <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pymtl3.stdlib.test_utils <span class="keyword">import</span> config_model_with_cmdline_opts</span><br><span class="line"><span class="keyword">from</span> ..SortUnitFlatRTL <span class="keyword">import</span> SortUnitFlatRTL</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_verilate</span>(<span class="params">cmdline_opts</span>):</span><br><span class="line">    <span class="comment"># 配置模型，启用dump_vcd和test_verilog选项</span></span><br><span class="line">    model = SortUnitFlatRTL(<span class="number">8</span>)</span><br><span class="line">    model = config_model_with_cmdline_opts(model, cmdline_opts, duts=[])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建并重置模拟器</span></span><br><span class="line">    model.apply(DefaultPassGroup(linetrace=<span class="literal">True</span>))</span><br><span class="line">    model.sim_reset()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 辅助函数：设置输入并验证输出</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">t</span>(<span class="params">in_val, in_, out_val, out</span>):</span><br><span class="line">        model.in_val @= in_val</span><br><span class="line">        <span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="built_in">enumerate</span>(in_):</span><br><span class="line">            model.in_[i] @= v</span><br><span class="line">        model.sim_eval_combinational()</span><br><span class="line">        <span class="keyword">assert</span> model.out_val == out_val</span><br><span class="line">        <span class="keyword">if</span> out_val:</span><br><span class="line">            <span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="built_in">enumerate</span>(out):</span><br><span class="line">                <span class="keyword">assert</span> model.out[i] == v</span><br><span class="line">        model.sim_tick()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    t(<span class="number">0</span>, [<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>], <span class="number">0</span>, [<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>])</span><br><span class="line">    t(<span class="number">1</span>, [<span class="number">0x03</span>, <span class="number">0x09</span>, <span class="number">0x04</span>, <span class="number">0x01</span>], <span class="number">0</span>, [<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>])</span><br><span class="line">    t(<span class="number">1</span>, [<span class="number">0x10</span>, <span class="number">0x23</span>, <span class="number">0x02</span>, <span class="number">0x41</span>], <span class="number">0</span>, [<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>])</span><br><span class="line">    t(<span class="number">1</span>, [<span class="number">0x02</span>, <span class="number">0x55</span>, <span class="number">0x13</span>, <span class="number">0x07</span>], <span class="number">0</span>, [<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>])</span><br><span class="line">    t(<span class="number">0</span>, [<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>], <span class="number">1</span>, [<span class="number">0x01</span>, <span class="number">0x03</span>, <span class="number">0x04</span>, <span class="number">0x09</span>])</span><br><span class="line">    t(<span class="number">0</span>, [<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>], <span class="number">1</span>, [<span class="number">0x02</span>, <span class="number">0x10</span>, <span class="number">0x23</span>, <span class="number">0x41</span>])</span><br><span class="line">    t(<span class="number">0</span>, [<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>], <span class="number">1</span>, [<span class="number">0x02</span>, <span class="number">0x07</span>, <span class="number">0x13</span>, <span class="number">0x55</span>])</span><br><span class="line">    t(<span class="number">0</span>, [<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>], <span class="number">0</span>, [<span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>])</span><br></pre></td></tr></table></figure></div>
+
+<p>以下是运行测试的命令：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试PyMTL3 RTL模型</span></span><br><span class="line">pytest ../tut3_pymtl/sort/test/SortUnitFlatRTL_v_test.py --dump-vcd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试翻译后的Verilog模型</span></span><br><span class="line">pytest ../tut3_pymtl/sort/test/SortUnitFlatRTL_v_test.py --dump-vcd --test-verilog</span><br></pre></td></tr></table></figure></div>
+
+<p>测试过程中会生成多个波形文件（VCD文件），包括：</p>
+<ul>
+<li>sort-pymtl.vcd：用于测试原始PyMTL3 RTL模型。</li>
+<li>测试翻译后的Verilog模型的波形文件（两个VCD文件分别对应PyMTL3包装器和实际Verilog设计）。</li>
+</ul>
+<p>最终，我们可以使用模拟器脚本生成排序单元的Verilog代码和波形文件，这些文件可用于FPGA或ASIC工具链。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">../tut3_pymtl/sort/sort-sim --impl rtl-flat --input random --translate --dump-vcd</span><br><span class="line">../tut3_pymtl/sort/sort-sim --impl rtl-flat --input sorted-fwd --translate --dump-vcd</span><br><span class="line">../tut3_pymtl/sort/sort-sim --impl rtl-flat --input sorted-rev --translate --dump-vcd</span><br></pre></td></tr></table></figure></div>
 
         </div>
 
@@ -1491,7 +1961,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-11-21 09:00:44
+                    :</strong> 2024-11-25 15:03:45
             </li>
         
         <li>
@@ -1586,7 +2056,7 @@ mjx-container[display="true"] + br {
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">PyMTL基础入门</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC01%E7%AB%A0-%E7%AE%80%E4%BB%8B"><span class="nav-text">第01章 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC02%E7%AB%A0-PyMTL3-%E7%9A%84%E5%8A%9F%E8%83%BD%E7%BA%A7%E3%80%81%E5%91%A8%E6%9C%9F%E7%BA%A7%E5%92%8C%E5%AF%84%E5%AD%98%E5%99%A8%E4%BC%A0%E8%BE%93%E7%BA%A7%E5%BB%BA%E6%A8%A1"><span class="nav-text">第02章 PyMTL3 的功能级、周期级和寄存器传输级建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-FL%E3%80%81CL-%E5%92%8C-RTL-%E5%BB%BA%E6%A8%A1%E6%AF%94%E8%BE%83"><span class="nav-text">2.1 FL、CL 和 RTL 建模比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8F%AF%E7%BB%BC%E5%90%88%E4%B8%8E%E9%9D%9E%E5%8F%AF%E7%BB%BC%E5%90%88-RTL-%E5%BB%BA%E6%A8%A1"><span class="nav-text">2.2 可综合与非可综合 RTL 建模</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC03%E7%AB%A0-PyMTL3%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">第03章 PyMTL3基础：数据类型和操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Bits%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.1 Bits数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Bits%E6%93%8D%E4%BD%9C%E7%AC%A6-Bits-Operators"><span class="nav-text">3.2 Bits操作符(Bits Operators)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-BitStruct-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.3 BitStruct 数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC04%E7%AB%A0-%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8-Registered-Incrementer"><span class="nav-text">第04章 寄存增量器(Registered Incrementer)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%BB%BA%E6%A8%A1%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8"><span class="nav-text">4.1 建模寄存增量器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%A8%A1%E6%8B%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.2 模拟模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-text">4.3 可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E4%BD%BF%E7%94%A8pytest%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.4 使用pytest进行单元测试验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E5%90%91%E9%87%8F%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.5 使用测试向量验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%9C%BA%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.6 使用随机测试验证模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC05%E7%AB%A0-%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83-Sort-Unit"><span class="nav-text">第05章 排序单元(Sort Unit)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83%E7%9A%84-FL-%E6%A8%A1%E5%9E%8B"><span class="nav-text">5.1 排序单元的 FL 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83%E7%9A%84-CL-%E6%A8%A1%E5%9E%8B"><span class="nav-text">5.2 排序单元的 CL 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83%E7%9A%84-RTL-%E6%A8%A1%E5%9E%8B"><span class="nav-text">5.3 排序单元的 RTL 模型</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC01%E7%AB%A0-%E7%AE%80%E4%BB%8B"><span class="nav-text">第01章 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC02%E7%AB%A0-PyMTL3-%E7%9A%84%E5%8A%9F%E8%83%BD%E7%BA%A7%E3%80%81%E5%91%A8%E6%9C%9F%E7%BA%A7%E5%92%8C%E5%AF%84%E5%AD%98%E5%99%A8%E4%BC%A0%E8%BE%93%E7%BA%A7%E5%BB%BA%E6%A8%A1"><span class="nav-text">第02章 PyMTL3 的功能级、周期级和寄存器传输级建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-FL%E3%80%81CL-%E5%92%8C-RTL-%E5%BB%BA%E6%A8%A1%E6%AF%94%E8%BE%83"><span class="nav-text">2.1 FL、CL 和 RTL 建模比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8F%AF%E7%BB%BC%E5%90%88%E4%B8%8E%E9%9D%9E%E5%8F%AF%E7%BB%BC%E5%90%88-RTL-%E5%BB%BA%E6%A8%A1"><span class="nav-text">2.2 可综合与非可综合 RTL 建模</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC03%E7%AB%A0-PyMTL3%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">第03章 PyMTL3基础：数据类型和操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Bits%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.1 Bits数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Bits%E6%93%8D%E4%BD%9C%E7%AC%A6-Bits-Operators"><span class="nav-text">3.2 Bits操作符(Bits Operators)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-BitStruct-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3.3 BitStruct 数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC04%E7%AB%A0-%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8-Registered-Incrementer"><span class="nav-text">第04章 寄存增量器(Registered Incrementer)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%BB%BA%E6%A8%A1%E5%AF%84%E5%AD%98%E5%A2%9E%E9%87%8F%E5%99%A8"><span class="nav-text">4.1 建模寄存增量器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%A8%A1%E6%8B%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.2 模拟模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-text">4.3 可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E4%BD%BF%E7%94%A8pytest%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.4 使用pytest进行单元测试验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E5%90%91%E9%87%8F%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.5 使用测试向量验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%9C%BA%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.6 使用随机测试验证模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-%E4%B8%A4%E7%BA%A7%E5%AF%84%E5%AD%98%E9%80%92%E5%A2%9E%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%B5%8B%E8%AF%95"><span class="nav-text">4.7 两级寄存递增器的设计与测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-8-%E4%BD%BF%E7%94%A8%E2%80%9C%E9%9D%99%E6%80%81%E2%80%9D%E5%B1%95%E5%BC%80%E8%BF%9B%E8%A1%8C%E7%BB%84%E4%BB%B6%E5%8F%82%E6%95%B0%E5%8C%96"><span class="nav-text">4.8 使用“静态”展开进行组件参数化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-9-%E6%89%93%E5%8C%85%E6%A8%A1%E5%9E%8B%E9%9B%86%E5%90%88"><span class="nav-text">4.9 打包模型集合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC05%E7%AB%A0-%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83-Sort-Unit"><span class="nav-text">第05章 排序单元(Sort Unit)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83%E7%9A%84-FL-%E6%A8%A1%E5%9E%8B"><span class="nav-text">5.1 排序单元的 FL 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83%E7%9A%84-CL-%E6%A8%A1%E5%9E%8B"><span class="nav-text">5.2 排序单元的 CL 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83%E7%9A%84-RTL-%E6%A8%A1%E5%9E%8B"><span class="nav-text">5.3 排序单元的 RTL 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E5%9F%BA%E4%BA%8E%E7%BB%93%E6%9E%84%E5%8C%96-RTL-%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83"><span class="nav-text">5.4 基于结构化 RTL 模型的排序单元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%AF%84%E4%BC%B0%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83"><span class="nav-text">5.5 使用模拟器评估排序单元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-%E5%B0%86%E6%8E%92%E5%BA%8F%E5%8D%95%E5%85%83%E7%9A%84-RTL-%E6%A8%A1%E5%9E%8B%E7%BF%BB%E8%AF%91%E4%B8%BA-Verilog"><span class="nav-text">5.6 将排序单元的 RTL 模型翻译为 Verilog</span></a></li></ol></li></ol>
 
     </div>
 </div>
@@ -1625,7 +2095,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            213.6k words in total
+                            220k words in total
                         </span>
                     
                 </p>
