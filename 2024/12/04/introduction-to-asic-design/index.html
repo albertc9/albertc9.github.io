@@ -35,7 +35,7 @@
 <meta property="og:image" content="http://example.com/24120601.jpg">
 <meta property="og:image" content="http://example.com/image/24120602.jpg">
 <meta property="article:published_time" content="2024-12-04T11:59:06.000Z">
-<meta property="article:modified_time" content="2024-12-05T18:28:41.218Z">
+<meta property="article:modified_time" content="2024-12-05T18:31:58.026Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
@@ -669,8 +669,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-12-06 02:28:41</span>
-            <span class="mobile">2024-12-06 02:28:41</span>
+            <span class="desktop">2024-12-06 02:31:58</span>
+            <span class="mobile">2024-12-06 02:31:58</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -824,13 +824,8 @@ mjx-container[display="true"] + br {
 <li>功耗视图：功耗和漏电流特性。</li>
 </ul>
 <p>为了简化本课程中 Nangate 标准单元库的使用，我们创建了一组小得多的明确定义的符号链接，这些符号链接仅指向我们想要在本课程中使用的关键文件。我们将这组符号链接称为“ASIC 设计套件”（ADK）。以下是包含这些符号链接的目录。</p>
-<p> % cd $ECE5745_STDCELLS<br> % ls<br> pdk-models.sp          # spice models for transistors</p>
-<p> rtk-stream-out.map     # gds layer map<br> rtk-tech.lef           # interconnect technology information<br> rtk-tech.tf            # interconnect technology information<br> rtk-typical.captable   # interconnect technology information</p>
-<p> stdcells.spi           # circuit schematics for each cell<br> stdcells.gds           # layout for each cell<br> stdcells.v             # behavioral specification for each cell</p>
-<p> stdcells-lpe.spi       # circuit schematics with parasitics for each cell<br> stdcells.lib           # abstract logical, timing, power view for each cell (typical)<br> stdcells-bc.lib        # best case .lib<br> stdcells-wc.lib        # worst case .lib<br> stdcells.lef           # abstract physical view for each cell</p>
-<p> stdcells.db            # binary compiled version of .lib file<br> stdcells.mwlib         # Milkyway database built from .lef file</p>
-<p> stdcells-databook.pdf  # standard-cell library databook</p>
-<p> klayout.lyp            # layer settings for Klayout</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">% <span class="built_in">cd</span> <span class="variable">$ECE5745_STDCELLS</span></span><br><span class="line">% <span class="built_in">ls</span></span><br><span class="line">pdk-models.sp          <span class="comment"># spice models for transistors</span></span><br><span class="line"></span><br><span class="line">rtk-stream-out.map     <span class="comment"># gds layer map</span></span><br><span class="line">rtk-tech.lef           <span class="comment"># interconnect technology information</span></span><br><span class="line">rtk-tech.tf            <span class="comment"># interconnect technology information</span></span><br><span class="line">rtk-typical.captable   <span class="comment"># interconnect technology information</span></span><br><span class="line"></span><br><span class="line">stdcells.spi           <span class="comment"># circuit schematics for each cell</span></span><br><span class="line">stdcells.gds           <span class="comment"># layout for each cell</span></span><br><span class="line">stdcells.v             <span class="comment"># behavioral specification for each cell</span></span><br><span class="line"></span><br><span class="line">stdcells-lpe.spi       <span class="comment"># circuit schematics with parasitics for each cell</span></span><br><span class="line">stdcells.lib           <span class="comment"># abstract logical, timing, power view for each cell (typical)</span></span><br><span class="line">stdcells-bc.lib        <span class="comment"># best case .lib</span></span><br><span class="line">stdcells-wc.lib        <span class="comment"># worst case .lib</span></span><br><span class="line">stdcells.lef           <span class="comment"># abstract physical view for each cell</span></span><br><span class="line"></span><br><span class="line">stdcells.db            <span class="comment"># binary compiled version of .lib file</span></span><br><span class="line">stdcells.mwlib         <span class="comment"># Milkyway database built from .lef file</span></span><br><span class="line"></span><br><span class="line">stdcells-databook.pdf  <span class="comment"># standard-cell library databook</span></span><br><span class="line"></span><br><span class="line">klayout.lyp            <span class="comment"># layer settings for Klayout</span></span><br></pre></td></tr></table></figure></div>
+
 <hr>
 <p>接下来可以简单看一下标准单元设计的层次视图。</p>
 <ol>
@@ -992,7 +987,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-12-06 02:28:41
+                    :</strong> 2024-12-06 02:31:58
             </li>
         
         <li>
