@@ -31,13 +31,15 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="第01章 简介本教程介绍了如何使用 Synopsys 和 Cadence 提供的 ASIC 工具，将 RTL（寄存器传输级）设计映射到标准单元库，并最终实现硅片制造的完整流程。它不仅涵盖了综合（Synthesis）、布局布线（Place-and-Route）、仿真（Simulation）和功耗分析（Power Analysis）等主要环节，还深入讲解了相关工具的使用方法。 通过本教程，学生需要手动">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/image/2024120501.jpg">
+<meta property="og:image" content="http://example.com/image/24120501.jpg">
+<meta property="og:image" content="http://example.com/24120601.jpg">
+<meta property="og:image" content="http://example.com/image/24120602.jpg">
 <meta property="article:published_time" content="2024-12-04T11:59:06.000Z">
-<meta property="article:modified_time" content="2024-12-05T12:25:27.220Z">
+<meta property="article:modified_time" content="2024-12-05T18:28:41.218Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/image/2024120501.jpg">
+<meta name="twitter:image" content="http://example.com/image/24120501.jpg">
     
     
         <!-- Google tag (gtag.js) -->
@@ -667,8 +669,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-12-05 20:25:27</span>
-            <span class="mobile">2024-12-05 20:25:27</span>
+            <span class="desktop">2024-12-06 02:28:41</span>
+            <span class="mobile">2024-12-06 02:28:41</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -706,12 +708,12 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.1k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>6k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>7 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>24 Mins</span>
         </span>
     
     
@@ -748,7 +750,7 @@ mjx-container[display="true"] + br {
 <li>输入数据包括标准单元库的多个视图文件（.lib、.lef、.db等）和设计的 Verilog RTL 模型。</li>
 <li>输出数据覆盖门级网表（.v）、仿真波形文件（.vcd）、寄生参数文件（.spef）、功耗数据文件（.saif）、最终布局文件（.gds）等。</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="/image/2024120501.jpg" alt="2024120501"></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24120501.jpg" alt="24120501"></p>
 <p>每个工具依次接收和生成这些文件，形成一个完整的ASIC设计流程。具体地：</p>
 <ol>
 <li><p>我们使用Verilog语言编写RTL模型，并使用PyMTL框架进行测试、验证和性能评估（以周期为单位计算执行时间）。这部分流程与ECE 4750课程中使用的流程非常相似。在确认设计能够正确工作之后，我们会开始将设计推向完整的流程。</p>
@@ -777,22 +779,205 @@ mjx-container[display="true"] + br {
 
 <details class="[blue]" data-header-exclude=""><summary><i class="fa-solid fa-chevron-right"></i>[Synopsys Design Compiler 综合] </summary>
               <div class="content">
-              <ol><li>综合目标</li></ol><p>Synopsys Design Compiler (DC) 的作用是将 RTL 模型（描述逻辑功能）转化为基于标准单元库的门级网表。网表中的每个逻辑门都来源于标准单元库。</p><ol start="2"><li>标准单元库</li></ol><p>标准单元库提供了：<br>    •	逻辑视图：描述逻辑门的功能。<br>    •	时序视图：定义门的延迟。<br>    •	物理视图：用于布局布线的物理尺寸。</p><p>这些信息通常以 .db 格式提供给 DC 工具。</p><ol start="3"><li>综合结果</li></ol><p>综合后，DC 工具会生成：<br>    •	门级网表（.v）：逻辑门及其连接的描述。<br>    •	时序信息（.ddc）：门级网表的时序数据。<br>这些结果可以通过 Synopsys Design Vision 工具进一步检查。 </p>
+              <ol><li>综合目标</li></ol><p>Synopsys Design Compiler (DC) 的作用是将 RTL 模型（描述逻辑功能）转化为基于标准单元库的门级网表。网表中的每个逻辑门都来源于标准单元库。</p><ol start="2"><li>标准单元库</li></ol><p>标准单元库提供了：</p><ul><li>逻辑视图：描述逻辑门的功能。</li><li>时序视图：定义门的延迟。</li><li>物理视图：用于布局布线的物理尺寸。</li></ul><p>这些信息通常以 .db 格式提供给 DC 工具。</p><ol start="3"><li>综合结果</li></ol><p>综合后，DC 工具会生成：</p><ul><li>门级网表（.v）：逻辑门及其连接的描述。</li><li>时序信息（.ddc）：门级网表的时序数据。<br>这些结果可以通过 Synopsys Design Vision 工具进一步检查。</li></ul>
               </div>
             </details>
 
-<details class="[yellow]" data-header-exclude=""><summary><i class="fa-solid fa-chevron-right"></i>[PyMTL 测试与验证] </summary>
+<details class="[yellow]" data-header-exclude=""><summary><i class="fa-solid fa-chevron-right"></i>[Cadence Innovus 布局布线] </summary>
               <div class="content">
-              <ol><li>工具功能</li></ol><p>Cadence Innovus 用于执行布局布线，即将门级网表中的逻辑门放置在芯片上并连接这些逻辑门。</p><ol start="2"><li>输入数据</li></ol><p>布局布线需要以下输入：<br>    •	逻辑与时序视图（来自 .db 文件）。<br>    •	物理视图与技术信息（.lef 和 .captable 文件）。<br>    •	门级网表（来自综合）。</p><ol start="3"><li>输出数据</li></ol><p>布局布线完成后，Innovus 会生成：<br>    •	更新后的门级网表（.v）：反映实际布局的网表。<br>    •	寄生参数文件（.spef）：包含电阻和电容信息。<br>    •	物理布局文件（.gds）：描述芯片的最终布局。</p><p>这些文件可以通过工具（如 Klayout）进行可视化。 </p>
+              <ol><li>工具功能</li></ol><p>Cadence Innovus 用于执行布局布线，即将门级网表中的逻辑门放置在芯片上并连接这些逻辑门。</p><ol start="2"><li>输入数据</li></ol><p>布局布线需要以下输入：</p><ul><li>逻辑与时序视图（来自 .db 文件）。</li><li>物理视图与技术信息（.lef 和 .captable 文件）。</li><li>门级网表（来自综合）。</li></ul><ol start="3"><li>输出数据</li></ol><p>布局布线完成后，Innovus 会生成：</p><ul><li>更新后的门级网表（.v）：反映实际布局的网表。</li><li>寄生参数文件（.spef）：包含电阻和电容信息。</li><li>物理布局文件（.gds）：描述芯片的最终布局。</li></ul><p>这些文件可以通过工具（如 Klayout）进行可视化。 </p>
               </div>
             </details>
 
 <details class="[gray]" data-header-exclude=""><summary><i class="fa-solid fa-chevron-right"></i>[Synopsys PrimeTime 功耗分析] </summary>
               <div class="content">
-              <ol><li>输入数据</li></ol><p>Synopsys PrimeTime (PT) 使用以下数据进行功耗计算：<br>    •	逻辑、时序、功耗视图（来自标准单元库）。<br>    •	活动因子数据（.saif 文件）。<br>    •	寄生参数数据（.spef 文件）。</p><ol start="2"><li>计算过程</li></ol><p>PT 将活动因子、电容、时钟频率和电压结合起来，估算每个网络和模块的功耗。这些结果会被写入详细的功耗报告中。 </p>
+              <ol><li>输入数据</li></ol><p>Synopsys PrimeTime (PT) 使用以下数据进行功耗计算：</p><ul><li>逻辑、时序、功耗视图（来自标准单元库）。</li><li>活动因子数据（.saif 文件）。</li><li>寄生参数数据（.spef 文件）。</li></ul><ol start="2"><li>计算过程</li></ol><p>PT 将活动因子、电容、时钟频率和电压结合起来，估算每个网络和模块的功耗。这些结果会被写入详细的功耗报告中。 </p>
               </div>
             </details>
 
+<hr>
+<p>Synopsys 和 Cadence 为这些 ASIC 工具提供了大量文档。<a class="link" target="_blank" rel="noopener" href="https://www.csl.cornell.edu/courses/ece5745/asicdocs">这是 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>整理文档得到的公共课程网页内容。</p>
+<p>以下是配置环境和克隆项目所需的命令：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> setup-ece5745.sh</span><br><span class="line"><span class="built_in">mkdir</span> -p <span class="variable">$HOME</span>/ece5745</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span>/ece5745</span><br><span class="line">git <span class="built_in">clone</span> git@github.com:cornell-ece5745/ece5745-tut4-asic-tools tut4</span><br><span class="line"><span class="built_in">cd</span> tut4</span><br><span class="line">TOPDIR=<span class="variable">$PWD</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="第02章-Nangate-45nm-标准单元库"><a href="#第02章-Nangate-45nm-标准单元库" class="headerlink" title="第02章 Nangate 45nm 标准单元库"></a>第02章 Nangate 45nm 标准单元库</h2><p>在访问标准单元库之前，您需要访问“物理设计套件”（PDK）。PDK 包含针对特定技术的全定制电路设计所需的所有设计文件。因此，这将包括设计规则手册以及晶体管和其他设备的 SPICE 电路模型。获取真正的 PDK 很困难。它需要与代工厂协商并签署多项保密协议。因此，在本课程中，我们将使用 <a class="link" target="_blank" rel="noopener" href="https://www.eda.ncsu.edu/wiki/FreePDK45">FreePDK45 PDK <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。</p>
+<p>这是一种为研究和教学目的设计的“虚拟”45nm工艺技术。尽管这种 PDK 不能用于流片，但其技术特性足够代表性，能够提供合理的面积、能量和时序估算。FreePDK45 PDK 安装路径：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">% <span class="built_in">cd</span> <span class="variable">$ADK_PKGS</span>/freepdk-45nm/pkgs/FreePDK45-1.4</span><br></pre></td></tr></table></figure></div>
+
+<p>标准单元设计人员将使用 PDK 来实现标准单元库。标准单元库是遵循一组标准化的逻辑、电气和物理策略的组合和顺序逻辑门的集合。例如，所有标准单元通常都具有相同的高度，包括与预定的垂直和水平网格对齐的引脚，包括位于预定位置的电源/接地轨和 <code>nwell</code>，并支持预定数量的驱动强度。标准单元设计人员通常会为每个逻辑门创建高级行为规范（以 Verilog 格式）、电路原理图（以 SPICE 格式）和实际布局（以.gds格式）。Synopsys 和 Cadence 工具实际上并不使用这些低级实现，因为它们实际上太详细了。相反，这些工具使用标准单元的抽象视图，这些视图以更高的级别捕获逻辑功能、时序、几何形状和功耗。</p>
+<p>就像 PDK 一样，获取真正的标准单元库的访问权限也很困难。首先需要获取 PDK 的访问权限，然后与制造标准单元的公司进行协商，通常还要签署更多保密协议。在本课程中，我们将使用基于开放的 FreePDK45 PDK 的 Nangate 45nm 标准单元库。</p>
+<p>Nangate 是一家开发自动生成标准单元库工具的公司，因此他们公开了这个库，以此来展示他们的工具。由于它是一个开放库，因此它是研究和教学的绝佳资源。尽管标准单元库基于“假” 45nm PDK，但该库提供了对真正的 45nm 技术中真正的商业标准库的非常合理的估计。在本节中，我们将介绍 Nangate 标准单元库的低级实现和高级视图。</p>
+<p>标准单元库发行版可以包含数千个文件中的 GB 级数据。例如，以下是 Nangate 标准单元库的发行版。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">% <span class="built_in">cd</span> <span class="variable">$ADK_PKGS</span>/freepdk-45nm/pkgs/NangateOpenCellLibrary_PDKv1_3_v2010_12</span><br></pre></td></tr></table></figure></div>
+
+<p>标准单元库的设计包括以下内容：</p>
+<ol>
+<li>高级行为描述（Verilog 实现）。</li>
+<li>电路原理图（SPICE 实现）。</li>
+<li>实际布局文件（<code>.gds</code>格式）。</li>
+</ol>
+<p>尽管标准单元库的低级实现非常详细，但 Synopsys 和 Cadence 工具主要使用更高抽象层次的视图，例如：</p>
+<ul>
+<li>逻辑视图：逻辑功能描述。</li>
+<li>时序视图：门延迟和相关特性。</li>
+<li>几何视图：单元的物理尺寸和布局。</li>
+<li>功耗视图：功耗和漏电流特性。</li>
+</ul>
+<p>为了简化本课程中 Nangate 标准单元库的使用，我们创建了一组小得多的明确定义的符号链接，这些符号链接仅指向我们想要在本课程中使用的关键文件。我们将这组符号链接称为“ASIC 设计套件”（ADK）。以下是包含这些符号链接的目录。</p>
+<p> % cd $ECE5745_STDCELLS<br> % ls<br> pdk-models.sp          # spice models for transistors</p>
+<p> rtk-stream-out.map     # gds layer map<br> rtk-tech.lef           # interconnect technology information<br> rtk-tech.tf            # interconnect technology information<br> rtk-typical.captable   # interconnect technology information</p>
+<p> stdcells.spi           # circuit schematics for each cell<br> stdcells.gds           # layout for each cell<br> stdcells.v             # behavioral specification for each cell</p>
+<p> stdcells-lpe.spi       # circuit schematics with parasitics for each cell<br> stdcells.lib           # abstract logical, timing, power view for each cell (typical)<br> stdcells-bc.lib        # best case .lib<br> stdcells-wc.lib        # worst case .lib<br> stdcells.lef           # abstract physical view for each cell</p>
+<p> stdcells.db            # binary compiled version of .lib file<br> stdcells.mwlib         # Milkyway database built from .lef file</p>
+<p> stdcells-databook.pdf  # standard-cell library databook</p>
+<p> klayout.lyp            # layer settings for Klayout</p>
+<hr>
+<p>接下来可以简单看一下标准单元设计的层次视图。</p>
+<ol>
+<li>电路原理图</li>
+</ol>
+<p>以下是 NAND3_X1（3 输入 NAND 门）的 SPICE 原理图：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">% less -p NAND3_X1 <span class="variable">$ECE5745_STDCELLS</span>/stdcells.spi</span><br><span class="line">.SUBCKT NAND3_X1 A1 A2 A3 ZN VDD VSS</span><br><span class="line">*.PININFO A1:I A2:I A3:I ZN:O VDD:P VSS:G</span><br><span class="line">*.EQN ZN=!((A1 * A2) * A3)</span><br><span class="line">M_i_2 net_1 A3 VSS   VSS NMOS_VTL W=<span class="number">0.415000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">M_i_1 net_0 A2 net_1 VSS NMOS_VTL W=<span class="number">0.415000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">M_i_0 ZN    A1 net_0 VSS NMOS_VTL W=<span class="number">0.415000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">M_i_5 ZN    A3 VDD   VDD PMOS_VTL W=<span class="number">0.630000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">M_i_4 VDD   A2 ZN    VDD PMOS_VTL W=<span class="number">0.630000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">M_i_3 ZN    A1 VDD   VDD PMOS_VTL W=<span class="number">0.630000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">.ENDS</span><br></pre></td></tr></table></figure></div>
+
+<p>本质上，该原理图包括三个串联排列在下拉网络中的 NMOS 晶体管和三个并联排列在上拉网络中的 PMOS 晶体管。PMOS 晶体管比 NMOS 晶体管大（见<code>W=</code>参数），因为空穴的迁移率小于电子的迁移率。</p>
+<ol start="2">
+<li>物理布局</li>
+</ol>
+<p>接下来可以使用 Klayout GDS 查看器查看布局：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">klayout -l <span class="variable">$ECE5745_STDCELLS</span>/klayout.lyp <span class="variable">$ECE5745_STDCELLS</span>/stdcells.gds</span><br></pre></td></tr></table></figure></div>
+
+<p>请注意，我们使用的<code>.lyp</code>文件是预定义的层配色方案，可以更轻松地查看 GDS 文件。要查看 3 输入 NAND 单元，请在左侧单元列表中找到 NAND3 X1 单元，然后从菜单中选择 _Display &gt; Show as New Top。以下是此单元的布局图片。</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/24120601.jpg" alt="2024120601"></p>
+<p>其中：</p>
+<ul>
+<li>绿色：扩散区；</li>
+<li>红色：多晶硅；</li>
+<li>蓝色：金属层（M1）；</li>
+<li>灰色：nwell 区域。</li>
+</ul>
+<p>标准单元的电源轨和地轨位于顶部和底部，确保单元在行排列时通过对接方式连接。</p>
+<ol start="3">
+<li>Verilog 行为描述</li>
+</ol>
+<p>以下是 NAND3_X1 的 Verilog 实现：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">% less -p NAND3_X1 <span class="variable">$ECE5745_STDCELLS</span>/stdcells.v</span><br><span class="line">module NAND3_X1 (A1, A2, A3, ZN);</span><br><span class="line">    input A1;</span><br><span class="line">    input A2;</span><br><span class="line">    input A3;</span><br><span class="line">    output ZN;</span><br><span class="line"></span><br><span class="line">    not(ZN, i_8);</span><br><span class="line">    and(i_8, i_9, A3);</span><br><span class="line">    and(i_9, A1, A2);</span><br><span class="line"></span><br><span class="line">    specify</span><br><span class="line">        (A1 =&gt; ZN) = (0.1, 0.1);</span><br><span class="line">        (A2 =&gt; ZN) = (0.1, 0.1);</span><br><span class="line">        (A3 =&gt; ZN) = (0.1, 0.1);</span><br><span class="line">    endspecify</span><br><span class="line"></span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure></div>
+
+<p>该实现使用 Verilog 基本门单元（如 <code>not</code> 和 <code>and</code>），并包含时序延迟的 <code>specify</code> 块。</p>
+<ol start="4">
+<li>带寄生参数的电路模型</li>
+</ol>
+<p>通过工具提取寄生电阻和电容值，可生成更详细的 SPICE 电路模型：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">% less -p NAND3_X1 <span class="variable">$ECE5745_STDCELLS</span>/stdcells-lpe.spi</span><br><span class="line">.SUBCKT NAND3_X1 VDD VSS A3 ZN A2 A1</span><br><span class="line">*.PININFO VDD:P VSS:G A3:I ZN:O A2:I A1:I</span><br><span class="line">*.EQN ZN=!((A1 * A2) * A3)</span><br><span class="line">M_M3 N_ZN_M0_d  N_A3_M0_g N_VDD_M0_s VDD PMOS_VTL W=<span class="number">0.630000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">M_M4 N_VDD_M1_d N_A2_M1_g N_ZN_M0_d  VDD PMOS_VTL W=<span class="number">0.630000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">M_M5 N_ZN_M2_d  N_A1_M2_g N_VDD_M1_d VDD PMOS_VTL W=<span class="number">0.630000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">M_M0 net_1      N_A3_M3_g N_VSS_M3_s VSS NMOS_VTL W=<span class="number">0.415000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">M_M1 net_0      N_A2_M4_g net_1      VSS NMOS_VTL W=<span class="number">0.415000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">M_M2 N_ZN_M5_d  N_A1_M5_g net_0      VSS NMOS_VTL W=<span class="number">0.415000</span>U L=<span class="number">0.050000</span>U</span><br><span class="line">C_x_PM_NAND3_X1%VDD_c0 x_PM_NAND3_X1%VDD_39 VSS <span class="number">3.704</span>e-<span class="number">17</span></span><br><span class="line">C_x_PM_NAND3_X1%VDD_c1 x_PM_NAND3_X1%VDD_36 VSS <span class="number">2.74884</span>e-<span class="number">18</span></span><br><span class="line">C_x_PM_NAND3_X1%VDD_c2 x_PM_NAND3_X1%VDD_26 VSS <span class="number">2.61603</span>e-<span class="number">16</span></span><br><span class="line">C_x_PM_NAND3_X1%VDD_c3 N_VDD_M1_d           VSS <span class="number">6.57971</span>e-<span class="number">17</span></span><br><span class="line">C_x_PM_NAND3_X1%VDD_c4 x_PM_NAND3_X1%VDD_19 VSS <span class="number">1.89932</span>e-<span class="number">17</span></span><br><span class="line">C_x_PM_NAND3_X1%VDD_c5 x_PM_NAND3_X1%VDD_18 VSS <span class="number">3.74888</span>e-<span class="number">17</span></span><br><span class="line">C_x_PM_NAND3_X1%VDD_c6 N_VDD_M0_s           VSS <span class="number">3.64134</span>e-<span class="number">17</span></span><br><span class="line">...</span><br><span class="line">.ENDS</span><br></pre></td></tr></table></figure></div>
+
+<p>它的完整模型甚至有有几百行，但实际上 ASIC 工具实际上不需要这么多细节。我们可以使用一组特殊的工具来创建适合 ASIC 工具使用的更高级别的电路时序和功率抽象视图。本质上，这些工具运行许多电路级模拟来创建存储在<code>.lib</code>(Liberty) 文件中的特性数据。</p>
+<ol start="5">
+<li><code>.lib</code> 文件</li>
+</ol>
+<p><code>.lib </code>文件是标准单元的高抽象视图，包含逻辑、时序和功耗特性：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">% less -p NAND3_X1 <span class="variable">$ECE5745_STDCELLS</span>/stdcells.lib</span><br><span class="line"> cell (NAND3_X1) {</span><br><span class="line">  drive_strength          : 1;</span><br><span class="line">  area                    : 1.064000;</span><br><span class="line">  cell_leakage_power      : 18.104768;</span><br><span class="line">  <span class="function"><span class="title">leakage_power</span></span> () {</span><br><span class="line">    when                  : <span class="string">"!A1 &amp; !A2 &amp; !A3"</span>;</span><br><span class="line">    value                 : 3.318854;</span><br><span class="line">  }</span><br><span class="line">  ...</span><br><span class="line">  pin (A1) {</span><br><span class="line">    direction             : input;</span><br><span class="line">    related_power_pin     : <span class="string">"VDD"</span>;</span><br><span class="line">    related_ground_pin    : <span class="string">"VSS"</span>;</span><br><span class="line">    capacitance           : 1.590286;</span><br><span class="line">    fall_capacitance      : 1.562033;</span><br><span class="line">    rise_capacitance      : 1.590286;</span><br><span class="line">  }</span><br><span class="line">  ...</span><br><span class="line">  pin (ZN) {</span><br><span class="line">    direction             : output;</span><br><span class="line">    related_power_pin     : <span class="string">"VDD"</span>;</span><br><span class="line">    related_ground_pin    : <span class="string">"VSS"</span>;</span><br><span class="line">    max_capacitance       : 58.364900;</span><br><span class="line">    <span class="keyword">function</span>              : <span class="string">"!((A1 &amp; A2) &amp; A3)"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">timing</span></span> () {</span><br><span class="line"></span><br><span class="line">      related_pin         : <span class="string">"A1"</span>;</span><br><span class="line">      timing_sense        : negative_unate;</span><br><span class="line"></span><br><span class="line">      cell_fall(Timing_7_7) {</span><br><span class="line">        index_1 (<span class="string">"0.00117378,0.00472397,0.0171859,0.0409838,0.0780596,0.130081,0.198535"</span>);</span><br><span class="line">        index_2 (<span class="string">"0.365616,1.823900,3.647810,7.295610,14.591200,29.182500,58.364900"</span>);</span><br><span class="line">        values (<span class="string">"0.0106270,0.0150189,0.0204521,0.0312612,0.0528211,0.0959019,0.182032"</span>, \</span><br><span class="line">                <span class="string">"0.0116171,0.0160692,0.0215549,0.0324213,0.0540285,0.0971429,0.183289"</span>, \</span><br><span class="line">                <span class="string">"0.0157475,0.0207077,0.0261030,0.0369216,0.0585239,0.101654,0.187820"</span>, \</span><br><span class="line">                <span class="string">"0.0193780,0.0263217,0.0337702,0.0462819,0.0677259,0.110616,0.196655"</span>, \</span><br><span class="line">                <span class="string">"0.0218025,0.0305247,0.0399593,0.0560603,0.0822203,0.125293,0.210827"</span>, \</span><br><span class="line">                <span class="string">"0.0229784,0.0334449,0.0447189,0.0640615,0.0959700,0.146382,0.231434"</span>, \</span><br><span class="line">                <span class="string">"0.0227986,0.0349768,0.0480836,0.0705081,0.107693,0.167283,0.259623"</span>);</span><br><span class="line">      }</span><br><span class="line">      ...</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="title">internal_power</span></span> () {</span><br><span class="line">        related_pin       : <span class="string">"A1"</span>;</span><br><span class="line">        fall_power(Power_7_7) {</span><br><span class="line">          index_1 (<span class="string">"0.00117378,0.00472397,0.0171859,0.0409838,0.0780596,0.130081,0.198535"</span>);</span><br><span class="line">          index_2 (<span class="string">"0.365616,1.823900,3.647810,7.295610,14.591200,29.182500,58.364900"</span>);</span><br><span class="line">          values (<span class="string">"0.523620,0.538965,0.551079,0.556548,0.561151,0.564018,0.564418"</span>, \</span><br><span class="line">                  <span class="string">"0.459570,0.484698,0.509668,0.529672,0.543887,0.554682,0.559331"</span>, \</span><br><span class="line">                  <span class="string">"0.434385,0.457202,0.470452,0.498312,0.517651,0.538469,0.550091"</span>, \</span><br><span class="line">                  <span class="string">"0.728991,0.630651,0.581024,0.559124,0.551408,0.553714,0.557387"</span>, \</span><br><span class="line">                  <span class="string">"1.306597,1.153240,1.010684,0.831268,0.727155,0.657699,0.616287"</span>, \</span><br><span class="line">                  <span class="string">"2.170611,1.965158,1.760932,1.459438,1.140559,0.930355,0.781393"</span>, \</span><br><span class="line">                  <span class="string">"3.276307,3.084566,2.831754,2.426623,1.913607,1.439055,1.113950"</span>);</span><br><span class="line">        }</span><br><span class="line">        ...</span><br><span class="line">      }</span><br><span class="line">  ...</span><br><span class="line"> }</span><br></pre></td></tr></table></figure></div>
+
+<p>这只是该单元 <code>.lib</code> 文件中包含信息的一小部分。我们将在课程的后续部分中详细讨论这种 <code>.lib</code> 文件的具体内容。从中可以看出，<code>.lib</code> 文件包含了关于面积、泄漏功耗、每个输入引脚的电容、逻辑功能和时序等信息。所有数据的单位都在 <code>.lib</code> 文件的顶部定义。在这个片段中，你可以看到该单元的面积为 1.064 平方微米，泄漏功耗为 18.1 纳瓦。输入引脚 A1 的电容为 1.59 飞法，尽管文件中还有其他数据记录了输入信号上升或下降时电容的变化情况。输出引脚 ZN 实现了逻辑表达式 <code>!((A1 &amp; A2) &amp; A3)</code>（即一个三输入 NAND 门）。<code>.lib</code> 文件中的数据通常通过一维或二维查找表（即值表）进行表示。在上述片段中可以看到两个这样的查找表。</p>
+<p>其中：</p>
+<p>第一张表：延迟（Delay）</p>
+<ul>
+<li>功能：记录输入引脚 A1 到输出引脚 ZN 的延迟值，该延迟取决于两个参数：</li>
+</ul>
+<ol>
+<li>输入信号转换时间（表格水平方向）。</li>
+<li>负载电容（表格垂直方向）。</li>
+</ol>
+<ul>
+<li><p>延迟场景：此表描述的是 ZN 从高到低（falling）的延迟。对于 ZN 从低到高（rising）的延迟，以及其他输入引脚的延迟，有对应的其他表格。</p>
+</li>
+<li><p>特点：</p>
+<ul>
+<li>输入信号转换时间越长、驱动的负载越大，逻辑门的延迟会越长。</li>
+<li>表格中的每个数据点都基于一次或多次详细的电路级仿真。</li>
+</ul>
+</li>
+<li><p>示例：当输入转换速率为 4.7ps，输出负载为 1.82fF 时，输入引脚 A1 到输出引脚 ZN 的延迟为 16ps。</p>
+</li>
+<li><p>用途：这种细节水平的数据可以用于非常精确的静态时序分析（Static Timing Analysis, STA）。</p>
+</li>
+</ul>
+<p>第二张表：内部功耗（Internal Power）</p>
+<ul>
+<li>功能：记录逻辑门本身的功耗（不包括输出负载消耗），其数据依赖于：</li>
+</ul>
+<ol>
+<li>输入信号转换时间（表格水平方向）。</li>
+<li>负载电容（表格垂直方向）。</li>
+</ol>
+<ul>
+<li>计算方式：<ul>
+<li>表格中的每个数据点来源于详细的 SPICE 仿真。</li>
+<li>功耗计算方法为：从电源供电中测量总电流，再减去用于输出负载充电的电流。</li>
+</ul>
+</li>
+<li>公式含义：未用于输出负载充电的能量即为内部能量。</li>
+<li>注意事项：<ul>
+<li>内部功耗有时会出现负值。这是因为不同能量统计方法的结果不同：</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>假设能量仅在输出节点充电时消耗，放电时不消耗能量。</li>
+<li>假设输出充电和放电各消耗一半能量，此时可能会看到负值。</li>
+</ol>
+<p>关于 <code>.lib</code> 文件和 <code>.db</code> 文件</p>
+<p><code>.lib</code> 文件：</p>
+<ul>
+<li>包含标准单元库的抽象逻辑、时序和功耗信息。</li>
+<li>不包括标准单元的物理信息。</li>
+</ul>
+<p><code>.db</code> 文件：</p>
+<ul>
+<li>是 <code>.lib</code> 文件的二进制预编译版本。</li>
+</ul>
+<p>优势：</p>
+<ul>
+<li><p>文件体积更小。</p>
+</li>
+<li><p>便于 ASIC 工具使用。</p>
+</li>
+<li><p>尽管 ASIC 工具可以直接使用 <code>.gds</code> 文件，但它们实际上并不需要那么详细的信息。</p>
+</li>
+<li><p>使用特殊工具生成 <code>.lef</code> 文件，它是单元物理属性的高抽象视图，适合 ASIC 工具处理。</p>
+</li>
+</ul>
+<p>LEF 文件（抽象物理视图）</p>
+<ul>
+<li>功能：描述单元的边界、引脚位置和阻塞区域。</li>
+<li>内容：<ul>
+<li>单元的尺寸信息。</li>
+<li>电源和地引脚的位置与形状。</li>
+<li>阻塞区域（如某些金属层的使用限制）。</li>
+</ul>
+</li>
+<li>应用：<ul>
+<li>用于布局布线工具简化物理设计过程。</li>
+</ul>
+</li>
+<li>示例：可以使用工具查看 LEF 文件，了解单元的抽象物理布局。</li>
+</ul>
+<ol start="6">
+<li><code>.lef</code> 文件</li>
+</ol>
+<p><code>.lef</code> 文件为单元的物理布局提供高层次视图：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"> % less -p NAND3_X1 <span class="variable">$ECE5745_STDCELLS</span>/stdcells.lef</span><br><span class="line">MACRO NAND3_X1</span><br><span class="line">  CLASS core ;</span><br><span class="line">  FOREIGN NAND3_X1 0.0 0.0 ;</span><br><span class="line">  ORIGIN 0 0 ;</span><br><span class="line">  SYMMETRY X Y ;</span><br><span class="line">  SITE FreePDK45_38x28_10R_NP_162NW_34O ;</span><br><span class="line">  SIZE 0.76 BY 1.4 ;</span><br><span class="line"></span><br><span class="line">  PIN A1</span><br><span class="line">    DIRECTION INPUT ;</span><br><span class="line">    ANTENNAPARTIALMETALAREA 0.0175 LAYER metal1 ;</span><br><span class="line">    ANTENNAPARTIALMETALSIDEAREA 0.0715 LAYER metal1 ;</span><br><span class="line">    ANTENNAGATEAREA 0.05225 ;</span><br><span class="line">    PORT</span><br><span class="line">      LAYER metal1 ;</span><br><span class="line">        POLYGON 0.44 0.525 0.54 0.525 0.54 0.7 0.44 0.7  ;</span><br><span class="line">    END</span><br><span class="line">  END A1</span><br><span class="line"></span><br><span class="line">  PIN ZN</span><br><span class="line">    DIRECTION OUTPUT ;</span><br><span class="line">    ANTENNAPARTIALMETALAREA 0.1352 LAYER metal1 ;</span><br><span class="line">    ANTENNAPARTIALMETALSIDEAREA 0.4992 LAYER metal1 ;</span><br><span class="line">    ANTENNADIFFAREA 0.197925 ;</span><br><span class="line">    PORT</span><br><span class="line">      LAYER metal1 ;</span><br><span class="line">        POLYGON 0.235 0.8 0.605 0.8 0.605 0.15 0.675 0.15</span><br><span class="line">         0.675 1.25 0.605 1.25 0.605 0.87 0.32 0.87 0.32 1.25 0.235 1.25  ;</span><br><span class="line">    END</span><br><span class="line">  END ZN</span><br><span class="line"></span><br><span class="line">  PIN VDD</span><br><span class="line">    DIRECTION INOUT ;</span><br><span class="line">    USE power ;</span><br><span class="line">    SHAPE ABUTMENT ;</span><br><span class="line">    PORT</span><br><span class="line">      LAYER metal1 ;</span><br><span class="line">        POLYGON 0 1.315 0.04 1.315 0.04 0.975 0.11 0.975 0.11 1.315</span><br><span class="line">         0.415 1.315 0.415 0.975 0.485 0.975 0.485 1.315 0.76 1.315 0.76 1.485 0 1.485  ;</span><br><span class="line">    END</span><br><span class="line">  END VDD</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">END NAND3_X1</span><br></pre></td></tr></table></figure></div>
+
+<p>这只是文件中包含的有关此单元的信息的一小部分<code>.lef</code> 。您可以看到<code>.lef</code>文件包含有关单元尺寸以及电源/接地和信号引脚的位置和尺寸的信息。文件还包括有关“障碍物”（或阻塞）的信息等。这些是单元区域，不应由 ASIC 工具使用。例如，如果单元需要使用金属 2 (M2)，它将在 M2 上产生阻塞，以便 ASIC 工具知道不要在该区域布线任何 M2 线。您也可以使用 Klayout 查看<code>.lef</code>文件。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">% klayout</span><br></pre></td></tr></table></figure></div>
+
+<p>从menu中选择File &gt; Import &gt; LEF，导航到文件<code>stdcells.lef</code>。这是其图片：</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/image/24120602.jpg" alt="24120602"></p>
+<p>如果将 <code>.lef</code> 文件与 <code>.gds</code> 文件进行比较，可以发现 <code>.lef</code> 文件是一种更简单的表示形式，它仅包含单元的边界、引脚和阻塞区域的信息。</p>
+<p>标准单元库还包括几个文件（例如 <code>rtk-tech.tf</code>, <code>rtk-tech.lef</code>, r<code>tk-typical.captable</code>），用于捕获有关金属互连的信息，包括线宽、间距和寄生效应。例如，让我们看一下文件 <code>.captable</code></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> % less -p M1 <span class="variable">$ECE5745_STDCELLS</span>/rtk-typical.captable</span><br><span class="line"> LAYER M1</span><br><span class="line">   MinWidth              0.07000</span><br><span class="line">   MinSpace              0.06500</span><br><span class="line"><span class="comment">#  Height                0.37000</span></span><br><span class="line">   Thickness             0.13000</span><br><span class="line">   TopWidth              0.07000</span><br><span class="line">   BottomWidth           0.07000</span><br><span class="line">   WidthDev              0.00000</span><br><span class="line">   Resistance            0.38000</span><br><span class="line"> END</span><br><span class="line"> ...</span><br><span class="line"> M1</span><br><span class="line"> width(um)  space(um) Ctot(Ff/um)  Cc(Ff/um)    Carea(Ff/um) Cfrg(Ff/um)</span><br><span class="line"> 0.070       0.052       0.1986       0.0723       0.0311       0.0115</span><br><span class="line"> 0.070       0.065       0.1705       0.0509       0.0311       0.0143</span><br><span class="line"> 0.070       0.200       0.1179       0.0115       0.0311       0.0319</span><br><span class="line"> 0.070       0.335       0.1150       0.0030       0.0311       0.0388</span><br><span class="line"> 0.070       0.470       0.1148       0.0009       0.0311       0.0409</span><br><span class="line"> 0.070       0.605       0.1147       0.0002       0.0311       0.0416</span><br><span class="line"> 0.070       0.740       0.1147       0.0001       0.0311       0.0417</span><br></pre></td></tr></table></figure></div>
+
+<p>该文件包含有关 M1 上导线的最小尺寸以及这些导线的电阻的信息。它还包含一个导线电容表，其中不同行代表不同的导线宽度和间距。ASIC 工具可以使用此类技术信息来优化和分析。</p>
+<hr>
+<p>最后，标准单元库始终会包含一个数据手册，它是一份描述库中每个单元详细信息的文档。可以花几分钟时间浏览位于以下类 Canvas 页面上的 <a class="link" target="_blank" rel="noopener" href="https://www.csl.cornell.edu/courses/ece5745/resources/nangate-freepdk45nm-stdcell-databook.pdf">Nangate 标准单元库数据手册 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。</p>
 
         </div>
 
@@ -807,7 +992,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-12-05 20:25:27
+                    :</strong> 2024-12-06 02:28:41
             </li>
         
         <li>
@@ -845,12 +1030,12 @@ mjx-container[display="true"] + br {
     <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>推荐阅读</span>
     </div>
-    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/11/07/introduction-to-pymtl-basics/" title="PyMTL基础入门" rel="bookmark">
-  <img src="/images/wallhaven-wqery6-light.webp" alt="PyMTL基础入门" class="!max-w-none">
-  <span class="title">PyMTL基础入门</span>
-</a><a class="recommended-article-item" href="/2024/11/07/introduction-to-python-basics/" title="Python基础入门" rel="bookmark">
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/11/07/introduction-to-python-basics/" title="Python基础入门" rel="bookmark">
   <img src="/images/wallhaven-wqery6-light.webp" alt="Python基础入门" class="!max-w-none">
   <span class="title">Python基础入门</span>
+</a><a class="recommended-article-item" href="/2024/11/07/introduction-to-pymtl-basics/" title="PyMTL基础入门" rel="bookmark">
+  <img src="/images/wallhaven-wqery6-light.webp" alt="PyMTL基础入门" class="!max-w-none">
+  <span class="title">PyMTL基础入门</span>
 </a><a class="recommended-article-item" href="/2024/08/20/2024A-Ctask2/" title="A&C_task 1.2" rel="bookmark">
   <img src="/images/wallhaven-wqery6-light.webp" alt="A&C_task 1.2" class="!max-w-none">
   <span class="title">A&C_task 1.2</span>
@@ -860,12 +1045,12 @@ mjx-container[display="true"] + br {
    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>推荐阅读</span>
    </div>
-   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/11/07/introduction-to-pymtl-basics/" title="PyMTL基础入门" rel="bookmark">
-  <img src="/images/wallhaven-wqery6-light.webp" alt="PyMTL基础入门" class="!max-w-none">
-  <span class="title">PyMTL基础入门</span>
-</a><a class="recommended-article-item" href="/2024/11/07/introduction-to-python-basics/" title="Python基础入门" rel="bookmark">
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/11/07/introduction-to-python-basics/" title="Python基础入门" rel="bookmark">
   <img src="/images/wallhaven-wqery6-light.webp" alt="Python基础入门" class="!max-w-none">
   <span class="title">Python基础入门</span>
+</a><a class="recommended-article-item" href="/2024/11/07/introduction-to-pymtl-basics/" title="PyMTL基础入门" rel="bookmark">
+  <img src="/images/wallhaven-wqery6-light.webp" alt="PyMTL基础入门" class="!max-w-none">
+  <span class="title">PyMTL基础入门</span>
 </a></div>
    </div>
   </div>
@@ -902,7 +1087,7 @@ mjx-container[display="true"] + br {
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">使用 Synopsys 和 Cadence 工具的 ASIC 设计流程</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC01%E7%AB%A0-%E7%AE%80%E4%BB%8B"><span class="nav-text">第01章 简介</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC01%E7%AB%A0-%E7%AE%80%E4%BB%8B"><span class="nav-text">第01章 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC02%E7%AB%A0-Nangate-45nm-%E6%A0%87%E5%87%86%E5%8D%95%E5%85%83%E5%BA%93"><span class="nav-text">第02章 Nangate 45nm 标准单元库</span></a></li></ol>
 
     </div>
 </div>
@@ -941,7 +1126,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            223.2k words in total
+                            227.1k words in total
                         </span>
                     
                 </p>
