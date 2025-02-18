@@ -24,16 +24,16 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Verilog 模块每个Verilog程序均由以下四个部分组成。 12345graph LRvcx(Verilog程序) --- mksm(模块声明)vcx(Verilog程序) --- dkdy(端口定义)vcx(Verilog程序) --- xhlxsm(信号类型声明)vcx(Verilog程序) --- ljgndy(逻辑功能定义)  模块声明12module 模块名 (端口1,端口2,端口">
+        <meta name="description" content="Verilog 模块每个Verilog程序均由以下四个部分组成。  模块声明 端口定义 信号类型声明 逻辑功能定义   模块声明12module 模块名 (端口1,端口2,端口3, ...);\ 端口定义123input  端口1,端口2, ...; &#x2F;&#x2F;输入端口output 端口1,端口2, ...; &#x2F;&#x2F;输出端口inout  端口1,端口2, ...; &#x2F;&#x2F;双向端口  注意  端口除了要定义端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Verilog HDL 基础入门">
 <meta property="og:url" content="http://example.com/2025/02/03/introduction-to-verilog-hdl-basics/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Verilog 模块每个Verilog程序均由以下四个部分组成。 12345graph LRvcx(Verilog程序) --- mksm(模块声明)vcx(Verilog程序) --- dkdy(端口定义)vcx(Verilog程序) --- xhlxsm(信号类型声明)vcx(Verilog程序) --- ljgndy(逻辑功能定义)  模块声明12module 模块名 (端口1,端口2,端口">
+<meta property="og:description" content="Verilog 模块每个Verilog程序均由以下四个部分组成。  模块声明 端口定义 信号类型声明 逻辑功能定义   模块声明12module 模块名 (端口1,端口2,端口3, ...);\ 端口定义123input  端口1,端口2, ...; &#x2F;&#x2F;输入端口output 端口1,端口2, ...; &#x2F;&#x2F;输出端口inout  端口1,端口2, ...; &#x2F;&#x2F;双向端口  注意  端口除了要定义端">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/FILES/verilog.md/img-20220607203609.png">
 <meta property="article:published_time" content="2025-02-03T11:47:54.000Z">
-<meta property="article:modified_time" content="2025-02-03T11:52:05.451Z">
+<meta property="article:modified_time" content="2025-02-18T13:21:30.021Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
@@ -667,8 +667,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-02-03 19:52:05</span>
-            <span class="mobile">2025-02-03 19:52:05</span>
+            <span class="desktop">2025-02-18 21:21:30</span>
+            <span class="mobile">2025-02-18 21:21:30</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -727,43 +727,60 @@ mjx-container[display="true"] + br {
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
             <h2 id="Verilog-模块"><a href="#Verilog-模块" class="headerlink" title="Verilog 模块"></a>Verilog 模块</h2><p>每个Verilog程序均由以下四个部分组成。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">vcx(Verilog程序) --- mksm(模块声明)</span><br><span class="line">vcx(Verilog程序) --- dkdy(端口定义)</span><br><span class="line">vcx(Verilog程序) --- xhlxsm(信号类型声明)</span><br><span class="line">vcx(Verilog程序) --- ljgndy(逻辑功能定义)</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>模块声明</li>
+<li>端口定义</li>
+<li>信号类型声明</li>
+<li>逻辑功能定义</li>
+</ul>
 <ol>
-<li>模块声明<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> 模块名 (端口<span class="number">1</span>,端口<span class="number">2</span>,端口<span class="number">3</span>, ...);\</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></li>
-<li>端口定义<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">input</span>  端口<span class="number">1</span>,端口<span class="number">2</span>, ...; <span class="comment">//输入端口</span></span><br><span class="line"><span class="keyword">output</span> 端口<span class="number">1</span>,端口<span class="number">2</span>, ...; <span class="comment">//输出端口</span></span><br><span class="line"><span class="keyword">inout</span>  端口<span class="number">1</span>,端口<span class="number">2</span>, ...; <span class="comment">//双向端口</span></span><br></pre></td></tr></table></figure></div>
-::: warning ⚠️ 注意</li>
+<li><strong>模块声明</strong><div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> 模块名 (端口<span class="number">1</span>,端口<span class="number">2</span>,端口<span class="number">3</span>, ...);\</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></li>
+<li><strong>端口定义</strong><div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">input</span>  端口<span class="number">1</span>,端口<span class="number">2</span>, ...; <span class="comment">//输入端口</span></span><br><span class="line"><span class="keyword">output</span> 端口<span class="number">1</span>,端口<span class="number">2</span>, ...; <span class="comment">//输出端口</span></span><br><span class="line"><span class="keyword">inout</span>  端口<span class="number">1</span>,端口<span class="number">2</span>, ...; <span class="comment">//双向端口</span></span><br></pre></td></tr></table></figure></div></li>
 </ol>
+<p><strong>注意</strong></p>
 <ul>
 <li>端口除了要定义端口类型，还要声明其数据类型。即端口<strong>同时拥有端口类型和数据类型</strong>。</li>
-<li>测试模块无需定义端口。<br>:::<br>::: danger ⭕ 警告</li>
-<li>含有input成分的端口（即input和inout）不能声明为<strong>寄存器类型</strong>。<br>:::</li>
+<li>测试模块无需定义端口。</li>
+</ul>
+<p><strong>警告</strong></p>
+<ul>
+<li>含有input成分的端口（即<code>input</code>和<code>inout</code>）不能声明为<strong>寄存器类型</strong>。</li>
 </ul>
 <ol start="3">
-<li>信号类型声明<br>使用reg、wire等关键词定义信号类型，具体信号类型见后。<br>::: tip 提示 💡</li>
+<li><strong>信号类型声明</strong><br>使用<code>reg</code>、<code>wire</code>等关键词定义信号类型，具体信号类型见后。</li>
 </ol>
+<p><strong>tip</strong></p>
 <ul>
 <li>如果信号未定义数据类型，默认为 <strong>wire 型</strong>。</li>
-<li>对于端口来说，可以同时进行端口声明和数据类型声明。同时声明也可以在模块列表中进行，例如：<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> f; <span class="comment">// 输出端口f，其数据类型为reg型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> m_2001(</span><br><span class="line">    <span class="keyword">input</span> <span class="keyword">wire</span> a,b, <span class="comment">//输入端口a、b，其数据类型为wire</span></span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">wire</span> f <span class="comment">// 输出端口f，其数据类型为wire型</span></span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-:::</li>
+<li>对于端口来说，可以同时进行端口声明和数据类型声明。同时声明也可以在模块列表中进行，例如：</li>
 </ul>
+<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> f; <span class="comment">// 输出端口f，其数据类型为reg型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> m_2001(</span><br><span class="line">    <span class="keyword">input</span> <span class="keyword">wire</span> a,b, <span class="comment">//输入端口a、b，其数据类型为wire</span></span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">wire</span> f <span class="comment">// 输出端口f，其数据类型为wire型</span></span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
 <ol start="4">
-<li>逻辑功能定义<br>可以使用如下几种方法进行逻辑功能的定义：</li>
+<li><strong>逻辑功能定义</strong></li>
 </ol>
+<p>可以使用如下几种方法进行逻辑功能的定义：</p>
 <ul>
-<li>assign持续赋值语句<br>使用assign关键字赋值的变量，只要语句右侧的表达式有任何变化，变量就会立即重新计算表达式并赋值。<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assign</span> f = ~(a&amp;b);</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></li>
-<li>always过程块<br>使用always描述组合电路与时序电路<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(*)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    f = ~(a&amp;b);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></div>
-上述语句与assign语句完全等效，原理见后。</li>
+<li><code>assign</code>持续赋值语句<br>使用<code>assign</code>关键字赋值的变量，只要语句右侧的表达式有任何变化，变量就会立即重新计算表达式并赋值。<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assign</span> f = ~(a&amp;b);</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></li>
+<li><code>always</code>过程块<br>使用<code>always</code>描述组合电路与时序电路<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(*)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    f = ~(a&amp;b);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></div>
+上述语句与<code>assign</code>语句完全等效，原理见后。</li>
 <li>使用各类元件<br>使用Verilog内置好的门元件、开关级元件等。<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span> a3(out, a, b, c); <span class="comment">//调用三输入与门</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div></li>
 </ul>
 <h2 id="Verilog-通用模板"><a href="#Verilog-通用模板" class="headerlink" title="Verilog 通用模板"></a>Verilog 通用模板</h2><div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">/*----模块定义----*/</span></span><br><span class="line"><span class="keyword">module</span> &lt;模块名&gt; (&lt;端口列表&gt;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*----端口定义----*/</span></span><br><span class="line">    <span class="keyword">input</span>/<span class="keyword">output</span>/<span class="keyword">inout</span> 端口列表;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*----信号类型声明----*/</span></span><br><span class="line">    <span class="keyword">wire</span>/<span class="keyword">reg</span> 信号列表;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*----逻辑功能定义----*/</span></span><br><span class="line">    <span class="keyword">assign</span> &lt;信号名&gt; = &lt;表达式&gt;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">always</span>@(&lt;敏感信号列表&gt;)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="comment">//过程赋值（阻塞与非阻塞）</span></span><br><span class="line">        <span class="comment">//if-else case for语句</span></span><br><span class="line">        <span class="comment">//task function调用</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    &lt;调用模块名&gt; &lt;例化模块名&gt; (&lt;端口列表&gt;);</span><br><span class="line">    门元件关键字 &lt;例化元件名&gt; (&lt;端口列表&gt;)</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="Verilog-语言要素"><a href="#Verilog-语言要素" class="headerlink" title="Verilog 语言要素"></a>Verilog 语言要素</h2><h3 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h3><p><strong>标识符由[0-9] [a-z,A-z] ‘_’ ‘$’组成</strong>。<br>::: tip 提示 💡</p>
+<h2 id="Verilog-语言要素"><a href="#Verilog-语言要素" class="headerlink" title="Verilog 语言要素"></a>Verilog 语言要素</h2><h3 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h3><p><strong>标识符由[0-9] [a-z,A-z] ‘_’ ‘$’组成</strong>。<br><strong>tip</strong></p>
 <ul>
 <li>标识符最长可以包含1023个字符。</li>
-<li>标识符区分大小写<br>:::<br>::: warning ⚠️ 注意</li>
-<li>标识符的**首字符必须为字母或’_’**。</li>
-<li>转义标识符以符号’\‘开头，空白符结尾。<strong>可以包含任何字符，可以以任意字符起手</strong>，例如：<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\7400 </span><br><span class="line">\~#@sel</span><br></pre></td></tr></table></figure></div>
-:::</li>
+<li>标识符区分大小写</li>
 </ul>
+<p><strong>注意</strong></p>
+<ul>
+<li>标识符的**首字符必须为字母或’_’**。</li>
+<li>转义标识符以符号’\‘开头，空白符结尾。<strong>可以包含任何字符，可以以任意字符起手</strong>，例如：</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\7400 </span><br><span class="line">\~#@sel</span><br></pre></td></tr></table></figure></div>
+
+
 <h3 id="整数常量"><a href="#整数常量" class="headerlink" title="整数常量"></a>整数常量</h3><p>整数常量的格式按照如下方式书写：</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+/-&lt;位宽&gt;'&lt;进制&gt;&lt;数字&gt;</span><br></pre></td></tr></table></figure></div>
 <p>进制的表示方式：</p>
@@ -774,43 +791,43 @@ mjx-container[display="true"] + br {
 <li>O/o : 八进制</li>
 </ul>
 <p>数字不仅可以是[0-9]，还可以是<strong>x/X(不定值)<strong>，</strong>z/Z（高阻态）</strong>。</p>
-<p>::: warning ⚠️ 注意</p>
+<p><strong>注意</strong></p>
 <ul>
 <li><p>位宽表示的是其<strong>二进制宽度</strong>，不应是当前进制下的宽度，需要转换为二进制的形式才能正确表示，在位拓展与位截断上也是以二进制宽度来截取。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">8'hFF == 8'h000000FF //❌</span><br><span class="line">8'hFF == 8'b11111111 //✔️</span><br></pre></td></tr></table></figure></div></li>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">8'hFF == 8'h000000FF // wrong</span><br><span class="line">8'hFF == 8'b11111111 // true</span><br></pre></td></tr></table></figure></div></li>
 <li><p>正负号需要写在最左侧，负数通常表示为二进制补码的形式。</p>
 </li>
 <li><p><strong>‘ 与 进制</strong>之间不允许出现空格，<strong>数值之间</strong>不允许出现空格。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">8'h2A1B3 //✔️</span><br><span class="line">8  'h2A1B3 //✔️</span><br><span class="line">8'h  2A1B3 //✔️</span><br><span class="line">8  'h  2A1B3 //✔️</span><br><span class="line"></span><br><span class="line">8'  h2A1B3 //❌，'与进制之间有空格</span><br><span class="line">8'h2A  1B3 //❌，数值之间有空格</span><br></pre></td></tr></table></figure></div></li>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">8'h2A1B3 // true</span><br><span class="line">8  'h2A1B3 // true</span><br><span class="line">8'h  2A1B3 // true</span><br><span class="line">8  'h  2A1B3 // true</span><br><span class="line"></span><br><span class="line">8'  h2A1B3 // wrong，'与进制之间有空格</span><br><span class="line">8'h2A  1B3 // wrong，数值之间有空格</span><br></pre></td></tr></table></figure></div></li>
 <li><p>可以使用’_’划开数字，但本身__无意义。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">16'b1010110100101001 //✔️</span><br><span class="line">16'b1010_1101_0010_1001 //✔️，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div></li>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">16'b1010110100101001 // true</span><br><span class="line">16'b1010_1101_0010_1001 // true，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div></li>
 <li><p>未定义位宽，则默认为<strong>32位</strong>。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">32'b00000000000000000000000000001101 //✔️</span><br><span class="line">'b1101 //✔️，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div></li>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">32'b00000000000000000000000000001101 // true</span><br><span class="line">'b1101 //true，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div></li>
 <li><p>位拓展时，一般补0，若最高位为x或z，则补符。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">10'b0000000010 //✔️</span><br><span class="line">10'b10 //✔️，且与上面的表示完全等价</span><br><span class="line"></span><br><span class="line">10'bxxxxxxx0x1 //✔️</span><br><span class="line">10'bx0x1 //✔️，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div></li>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">10'b0000000010 // true</span><br><span class="line">10'b10 // true，且与上面的表示完全等价</span><br><span class="line"></span><br><span class="line">10'bxxxxxxx0x1 // true</span><br><span class="line">10'bx0x1 //true，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div></li>
 <li><p>位截断时，先转换为二进制下的表示形式，然后根据位宽，从最高位向低位截断，如有需要可以再转换为原来的表示形式。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">5'H0FFF //✔️</span><br><span class="line">5'b0000111111111111 //✔️，且与上面的表示完全等价</span><br><span class="line">5'b11111 //✔️，且与上面的表示完全等价</span><br><span class="line">5'h1F //✔️，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div></li>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">5'H0FFF // true</span><br><span class="line">5'b0000111111111111 // true，且与上面的表示完全等价</span><br><span class="line">5'b11111 // true，且与上面的表示完全等价</span><br><span class="line">5'h1F // true，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div></li>
 <li><p>x/z在不同进制下表示的宽度不一致，二进制为1位，八进制为3位，十六进制为4位。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">8'o7x //✔️</span><br><span class="line">8'b00111xxx //✔️，且与上面的表示完全等价</span><br><span class="line"></span><br><span class="line">8'haz //✔️</span><br><span class="line">8'b1010zzzz //✔️，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div></li>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">8'o7x // true</span><br><span class="line">8'b00111xxx // true，且与上面的表示完全等价</span><br><span class="line"></span><br><span class="line">8'haz // true</span><br><span class="line">8'b1010zzzz // true，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div></li>
 <li><p>位宽与进制均省略时，<strong>默认为十进制数</strong>。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">32 //✔️，表示十进制的32</span><br></pre></td></tr></table></figure></div></li>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">32 // true，表示十进制的32</span><br></pre></td></tr></table></figure></div></li>
 <li><p>可以使用s代表带符号的整数</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8'sh5a //✔️，表示十六进制带符号整数5a</span><br></pre></td></tr></table></figure></div>
-<p>:::</p>
-</li>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8'sh5a // true，表示十六进制带符号整数5a</span><br></pre></td></tr></table></figure></div></li>
 </ul>
 <h3 id="实数常量"><a href="#实数常量" class="headerlink" title="实数常量"></a>实数常量</h3><ol>
-<li>十进制表示法<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2.0 //✔️</span><br><span class="line">0.123 //✔️</span><br><span class="line"></span><br><span class="line">2. //❌，小数点两侧均有数字</span><br><span class="line">.5 //❌，小数点两侧均有数字</span><br></pre></td></tr></table></figure></div>
-2.十进制科学计数法<br>格式：<br>&lt;数值&gt; e/E &lt;整数数值&gt;<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4_3_5.1e2 //✔️</span><br><span class="line">435.1e2 //✔️，且与上面的表示完全等价</span><br><span class="line">435.1E2 //✔️，且与上面的表示完全等价</span><br><span class="line">43510.0 //✔️，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div>
-实数转整数的方式：<strong>四舍五入</strong>。<br>::: tip 提示 💡<br>负数的四舍五入要向负无穷舍，例如<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-16.62 --&gt; -17</span><br><span class="line">-25.22 --&gt; -25</span><br></pre></td></tr></table></figure></div>
-:::</li>
+<li><strong>十进制表示法</strong><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2.0 // true</span><br><span class="line">0.123 // true</span><br><span class="line"></span><br><span class="line">2. // wrong，小数点两侧均有数字</span><br><span class="line">.5 // wrong，小数点两侧均有数字</span><br></pre></td></tr></table></figure></div>
+2.<strong>十进制科学计数法</strong><br>格式：<br>&lt;数值&gt; e/E &lt;整数数值&gt;<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4_3_5.1e2 // true</span><br><span class="line">435.1e2 // true，且与上面的表示完全等价</span><br><span class="line">435.1E2 // true，且与上面的表示完全等价</span><br><span class="line">43510.0 // true，且与上面的表示完全等价</span><br></pre></td></tr></table></figure></div>
+实数转整数的方式：<strong>四舍五入</strong>。</li>
 </ol>
+<p><strong>tips</strong><br>负数的四舍五入要向负无穷舍，例如</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-16.62 --&gt; -17</span><br><span class="line">-25.22 --&gt; -25</span><br></pre></td></tr></table></figure></div>
+
 <h3 id="整数变量"><a href="#整数变量" class="headerlink" title="整数变量"></a>整数变量</h3><p>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">integer</span> counter;</span><br><span class="line">counter = -<span class="number">1</span>;</span><br></pre></td></tr></table></figure></div>
 <h3 id="实数变量"><a href="#实数变量" class="headerlink" title="实数变量"></a>实数变量</h3><p>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">real</span> delta;</span><br><span class="line">delta = <span class="number">4</span>e10;</span><br><span class="line">delta = <span class="number">2</span><span class="variable">.13</span>;</span><br></pre></td></tr></table></figure></div>
 <h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>字符串必须是双引号内的字符序列，<strong>不可多行书写</strong>。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"Hello world!" //✔️</span><br><span class="line"></span><br><span class="line">"Hello</span><br><span class="line"> world!" //❌</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"Hello world!" // true</span><br><span class="line"></span><br><span class="line">"Hello</span><br><span class="line"> world!" // wrong</span><br></pre></td></tr></table></figure></div>
 <p>采用<strong>reg型变量</strong>存储字符串，每个字符是<strong>8位ASCII码</strong>。<br>对变量赋值时，如果少于或多余原来设置的reg大小，则发生位截断与位拓展现象。</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">8</span>*<span class="number">12</span>:<span class="number">1</span>] str;</span><br><span class="line"><span class="keyword">initial</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    str = <span class="string">"Hello World!"</span>; <span class="comment">// 实际存储 Hello World!</span></span><br><span class="line">    str = <span class="string">"Hello!"</span>; <span class="comment">// 实际存储 Hello!，在数字进制下高位补0</span></span><br><span class="line">    str = <span class="string">"Hello Wooooooooooorld!"</span>; <span class="comment">// 实际存储 Hello Wooooo</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></div>
 <h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><table>
@@ -821,23 +838,23 @@ mjx-container[display="true"] + br {
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">\n</td>
+<td align="center"><code>\n</code></td>
 <td align="center">换行符</td>
 </tr>
 <tr>
-<td align="center">\t</td>
+<td align="center"><code>\t</code></td>
 <td align="center">Tab缩进符</td>
 </tr>
 <tr>
-<td align="center"><span>\</span></td>
+<td align="center"><code>\\</code></td>
 <td align="center">符号反斜杠</td>
 </tr>
 <tr>
-<td align="center">\“</td>
+<td align="center"><code>\"</code></td>
 <td align="center">符号双引号</td>
 </tr>
 <tr>
-<td align="center">\ddd（ddd为八进制数）</td>
+<td align="center"><code>\ddd</code>（ddd为八进制数）</td>
 <td align="center">表示ddd对应的ASCII字符</td>
 </tr>
 </tbody></table>
@@ -849,25 +866,25 @@ mjx-container[display="true"] + br {
 <li>x/X – 不定或未知的逻辑状态</li>
 <li>z/Z – 高阻态</li>
 </ul>
-<p>::: warning ⚠️ 注意</p>
+<p><strong>注意</strong></p>
 <ul>
 <li>只有0、1、z可综合。</li>
-<li>只有端口变量可以赋值为z。<br>:::</li>
+<li>只有端口变量可以赋值为z。</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>net型</th>
-<th>variable型</th>
+<th><code>net</code>型</th>
+<th><code>variable</code>型</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>wire</td>
-<td>reg</td>
+<td><code>wire</code></td>
+<td><code>reg</code></td>
 </tr>
 <tr>
-<td>tri</td>
-<td>integer</td>
+<td><code>tri</code></td>
+<td><code>integer</code></td>
 </tr>
 <tr>
 <td>…</td>
@@ -878,38 +895,38 @@ mjx-container[display="true"] + br {
 <td></td>
 </tr>
 </tbody></table>
-<h4 id="net型"><a href="#net型" class="headerlink" title="net型"></a>net型</h4><p>net型数据相当于<strong>硬件电路的物理连接</strong>，特点是随着输入值的变化而变化。</p>
-<p>::: warning ⚠️ 注意</p>
+<h4 id="net型"><a href="#net型" class="headerlink" title="net型"></a><code>net</code>型</h4><p><code>net</code>型数据相当于<strong>硬件电路的物理连接</strong>，特点是随着输入值的变化而变化。</p>
+<p><strong>注意</strong></p>
 <ul>
-<li><strong>net型值不接受直接的赋值</strong>。</li>
-<li>未赋值的net型变量为<strong>高阻态z</strong>（除trireg以外）。<br>:::</li>
+<li><strong><code>net</code>型值不接受直接的赋值</strong>。</li>
+<li>未赋值的<code>net</code>型变量为<strong>高阻态z</strong>（除<code>trireg</code>以外）。</li>
 </ul>
 <ol>
-<li>wire型<br>wire是最常用的net型数据变量，一般wire用来定义Verilog模块中的<strong>输入/输出信号</strong>。<br>多位的wire型变量，也称**wire型向量(Vector)**，可以使用[n-1:0]或[n:1]的方式定义，两种方式的宽度是等价的。<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">wire</span> a; <span class="comment">//定义wire型变量a，宽度为1位</span></span><br><span class="line"><span class="keyword">wire</span> [<span class="number">7</span>:<span class="number">0</span>] b; <span class="comment">//定义wire型变量b，宽度为8位</span></span><br><span class="line"><span class="keyword">wire</span> [<span class="number">8</span>:<span class="number">1</span>] c; <span class="comment">//定义wire型变量c，宽度为8位，与上述语句的宽度完全一致</span></span><br></pre></td></tr></table></figure></div></li>
-<li>tri型（非重点）<br>与wire的用法与功能上完全一致，仅仅是为了更清楚表示该信号综合后的电路连线具有三态功能。</li>
+<li><code>wire</code>型<br><code>wire</code>是最常用的net型数据变量，一般<code>wire</code>用来定义Verilog模块中的<strong>输入/输出信号</strong>。<br>多位的<code>wire</code>型变量，也称**wire型向量(Vector)**，可以使用[n-1:0]或[n:1]的方式定义，两种方式的宽度是等价的。<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">wire</span> a; <span class="comment">//定义wire型变量a，宽度为1位</span></span><br><span class="line"><span class="keyword">wire</span> [<span class="number">7</span>:<span class="number">0</span>] b; <span class="comment">//定义wire型变量b，宽度为8位</span></span><br><span class="line"><span class="keyword">wire</span> [<span class="number">8</span>:<span class="number">1</span>] c; <span class="comment">//定义wire型变量c，宽度为8位，与上述语句的宽度完全一致</span></span><br></pre></td></tr></table></figure></div></li>
+<li><code>tri</code>型（非重点）<br>与<code>wire</code>的用法与功能上完全一致，仅仅是为了更清楚表示该信号综合后的电路连线具有三态功能。</li>
 </ol>
 <h4 id="variable型变量"><a href="#variable型变量" class="headerlink" title="variable型变量"></a>variable型变量</h4><p>variable型变量必须位于过程语句，通过<strong>赋值语句</strong>赋值。</p>
 <ol>
-<li>reg型<br>reg是最常用的variable型数据变量。<br>多位的reg型变量，也称**reg型向量(Vector)**，可以使用[n-1:0]或[n:1]的方式定义，两种方式的宽度是等价的。</li>
+<li><code>reg</code>型<br><code>reg</code>是最常用的variable型数据变量。<br>多位的<code>reg</code>型变量，也称**reg型向量(Vector)**，可以使用[n-1:0]或[n:1]的方式定义，两种方式的宽度是等价的。</li>
 </ol>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> a; <span class="comment">//定义reg型变量a，宽度为1位</span></span><br><span class="line"><span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] b; <span class="comment">//定义reg型变量b，宽度为8位</span></span><br><span class="line"><span class="keyword">reg</span> [<span class="number">8</span>:<span class="number">1</span>] c; <span class="comment">//定义reg型变量c，宽度为8位，与上述语句的宽度完全一致</span></span><br></pre></td></tr></table></figure></div>
-<p>::: warning ⚠️ 注意</p>
+
+<p><strong>注意</strong></p>
 <ul>
-<li>reg变量既可以是寄存器或触发器，也<strong>可以是连线</strong>。综合器会根据实际情况来映射，例如：<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> abc(</span><br><span class="line">    <span class="keyword">input</span> a, b, c, <span class="keyword">output</span> f1, f2</span><br><span class="line">);</span><br><span class="line">    <span class="keyword">reg</span> f1, f2;</span><br><span class="line">    <span class="keyword">always</span> @(a <span class="keyword">or</span> b <span class="keyword">or</span> c)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        f1 = a | b;</span><br><span class="line">        f2 = a &amp; c;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line">上述例子综合完毕后，f1和f2会映射为连线。</span><br></pre></td></tr></table></figure></div></li>
-<li>使用[n-1:0]和[n:1]的宽度等价，但其下标使用范围不一致。例如：<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">8</span>:<span class="number">1</span>] aa;</span><br><span class="line">aa[<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">//❌，因为没有下标为0的位置</span></span><br></pre></td></tr></table></figure></div>
-:::</li>
+<li><code>reg</code>变量既可以是寄存器或触发器，<strong>也可以是连线</strong>。综合器会根据实际情况来映射，例如：<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> abc(</span><br><span class="line">    <span class="keyword">input</span> a, b, c, <span class="keyword">output</span> f1, f2</span><br><span class="line">);</span><br><span class="line">    <span class="keyword">reg</span> f1, f2;</span><br><span class="line">    <span class="keyword">always</span> @(a <span class="keyword">or</span> b <span class="keyword">or</span> c)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        f1 = a | b;</span><br><span class="line">        f2 = a &amp; c;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line">上述例子综合完毕后，f1和f2会映射为连线。</span><br></pre></td></tr></table></figure></div></li>
+<li>使用[n-1:0]和[n:1]的宽度等价，但其下标使用范围不一致。例如：<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">8</span>:<span class="number">1</span>] aa;</span><br><span class="line">aa[<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">// wrong，因为没有下标为0的位置</span></span><br></pre></td></tr></table></figure></div></li>
 </ul>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>用parameter来定义符号常量。<br>参数的格式：</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>用<code>parameter</code>来定义符号常量。<br>参数的格式：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">parameter</span> &lt;参数名<span class="number">1</span>&gt; = &lt;表达式&gt;, &lt;参数名<span class="number">2</span>&gt; = &lt;表达式&gt;, ... ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">parameter</span> SEL = <span class="number">8</span>, CODE = <span class="number">8'ha3</span>; </span><br><span class="line"><span class="comment">//为参数SEL赋值位十进制的8，为参数CODE赋值十六进制的a3</span></span><br></pre></td></tr></table></figure></div>
-<p>用localparam可以定义局部参数，<strong>仅限于本模块，不可用于参数传递</strong>。</p>
+<p>用<code>localparam</code>可以定义局部参数，<strong>仅限于本模块，不可用于参数传递</strong>。</p>
 <h4 id="参数的传递（重载）"><a href="#参数的传递（重载）" class="headerlink" title="参数的传递（重载）"></a>参数的传递（重载）</h4><p>高层模块中例化底层模块时，可以在高层模块中直接修改内部定义的参数。</p>
 <ol>
-<li>隐式传递<br>使用’#’符号进行重载，这种重载方式需要和原参数列表<strong>一一对应且不可跳过</strong>，例如：</li>
+<li>隐式传递<br>使用<code>#</code>符号进行重载，这种重载方式需要和原参数列表<strong>一一对应且不可跳过</strong>，例如：</li>
 </ol>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> add8</span><br><span class="line">    #(<span class="keyword">parameter</span> MSB = <span class="number">8</span>,LSB = <span class="number">0</span>) (</span><br><span class="line">        <span class="keyword">input</span>[MSB-<span class="number">1</span>:LSB] a,b</span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">add8 <span class="variable">#(16,0) u1 (a,b)</span>;</span><br><span class="line"><span class="comment">// 例化add8子模块，其中参数MSB修改为16</span></span><br></pre></td></tr></table></figure></div>
 <p>2.显式传递<br>类似于例化的名称关联方式，也可以显示地传递参数，这种传递方式<strong>不受位置影响</strong>。</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> add8</span><br><span class="line">    #(<span class="keyword">parameter</span> MSB = <span class="number">8</span>,LSB = <span class="number">0</span>) (</span><br><span class="line">        <span class="keyword">input</span>[MSB-<span class="number">1</span>:LSB] a,b</span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">add8 <span class="variable">#(.LSB(0),.MSB(16)) u2 (a,b)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例化add8子模块，其中参数MSB修改为16</span></span><br></pre></td></tr></table></figure></div>
-<p>3.defparam传递</p>
+<p>3.<code>defparam</code>传递</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> add8</span><br><span class="line">    #(<span class="keyword">parameter</span> MSB = <span class="number">8</span>,LSB = <span class="number">0</span>) (</span><br><span class="line">        <span class="keyword">input</span>[MSB-<span class="number">1</span>:LSB] a,b</span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">defparam</span> u3<span class="variable">.MSB</span> = <span class="number">16</span>, u3<span class="variable">.LSB</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">add8 u3 (a,b);</span><br><span class="line"><span class="comment">// 例化add8子模块，其中参数MSB修改为16</span></span><br></pre></td></tr></table></figure></div>
 
 <h3 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h3><p>前置内容已经涉及了向量，总的来说，<strong>位宽大于1</strong>的变量称为向量。</p>
@@ -918,95 +935,101 @@ mjx-container[display="true"] + br {
 
 <h3 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h3><p>存储器是一种<strong>特殊的二位向量</strong>。拥有<strong>单元数和位宽（字长）两个属性</strong>。<br>存储器的格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;数据类型&gt; (&lt;[high1:low1]&gt;) 存储器名 &lt;[high1:low2]&gt;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] mymem [<span class="number">63</span>:<span class="number">0</span>];</span><br><span class="line"><span class="comment">// 定义了一个存储器mymem，拥有64个单元，每个单元的位宽为4位。</span></span><br></pre></td></tr></table></figure></div>
-<p>::: warning ⚠️ 注意<br>只允许对存储的某一个单元进行赋值，例如：</p>
-<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] mymem [<span class="number">63</span>:<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">mymem[<span class="number">2</span>] = <span class="number">12</span>; <span class="comment">//✔️</span></span><br><span class="line">mymem[<span class="number">61</span>] = <span class="number">8'b10011111</span>; <span class="comment">//✔️</span></span><br></pre></td></tr></table></figure></div>
-<p>:::</p>
+
+<p><strong>注意</strong><br>只允许对存储的某一个单元进行赋值，例如：</p>
+<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] mymem [<span class="number">63</span>:<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">mymem[<span class="number">2</span>] = <span class="number">12</span>; <span class="comment">// true</span></span><br><span class="line">mymem[<span class="number">61</span>] = <span class="number">8'b10011111</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
+
+
 <h4 id="寄存器与存储器的区别（重点）"><a href="#寄存器与存储器的区别（重点）" class="headerlink" title="寄存器与存储器的区别（重点）"></a>寄存器与存储器的区别（重点）</h4><p>中括号在前和在后所表示的含义完全不一致，为了区分，以下举几个常见的例子：</p>
-<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] a1;</span><br><span class="line"><span class="comment">//定义了一个8位寄存器a1，最高有效位为a1[7]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">reg</span> a2 [<span class="number">7</span>:<span class="number">0</span>];</span><br><span class="line"><span class="comment">//定义了一个8个单元的存储器a2，每个单元的位宽为1位</span></span><br><span class="line"><span class="comment">//未指出位宽（字长），默认为1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] a3 [<span class="number">7</span>:<span class="number">0</span>];</span><br><span class="line"><span class="comment">//定义了一个8个单元的存储器a2，每个单元的位宽为8位</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a1 = <span class="number">8'b11001100</span>; <span class="comment">//✔️,对寄存器a1整体赋值，合法</span></span><br><span class="line">a1[<span class="number">0</span>] = <span class="number">1'b1</span>; <span class="comment">//✔️，对寄存器a1的第0位赋值，合法</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a2[<span class="number">0</span>] = <span class="number">1'b1</span>; <span class="comment">//✔️，对存储器a2的第0个单元赋值，合法</span></span><br><span class="line">a2 = <span class="number">8'b11001100</span>;<span class="comment">//❌，对存储器a2整体赋值，非法</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a3[<span class="number">0</span>] = <span class="number">1'b1</span>; <span class="comment">//✔️，对存储器a3的第0个单元赋值，合法</span></span><br><span class="line"><span class="comment">//数值会经过位拓展，实际存储为8'b00000001</span></span><br><span class="line"></span><br><span class="line">a3[<span class="number">3</span>] = <span class="number">8'b11001100</span>;<span class="comment">//✔️，对存储器a3的第3个单元赋值，合法</span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] a1;</span><br><span class="line"><span class="comment">//定义了一个8位寄存器a1，最高有效位为a1[7]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">reg</span> a2 [<span class="number">7</span>:<span class="number">0</span>];</span><br><span class="line"><span class="comment">//定义了一个8个单元的存储器a2，每个单元的位宽为1位</span></span><br><span class="line"><span class="comment">//未指出位宽（字长），默认为1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] a3 [<span class="number">7</span>:<span class="number">0</span>];</span><br><span class="line"><span class="comment">//定义了一个8个单元的存储器a2，每个单元的位宽为8位</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a1 = <span class="number">8'b11001100</span>; <span class="comment">// true,对寄存器a1整体赋值，合法</span></span><br><span class="line">a1[<span class="number">0</span>] = <span class="number">1'b1</span>; <span class="comment">// true，对寄存器a1的第0位赋值，合法</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a2[<span class="number">0</span>] = <span class="number">1'b1</span>; <span class="comment">// true，对存储器a2的第0个单元赋值，合法</span></span><br><span class="line">a2 = <span class="number">8'b11001100</span>;<span class="comment">// wrong，对存储器a2整体赋值，非法</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a3[<span class="number">0</span>] = <span class="number">1'b1</span>; <span class="comment">// true，对存储器a3的第0个单元赋值，合法</span></span><br><span class="line"><span class="comment">//数值会经过位拓展，实际存储为8'b00000001</span></span><br><span class="line"></span><br><span class="line">a3[<span class="number">3</span>] = <span class="number">8'b11001100</span>;<span class="comment">// true，对存储器a3的第3个单元赋值，合法</span></span><br></pre></td></tr></table></figure></div>
 
 <h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>与C类似，使用运算符对变量和常量之间进行运算，也是Verilog逻辑功能定义的核心。</p>
 <h4 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h4><ul>
-<li>+ 加</li>
-<li>- 减</li>
-<li>* 乘</li>
-<li>\ 除</li>
-<li>% 取余</li>
+<li><code>+</code> 加</li>
+<li><code>-</code> 减</li>
+<li><code>*</code> 乘</li>
+<li><code>\</code> 除</li>
+<li><code>%</code> 取余</li>
 </ul>
 <h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>逻辑运算符的结果只有1和0。</p>
 <ul>
-<li>&amp;&amp; 逻辑与</li>
-<li>|| 逻辑或</li>
-<li>! 逻辑非<br>::: warning ⚠️ 注意<br>参与逻辑运算的数值，<strong>只要有任何一位是非零值，该值整体看为1进行运算</strong>。<br>:::</li>
+<li><code>&amp;&amp;</code> 逻辑与</li>
+<li><code>||</code> 逻辑或</li>
+<li><code>!</code> 逻辑非</li>
 </ul>
+<p><strong>注意</strong><br>参与逻辑运算的数值，<strong>只要有任何一位是非零值，该值整体看为1进行运算</strong>。</p>
 <h4 id="位运算符（重点）"><a href="#位运算符（重点）" class="headerlink" title="位运算符（重点）"></a>位运算符（重点）</h4><ul>
-<li>~ 按位取反</li>
-<li>&amp; 按位与</li>
-<li>| 按位或</li>
-<li>^ 按位异或</li>
-<li>^~/~^ 按位同或</li>
+<li><code>~</code> 按位取反</li>
+<li><code>&amp;</code> 按位与</li>
+<li><code>|</code> 按位或</li>
+<li><code>^</code> 按位异或</li>
+<li><code>^~ / ~^</code> 按位同或</li>
 </ul>
-<p>::: warning ⚠️ 注意</p>
+<p><strong>注意</strong></p>
 <ul>
-<li><p>对于x（不定值）进行位运算时：<br>0 &amp; x = 0，因为0与任意值与均为0。<br>1 | x = 1，因为1与任意值或均为1。<br>0/1 ^~/~^ x = x，因为异或与同或运算均要参考两边的值。</p>
+<li><p>对于<code>x</code>（不定值）进行位运算时：<br><code>0 &amp; x = 0</code>，因为0与任意值与均为0。<br><code>1 | x = 1</code>，因为1与任意值或均为1。<br><code>0 / 1 \~ / ~^ x = x</code>，因为异或与同或运算均要参考两边的值。</p>
 </li>
 <li><p>对于位宽不一致的值进行位运算，使短位宽的值进行<strong>位拓展</strong>，例如：</p>
-<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A = <span class="number">5'b11001</span>;</span><br><span class="line">B = <span class="number">3'b100</span>;</span><br><span class="line"></span><br><span class="line">A | B == <span class="number">5</span>'<span class="number">11101</span> <span class="comment">//✔️</span></span><br><span class="line"><span class="comment">//等价于5'b11001和5'b00100进行按位或</span></span><br></pre></td></tr></table></figure></div>
-<p>:::</p>
-</li>
+<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A = <span class="number">5'b11001</span>;</span><br><span class="line">B = <span class="number">3'b100</span>;</span><br><span class="line"></span><br><span class="line">A | B == <span class="number">5</span>'<span class="number">11101</span> <span class="comment">// true</span></span><br><span class="line"><span class="comment">//等价于5'b11001和5'b00100进行按位或</span></span><br></pre></td></tr></table></figure></div></li>
 </ul>
 <h4 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h4><ul>
-<li>&lt; 小于</li>
-<li>&lt;= 小于等于</li>
-<li>&gt; 大于</li>
-<li>&gt;= 大于等于<br>::: warning ⚠️ 注意</li>
-<li>如果任何一边的数值<strong>任意一位存在不定值</strong>，返回值也为不定值。<br>:::</li>
+<li><code>&lt;</code> 小于</li>
+<li><code>&lt;=</code> 小于等于</li>
+<li><code>&gt;</code> 大于</li>
+<li><code>&gt;=</code> 大于等于</li>
+</ul>
+<p><strong>注意</strong></p>
+<ul>
+<li>如果任何一边的数值<strong>任意一位存在不定值</strong>，返回值也为不定值。</li>
 </ul>
 <h4 id="等式运算符（重点）"><a href="#等式运算符（重点）" class="headerlink" title="等式运算符（重点）"></a>等式运算符（重点）</h4><ul>
-<li>== 等于</li>
-<li>!= 不等于</li>
-<li>=== 全等</li>
-<li>!== 不全等<br>::: warning ⚠️ 注意</li>
+<li><code>==</code> 等于</li>
+<li><code>!=</code> 不等于</li>
+<li><code>===</code> 全等</li>
+<li><code>!==</code> 不全等</li>
+</ul>
+<p><strong>注意</strong></p>
+<ul>
 <li>对于全等和不全等运算符来说，即使是x（不定值）和z（高阻），也会进行比较，存在以下规则：<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x === x <span class="comment">//逻辑1</span></span><br><span class="line">z === z <span class="comment">//逻辑1</span></span><br><span class="line">x === z <span class="comment">//逻辑0</span></span><br><span class="line">x === <span class="number">1</span> <span class="comment">//逻辑0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = <span class="number">5'b11x01</span>;</span><br><span class="line">b = <span class="number">5'b11x01</span>;</span><br><span class="line"></span><br><span class="line">a == b <span class="comment">//逻辑0，因为存在x不定值</span></span><br><span class="line">a === b <span class="comment">//逻辑1，因为完全一致</span></span><br></pre></td></tr></table></figure></div></li>
 </ul>
-<p>:::</p>
 <h4 id="缩减运算符"><a href="#缩减运算符" class="headerlink" title="缩减运算符"></a>缩减运算符</h4><p>将多位宽的数值通过逐位运算缩减为位宽为1的数值。</p>
 <ul>
-<li>&amp; 逐位与</li>
-<li>~&amp; 逐位与非</li>
-<li>| 逐位或</li>
-<li>~| 逐位或非</li>
-<li>^ 逐位异或</li>
-<li>^~/~^ 逐位同或</li>
+<li><code>&amp;</code> 逐位与</li>
+<li><code>~&amp;</code> 逐位与非</li>
+<li><code>|</code> 逐位或</li>
+<li><code>~|</code> 逐位或非</li>
+<li><code>^</code> 逐位异或</li>
+<li><code>^~ / ~^</code> 逐位同或</li>
 </ul>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] re;</span><br><span class="line">a = &amp;re </span><br><span class="line"><span class="comment">//等价于 re[3] &amp; re[2] &amp; re[1] &amp; re[0]</span></span><br><span class="line">b = ~|re</span><br><span class="line"><span class="comment">//等价于 ~(~(~(re[3] | re[2]) | re[1]) | re[0])</span></span><br></pre></td></tr></table></figure></div>
 
 <h4 id="移位运算符"><a href="#移位运算符" class="headerlink" title="移位运算符"></a>移位运算符</h4><p>算数移位会保持其数值符号。</p>
 <ul>
-<li>&gt;&gt; 右移</li>
-<li>&lt;&lt; 左移</li>
-<li>&gt;&gt;&gt; 算数右移</li>
-<li>&lt;&lt;&lt; 算数左移</li>
+<li><code>&gt;&gt;</code> 右移</li>
+<li><code>&lt;&lt;</code> 左移</li>
+<li><code>&gt;&gt;&gt;</code> 算数右移</li>
+<li><code>&lt;&lt;&lt;</code> 算数左移</li>
 </ul>
 <h4 id="指数运算符"><a href="#指数运算符" class="headerlink" title="指数运算符"></a>指数运算符</h4><p>可以实现 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex;" xmlns="http://www.w3.org/2000/svg" width="2.071ex" height="1.954ex" role="img" focusable="false" viewBox="0 -853.7 915.3 863.7"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(562,363) scale(0.707)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g></g></g></g></svg></mjx-container> 的效果。</p>
 <ul>
-<li>** 指数运算符</li>
+<li><code>**</code> 指数运算符</li>
 </ul>
 <h4 id="条件运算符"><a href="#条件运算符" class="headerlink" title="条件运算符"></a>条件运算符</h4><p>满足条件执行第一个语句，否则为第二个语句。</p>
 <ul>
-<li>? :</li>
+<li><code>? :</code></li>
 </ul>
 <h4 id="位拼接运算符（重点）"><a href="#位拼接运算符（重点）" class="headerlink" title="位拼接运算符（重点）"></a>位拼接运算符（重点）</h4><p>可以简化赋值，也可以使用这种复制法来进行一些巧妙的运算。</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">input</span> [<span class="number">3</span>:<span class="number">0</span>] ina,inb;</span><br><span class="line"><span class="keyword">input</span> cin;</span><br><span class="line"><span class="keyword">output</span> [<span class="number">3</span>:<span class="number">0</span>] sum;</span><br><span class="line"><span class="keyword">output</span> cout;</span><br><span class="line"><span class="keyword">assign</span> {cout,sum} = ina + inb + cin;</span><br><span class="line"><span class="comment">//ina，inb和cin加起来是4位或5位的数值。</span></span><br><span class="line"><span class="comment">//使用这种办法可以自动切分结果数值</span></span><br><span class="line"><span class="comment">//将[3:0]的部分赋给sum，[4]的部分赋给cout</span></span><br><span class="line"></span><br><span class="line">a = {<span class="number">2</span>{<span class="number">3'b101</span>}};</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="comment">//a = 6'b101101;</span></span><br><span class="line"></span><br><span class="line">b = {<span class="number">3</span>{a,b}};</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="comment">// b = {a,b,a,b,a,b};</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">wire</span> [<span class="number">7</span>:<span class="number">0</span>] data;</span><br><span class="line">data = <span class="number">8'b10001111</span></span><br><span class="line">s_data = {<span class="number">4</span>{data[<span class="number">7</span>]}, data};</span><br><span class="line"><span class="comment">//将data的最高位（符号位）复制4次，然后接在data之前，完成位拓展</span></span><br></pre></td></tr></table></figure></div>
 
-<h2 id="Verilog-语句语法"><a href="#Verilog-语句语法" class="headerlink" title="Verilog 语句语法"></a>Verilog 语句语法</h2><h3 id="过程语句"><a href="#过程语句" class="headerlink" title="过程语句"></a>过程语句</h3><h4 id="initail"><a href="#initail" class="headerlink" title="initail"></a>initail</h4><p>常用于仿真初始化，只执行一次。<br>格式如下：</p>
+<h2 id="Verilog-语句语法"><a href="#Verilog-语句语法" class="headerlink" title="Verilog 语句语法"></a>Verilog 语句语法</h2><h3 id="过程语句"><a href="#过程语句" class="headerlink" title="过程语句"></a>过程语句</h3><h4 id="initail"><a href="#initail" class="headerlink" title="initail"></a><code>initail</code></h4><p>常用于仿真初始化，只执行一次。<br>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">initail</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></div>
-<h4 id="always"><a href="#always" class="headerlink" title="always"></a>always</h4><p>敏感触发过程块，只要列表中的信号有更新，always下的过程块就会执行，次数不定。<br>格式如下：</p>
+<h4 id="always"><a href="#always" class="headerlink" title="always"></a><code>always</code></h4><p>敏感触发过程块，只要列表中的信号有更新，always下的过程块就会执行，次数不定。<br>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(&lt;敏感信号列表&gt;)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></div>
 <p>敏感信号列表的几种表达形式：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(a) <span class="comment">//当a发生改变时</span></span><br><span class="line"><span class="keyword">always</span> @(a <span class="keyword">or</span> b <span class="keyword">or</span> c) <span class="comment">//当a，b，c任意一个发生改变时</span></span><br><span class="line"><span class="keyword">always</span> @(a, b, c) <span class="comment">//与上式完全等价，当a，b，c任意一个发生改变时</span></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clock) <span class="comment">//当clock上升沿到达时</span></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">negedge</span> clock) <span class="comment">//当clock下降沿到达时</span></span><br><span class="line"><span class="keyword">always</span> @(*) <span class="comment">// 所有信号变量，当任意一个发生改变时</span></span><br></pre></td></tr></table></figure></div>
-<h3 id="块语句"><a href="#块语句" class="headerlink" title="块语句"></a>块语句</h3><h4 id="串行块begin-end"><a href="#串行块begin-end" class="headerlink" title="串行块begin-end"></a>串行块begin-end</h4><p>顾名思义，语句依次执行。<br>一个初始值为0，每隔10个时间单位进行一次翻转的信号sign，一共翻转5次，其串行实现为：</p>
+<h3 id="块语句"><a href="#块语句" class="headerlink" title="块语句"></a>块语句</h3><h4 id="串行块begin-end"><a href="#串行块begin-end" class="headerlink" title="串行块begin-end"></a>串行块<code>begin-end</code></h4><p>顾名思义，语句依次执行。<br>一个初始值为0，每隔10个时间单位进行一次翻转的信号sign，一共翻转5次，其串行实现为：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">initail</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    #<span class="number">0</span> sign = <span class="number">0</span>;</span><br><span class="line">    #<span class="number">10</span> sign = ~sign;</span><br><span class="line">    #<span class="number">10</span> sign = ~sign;</span><br><span class="line">    #<span class="number">10</span> sign = ~sign;</span><br><span class="line">    #<span class="number">10</span> sign = ~sign;</span><br><span class="line">    #<span class="number">10</span> sign = ~sign;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></div>
-<h4 id="并行块fork-join"><a href="#并行块fork-join" class="headerlink" title="并行块fork-join"></a>并行块fork-join</h4><p>顾名思义，语句同时并行执行。<br>一个初始值为0，每隔10个时间单位进行一次翻转的信号sign，一共翻转5次，其并行实现为：</p>
+<h4 id="并行块fork-join"><a href="#并行块fork-join" class="headerlink" title="并行块fork-join"></a>并行块<code>fork-join</code></h4><p>顾名思义，语句同时并行执行。<br>一个初始值为0，每隔10个时间单位进行一次翻转的信号sign，一共翻转5次，其并行实现为：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">initail</span><br><span class="line"><span class="keyword">fork</span></span><br><span class="line">    sign = <span class="number">0</span>;</span><br><span class="line">    <span class="variable">#(10 * 1)</span> sign = ~sign;</span><br><span class="line">    <span class="variable">#(10 * 2)</span> sign = ~sign;</span><br><span class="line">    <span class="variable">#(10 * 3)</span> sign = ~sign;</span><br><span class="line">    <span class="variable">#(10 * 4)</span> sign = ~sign;</span><br><span class="line">    <span class="variable">#(10 * 5)</span> sign = ~sign;</span><br><span class="line"><span class="keyword">join</span></span><br></pre></td></tr></table></figure></div>
 <h4 id="赋值语句"><a href="#赋值语句" class="headerlink" title="赋值语句"></a>赋值语句</h4><h5 id="持续赋值语句"><a href="#持续赋值语句" class="headerlink" title="持续赋值语句"></a>持续赋值语句</h5><p>assign为持续赋值语句，主要用于对wire型变量的赋值<br>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assign</span> 信号 = &lt;表达式&gt;;</span><br></pre></td></tr></table></figure></div>
@@ -1014,43 +1037,54 @@ mjx-container[display="true"] + br {
 <li>阻塞赋值<br>使用符号’=’赋值，在前序阻塞赋值结束后，会立即赋值。</li>
 <li>非阻塞赋值<br>使用符号’&lt;=’赋值，非阻塞赋值等待过程块结束完毕后，才会进行同步赋值。</li>
 </ol>
-<h4 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h4><h5 id="if-else语句"><a href="#if-else语句" class="headerlink" title="if-else语句"></a>if-else语句</h5><p>表达式通常为一个逻辑表达式或关系表达式。<br>::: warning ⚠️ 注意</p>
+<h4 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h4><h5 id="if-else语句"><a href="#if-else语句" class="headerlink" title="if-else语句"></a><code>if-else</code>语句</h5><p>表达式通常为一个逻辑表达式或关系表达式。</p>
+<p><strong>注意</strong></p>
 <ul>
-<li>当表达式为非1值（0、x、z）时，均按假，即0值处理。<br>:::<br>格式如下：<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(表达式) 语句<span class="number">1</span>; <span class="comment">//非完整性if语句，尽量不使用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(表达式) 语句<span class="number">1</span>; <span class="comment">//完整性if语句</span></span><br><span class="line"><span class="keyword">else</span> 语句<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(表达式) 语句<span class="number">1</span>; <span class="comment">//多重选择if语句</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(表达式) 语句<span class="number">2</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(表达式) 语句<span class="number">3</span>;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span> 语句n;</span><br></pre></td></tr></table></figure></div></li>
+<li>当表达式为非1值（0、x、z）时，均按假，即0值处理。</li>
 </ul>
-<h5 id="case语句-重点"><a href="#case语句-重点" class="headerlink" title="case语句(重点)"></a>case语句(重点)</h5><p>格式如下：</p>
+<p>格式如下：</p>
+<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(表达式) 语句<span class="number">1</span>; <span class="comment">//非完整性if语句，尽量不使用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(表达式) 语句<span class="number">1</span>; <span class="comment">//完整性if语句</span></span><br><span class="line"><span class="keyword">else</span> 语句<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(表达式) 语句<span class="number">1</span>; <span class="comment">//多重选择if语句</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(表达式) 语句<span class="number">2</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(表达式) 语句<span class="number">3</span>;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span> 语句n;</span><br></pre></td></tr></table></figure></div>
+<h5 id="case语句-重点"><a href="#case语句-重点" class="headerlink" title="case语句(重点)"></a><code>case</code>语句(重点)</h5><p>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> (表达式)</span><br><span class="line">    值<span class="number">1</span> : 语句<span class="number">1</span>;</span><br><span class="line">    值<span class="number">2</span> : 语句<span class="number">2</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">default</span> 语句n;</span><br><span class="line"><span class="keyword">endcase</span></span><br></pre></td></tr></table></figure></div>
-<h4 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h4><h5 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h5><p>格式如下：</p>
+<h4 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h4><h5 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a><code>for</code>循环</h5><p>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(循环变量初值；循环结束条件；循环变量增值)</span><br><span class="line">    执行语句;</span><br></pre></td></tr></table></figure></div>
-<p>::: danger ⭕ 警告</p>
+
+<p><strong>警告</strong></p>
 <ul>
-<li>Verilog不存在i++这样的语法，使用i=i+1这样的语句代替。<br>:::</li>
+<li>Verilog不存在i++这样的语法，使用i=i+1这样的语句代替。</li>
 </ul>
-<h5 id="repeat循环"><a href="#repeat循环" class="headerlink" title="repeat循环"></a>repeat循环</h5><p>一种可指定循环的次数循环方式。<br>格式如下：</p>
+<h5 id="repeat循环"><a href="#repeat循环" class="headerlink" title="repeat循环"></a><code>repeat</code>循环</h5><p>一种可指定循环的次数循环方式。<br>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">repeat</span>(循环次数) 执行语句;</span><br></pre></td></tr></table></figure></div>
-<h5 id="forever循环"><a href="#forever循环" class="headerlink" title="forever循环"></a>forever循环</h5><p>永久循环，一般用来产生周期性波形。</p>
+<h5 id="forever循环"><a href="#forever循环" class="headerlink" title="forever循环"></a><code>forever</code>循环</h5><p>永久循环，一般用来产生周期性波形。</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">forever</span> 执行语句;</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="任务与函数"><a href="#任务与函数" class="headerlink" title="任务与函数"></a>任务与函数</h3><h4 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h4><p>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> &lt;任务名&gt;;</span><br><span class="line">    端口及数据类型声明语句;</span><br><span class="line">    其他语句;</span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure></div>
 <p>任务调用的格式：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;任务名&gt;(端口<span class="number">1</span>, 端口<span class="number">2</span>, ...)</span><br></pre></td></tr></table></figure></div>
-<p>::: warning ⚠️ 注意</p>
+
+<p><strong>注意</strong></p>
 <ul>
 <li>任务定义与调用必须在同一个module中。</li>
 <li>任务没有端口名，但紧接着必须进行端口的定义。</li>
 <li>任务调用的端口名列表必须与任务定义时相一致。</li>
-<li>任务可以调用任意多的其他任务和函数。<br>:::</li>
+<li>任务可以调用任意多的其他任务和函数。</li>
 </ul>
 <h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> &lt;返回值位宽或类型说明&gt; 函数名;</span><br><span class="line">    端口声明;</span><br><span class="line">    局部变量定义;</span><br><span class="line">    其他语句;</span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure></div>
 
-<p>::: warning ⚠️ 注意</p>
+
+<p><strong>注意</strong></p>
 <ul>
-<li>&lt;返回值位宽或类型说明&gt;是可选的，如果缺省，啧返回位宽为1位的寄存器类型数据。<br>:::<br>函数调用的格式：<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;函数名&gt; (&lt;表达式&gt;&lt;表达式&gt;);</span><br></pre></td></tr></table></figure></div>
-::: danger ⭕ 警告</li>
+<li>&lt;返回值位宽或类型说明&gt;是可选的，如果缺省，啧返回位宽为1位的寄存器类型数据。</li>
+</ul>
+<p>函数调用的格式：</p>
+<div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;函数名&gt; (&lt;表达式&gt;&lt;表达式&gt;);</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>警告</strong></p>
+<ul>
 <li>不允许在函数中启动任务。</li>
-<li>不允许在函数中有时间控制语句。<br>:::</li>
+<li>不允许在函数中有时间控制语句。</li>
 </ul>
 <h2 id="Verilog-设计的层次与风格"><a href="#Verilog-设计的层次与风格" class="headerlink" title="Verilog 设计的层次与风格"></a>Verilog 设计的层次与风格</h2><h3 id="描述电路"><a href="#描述电路" class="headerlink" title="描述电路"></a>描述电路</h3><p>分为三种描述方式</p>
 <h4 id="结构描述"><a href="#结构描述" class="headerlink" title="结构描述"></a>结构描述</h4><p>常用<strong>门级结构描述</strong>。<br>多采用已有的功能模块或（门）元件进行例化。</p>
@@ -1064,31 +1098,31 @@ mjx-container[display="true"] + br {
 </tr>
 </thead>
 <tbody><tr>
-<td>and</td>
+<td><code>and</code></td>
 <td>与门</td>
 </tr>
 <tr>
-<td>nand</td>
+<td><code>nand</code></td>
 <td>与非门</td>
 </tr>
 <tr>
-<td>or</td>
+<td><code>or</code></td>
 <td>或门</td>
 </tr>
 <tr>
-<td>nor</td>
+<td><code>nor</code></td>
 <td>或非门</td>
 </tr>
 <tr>
-<td>xor</td>
+<td><code>xor</code></td>
 <td>异或门</td>
 </tr>
 <tr>
-<td>xnor</td>
+<td><code>xnor</code></td>
 <td>同或门</td>
 </tr>
 <tr>
-<td>not</td>
+<td><code>not</code></td>
 <td>非门</td>
 </tr>
 <tr>
@@ -1100,34 +1134,36 @@ mjx-container[display="true"] + br {
 <td></td>
 </tr>
 </tbody></table>
-<h4 id="行为描述"><a href="#行为描述" class="headerlink" title="行为描述"></a>行为描述</h4><p>多采用<strong>always过程语句</strong>或<strong>initail过程语句</strong>，比较类似传统高级语言的过程语句。</p>
-<h4 id="数据流描述"><a href="#数据流描述" class="headerlink" title="数据流描述"></a>数据流描述</h4><p>多采用<strong>assign持续赋值语句</strong>实现，类似传统的数电逻辑表达式设计。</p>
+<h4 id="行为描述"><a href="#行为描述" class="headerlink" title="行为描述"></a>行为描述</h4><p>多采用<code>always</code>过程语句或<code>initail</code>过程语句，比较类似传统高级语言的过程语句。</p>
+<h4 id="数据流描述"><a href="#数据流描述" class="headerlink" title="数据流描述"></a>数据流描述</h4><p>多采用<code>assign</code>持续赋值语句实现，类似传统的数电逻辑表达式设计。</p>
 <h3 id="时序逻辑设计"><a href="#时序逻辑设计" class="headerlink" title="时序逻辑设计"></a>时序逻辑设计</h3><h2 id="Verilog-有限状态机"><a href="#Verilog-有限状态机" class="headerlink" title="Verilog 有限状态机"></a>Verilog 有限状态机</h2><h3 id="状态编码"><a href="#状态编码" class="headerlink" title="状态编码"></a>状态编码</h3><p>常用的编码方式有四种：</p>
 <h4 id="顺序编码"><a href="#顺序编码" class="headerlink" title="顺序编码"></a>顺序编码</h4><p>即按照<strong>二进制自增</strong>的编码方式。</p>
 <h4 id="格雷编码"><a href="#格雷编码" class="headerlink" title="格雷编码"></a>格雷编码</h4><p>由顺序编码，从低位开始<strong>两两异或</strong>取得，最高位向下拉即可。</p>
 <h4 id="约翰逊编码"><a href="#约翰逊编码" class="headerlink" title="约翰逊编码"></a>约翰逊编码</h4><p>最高位取反，左移一次，然后送到最低位。</p>
 <h4 id="一位热码编码"><a href="#一位热码编码" class="headerlink" title="一位热码编码"></a>一位热码编码</h4><p>只有一位1，1的位置向最高位前进。</p>
-<h4 id="各类编码对比及区别"><a href="#各类编码对比及区别" class="headerlink" title="各类编码对比及区别"></a>各类编码对比及区别</h4><p>| 状态 | 顺序编码 | 格雷编码 | 约翰逊编码 | 一位热码编码 |<br>| – | – |<br>| state0 | 0000 | 0000 | 00000 | 00000001|<br>| state1 | 0000 | 0000 | 00001 | 00000010|<br>| state2 | 0000 | 0000 | 00011 | 00000100|<br>| state3 | 0000 | 0000 | 00111 | 00001000|<br>| … | … | … | … | … |<br>[4种编码对比]<br>::: tip 提示 💡<br>各类编码的区别如下：</p>
+<h4 id="各类编码对比及区别"><a href="#各类编码对比及区别" class="headerlink" title="各类编码对比及区别"></a>各类编码对比及区别</h4><p>| 状态 | 顺序编码 | 格雷编码 | 约翰逊编码 | 一位热码编码 |<br>| – | – |<br>| state0 | 0000 | 0000 | 00000 | 00000001|<br>| state1 | 0000 | 0000 | 00001 | 00000010|<br>| state2 | 0000 | 0000 | 00011 | 00000100|<br>| state3 | 0000 | 0000 | 00111 | 00001000|<br>| … | … | … | … | … |<br>[4种编码对比]</p>
+<p><strong>tips</strong><br>各类编码的区别如下：</p>
 <ul>
 <li>顺序编码<br>缺点：<strong>瞬变次数多，容易产生毛刺，引发逻辑错误</strong>。</li>
 <li>格雷编码<br>优点：<strong>瞬变次数少，减少毛刺和暂态的可能性</strong>。</li>
 <li>约翰逊编码<br>不知道</li>
-<li>一位热码编码<br>优点：<strong>有效节省和简化译码电路，有效提高电路的速度和可靠性，提高器件资源的利用率</strong>。<br>:::</li>
+<li>一位热码编码<br>优点：<strong>有效节省和简化译码电路，有效提高电路的速度和可靠性，提高器件资源的利用率</strong>。</li>
 </ul>
-<h4 id="状态编码的定义方式"><a href="#状态编码的定义方式" class="headerlink" title="状态编码的定义方式"></a>状态编码的定义方式</h4><h5 id="parameter参数定义"><a href="#parameter参数定义" class="headerlink" title="parameter参数定义"></a>parameter参数定义</h5><div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">parameter</span> ST1 = <span class="number">2'b00</span>, ST2 = <span class="number">2'b01</span>, </span><br><span class="line">    ST3 = <span class="number">2'b10</span>, ST4 = <span class="number">2'b11</span>;</span><br></pre></td></tr></table></figure></div>
+<h4 id="状态编码的定义方式"><a href="#状态编码的定义方式" class="headerlink" title="状态编码的定义方式"></a>状态编码的定义方式</h4><h5 id="parameter参数定义"><a href="#parameter参数定义" class="headerlink" title="parameter参数定义"></a><code>parameter</code>参数定义</h5><div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">parameter</span> ST1 = <span class="number">2'b00</span>, ST2 = <span class="number">2'b01</span>, </span><br><span class="line">    ST3 = <span class="number">2'b10</span>, ST4 = <span class="number">2'b11</span>;</span><br></pre></td></tr></table></figure></div>
 
-<h5 id="define语句定义（重点）"><a href="#define语句定义（重点）" class="headerlink" title="`define语句定义（重点）"></a>`define语句定义（重点）</h5><div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">define</span> ST1 2'b00 </span><span class="comment">//没有分号！！！</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> ST2 2'b01 </span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> ST3 2'b10</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> ST4 2'b11</span></span><br><span class="line"><span class="keyword">case</span>(state)</span><br><span class="line">    `ST1: <span class="comment">//...; //要加撇</span></span><br><span class="line">    `ST2: <span class="comment">//...;</span></span><br><span class="line">    <span class="comment">//... </span></span><br><span class="line"><span class="keyword">endcase</span></span><br></pre></td></tr></table></figure></div>
+<h5 id="define语句定义（重点）"><a href="#define语句定义（重点）" class="headerlink" title="'define语句定义（重点）"></a><code>'define</code>语句定义（重点）</h5><div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">define</span> ST1 2'b00 </span><span class="comment">//没有分号！！！</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> ST2 2'b01 </span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> ST3 2'b10</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> ST4 2'b11</span></span><br><span class="line"><span class="keyword">case</span>(state)</span><br><span class="line">    `ST1: <span class="comment">//...; //要加撇</span></span><br><span class="line">    `ST2: <span class="comment">//...;</span></span><br><span class="line">    <span class="comment">//... </span></span><br><span class="line"><span class="keyword">endcase</span></span><br></pre></td></tr></table></figure></div>
 
-<h5 id="localparam语句定义"><a href="#localparam语句定义" class="headerlink" title="localparam语句定义"></a>localparam语句定义</h5><div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">localparam</span> ST1 = <span class="number">2'b00</span>, ST2 = <span class="number">2'b01</span>, </span><br><span class="line">    ST3 = <span class="number">2'b10</span>, ST4 = <span class="number">2'b11</span>;</span><br></pre></td></tr></table></figure></div>
-<p>::: tip 提示 💡</p>
+<h5 id="localparam语句定义"><a href="#localparam语句定义" class="headerlink" title="localparam语句定义"></a><code>localparam</code>语句定义</h5><div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">localparam</span> ST1 = <span class="number">2'b00</span>, ST2 = <span class="number">2'b01</span>, </span><br><span class="line">    ST3 = <span class="number">2'b10</span>, ST4 = <span class="number">2'b11</span>;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>tips</strong></p>
 <ul>
-<li>parameter方式：<br>作用域为<strong>本模块</strong>，可被上层模块重新定义，即<strong>参数传递</strong>。</li>
-<li>`define方式；<br>作用域为<strong>整个工程</strong>，可跨模块。一般将定义语句放在<strong>模块外</strong>。</li>
-<li>localparam方式：<br>作用域<strong>局限本模块</strong>，不可参数传递，用于<strong>状态机参数</strong>的定义。<br>:::</li>
+<li><code>parameter</code>方式：<br>作用域为<strong>本模块</strong>，可被上层模块重新定义，即<strong>参数传递</strong>。</li>
+<li><code>\</code>define`方式；<br>作用域为<strong>整个工程</strong>，可跨模块。一般将定义语句放在<strong>模块外</strong>。</li>
+<li><code>localparam</code>方式：<br>作用域<strong>局限本模块</strong>，不可参数传递，用于<strong>状态机参数</strong>的定义。</li>
 </ul>
-<h2 id="Verilog-仿真"><a href="#Verilog-仿真" class="headerlink" title="Verilog 仿真"></a>Verilog 仿真</h2><h3 id="系统任务与系统函数"><a href="#系统任务与系统函数" class="headerlink" title="系统任务与系统函数"></a>系统任务与系统函数</h3><h4 id="display与-write及-monitor"><a href="#display与-write及-monitor" class="headerlink" title="$display与$write及$monitor"></a><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="9.398ex" height="2.161ex" role="img" focusable="false" viewBox="0 -750 4154 955"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></g><g data-mml-node="mi" transform="translate(520,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(865,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mi" transform="translate(1334,0)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mi" transform="translate(1837,0)"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path></g><g data-mml-node="mi" transform="translate(2135,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(2664,0)"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(3154,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">与</text></g></g></g></svg></mjx-container>write及$monitor</h4><p>用于显示模拟的结果，唯一区别是<strong>ㅤ$display可以自动换行</strong>，而$wirte不行。<br>monitor是一种特殊的打印，<strong>当输出变量名列表发生改变时，就会输出一次</strong>。<br>格式如下：</p>
+<h2 id="Verilog-仿真"><a href="#Verilog-仿真" class="headerlink" title="Verilog 仿真"></a>Verilog 仿真</h2><h3 id="系统任务与系统函数"><a href="#系统任务与系统函数" class="headerlink" title="系统任务与系统函数"></a>系统任务与系统函数</h3><h4 id="display与-write及-monitor"><a href="#display与-write及-monitor" class="headerlink" title="$display与$write及$monitor"></a><code>$display</code>与<code>$write</code>及<code>$monitor</code></h4><p>用于显示模拟的结果，唯一区别是<strong>ㅤ<code>$display</code>可以自动换行</strong>，而<code>$wirte</code>不行。<br><code>monitor</code>是一种特殊的打印，<strong>当输出变量名列表发生改变时，就会输出一次</strong>。<br>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$display</span>(<span class="string">"格式控制符"</span>, 输出变量名列表);</span><br><span class="line"><span class="built_in">$write</span>(<span class="string">"格式控制符"</span>, 输出变量名列表);</span><br><span class="line"><span class="built_in">$monitor</span>(<span class="string">"格式控制符"</span>, 输出变量名列表);</span><br></pre></td></tr></table></figure></div>
-<h4 id="‘timescale"><a href="#‘timescale" class="headerlink" title="‘timescale"></a>‘timescale</h4><p>`timescale语句用于定义模块的时间单位和时间精度。<br>格式如下：</p>
+<h4 id="timescale"><a href="#timescale" class="headerlink" title="'timescale"></a><code>'timescale</code></h4><p>`timescale语句用于定义模块的时间单位和时间精度。<br>格式如下：</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> &lt;时间单位&gt;/&lt;时间精度&gt;;</span></span><br></pre></td></tr></table></figure></div>
 <p>用来表示时间度量的符号有<strong>s、ms、us、ns、ps、fs</strong>。</p>
 <div class="highlight-container" data-rel="Verilog"><figure class="iseeu highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1ns/100ps;</span></span><br></pre></td></tr></table></figure></div>
@@ -1151,7 +1187,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-02-03 19:52:05
+                    :</strong> 2025-02-18 21:21:30
             </li>
         
         <li>
@@ -1285,7 +1321,7 @@ mjx-container[display="true"] + br {
                     </span>
                     
                         <span>
-                            233k words in total
+                            232.9k words in total
                         </span>
                     
                 </p>
